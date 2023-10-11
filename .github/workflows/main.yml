@@ -16,3 +16,5 @@ jobs:
       - name: setup_check
         run: echo "setup seccess"
         shell: bash
+      - name: docker image builder
+        run: docker build .
