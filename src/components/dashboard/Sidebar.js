@@ -54,7 +54,7 @@ function Sidebar() {
 
     <>
      
-      <img src={Navbar_Icon} alt='Navbar_Icon' style={{height:'55px',width:'70px',marginLeft:'-20px'}} onClick={handleShow}/> 
+      <img src={Navbar_Icon} alt='Navbar_Icon' style={{height:'55px',width:'70px',marginLeft:'-50px'}} onClick={handleShow}/> 
 
       <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
