@@ -1,11 +1,13 @@
 .Login{
-    width: 25%;
-    background-color:#9EDDFF;
-    padding: 1%;
+    width: 28%;
+    height: 23rem;
+    background-color: whitesmoke;
+    /* padding: 1%; */
     margin-left: 30rem;
     text-align: center;
     border-radius: 10px;
-
+    margin-top: 5%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     @media only screen and (max-width: 600px) {
         /* For mobile phones: */
         margin-left: 20rem;
@@ -21,3 +23,20 @@
         margin-left: 10rem;
       }
 }
+
+.heading{
+    background-color:#A2678A;
+    padding: 1%;
+    border-radius: 10px 10px 0px 0px;
+    color: white;
+}
+
+.form{
+  width: 20rem;
+  height: 100%;
+  margin-top: 2%;
+  padding: 5%;
+  
+}
+
+
