@@ -99,6 +99,27 @@ const Home = () => {
                   <FaEye style={{ fontSize: "20px" }} />
                 </td>
               </tr>
+
+              <tr>
+                <td>4</td>
+                <td>Larry the Bird</td>
+                <td>12-01-2023</td>
+                <td>30-03-2023</td>
+                <td>Not Started</td>
+                <td>
+                  <FaEye style={{ fontSize: "20px" }} />
+                </td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Larry the Bird</td>
+                <td>12-01-2023</td>
+                <td>30-03-2023</td>
+                <td>Not Started</td>
+                <td>
+                  <FaEye style={{ fontSize: "20px" }} />
+                </td>
+              </tr>
             </tbody>
           </Table>
         </Container>
