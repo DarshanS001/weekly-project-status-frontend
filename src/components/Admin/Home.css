@@ -2,12 +2,19 @@
     width: 80%;
     height: 40%;
     border: 2px solid rgb(173, 170, 170);
-    padding: 0.5%;
+    /* padding: 0.5%; */
     margin-top: 2%;
     /* margin-left: 2%; */
     background-color: rgb(241, 187, 122);
     border-radius: 20px 20px 0px 0px;
     text-align: left;
+    /* display: flex; */
+}
+
+.search-bar{
+    width: 20%;
+    height: 40%;
+    border-radius: 2px solid black;
 }
 
 .MainContainer{
