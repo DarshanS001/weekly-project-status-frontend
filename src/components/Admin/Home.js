@@ -11,6 +11,7 @@ import Button from "react-bootstrap/Button";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -26,9 +27,9 @@ const Home = () => {
              
               <Navbar.Collapse className="justify-content-end">
                 <Navbar.Brand className="text-light">
-                  <Button style={{backgroundColor:"#AE445A"}} size="lg" className="my-3">
+                  <Link to='/manager/addProjectPage'><Button style={{backgroundColor:"#AE445A"}} size="lg" className="my-3">
                     Add Project
-                  </Button>
+                  </Button></Link>
                   <Button style={{backgroundColor:"#AE445A"}} size="lg" className="ms-2">
                     Weekly Project Report
                   </Button>
