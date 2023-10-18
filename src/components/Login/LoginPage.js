@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
+import axios from 'axios';
 import "./LoginPage.css";
 
 const LoginPage = () => {
@@ -15,6 +15,27 @@ const LoginPage = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
+    console.log('email:', email);
+    console.log('password:', password);
+
+    axios({
+      baseURL: 'http://127.0.0.1:8000/api/user/login/',
+      method: "POST",
+      data: {
+        user_email: email,
+        password: password
+      },
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          console.log("result.data:",res.data);
+          localStorage.setItem("user-token", res.data.token["access"]);
+          window.location.href = "/AdminHome";
+        }
+      })
+      .catch((error) => {
+        console.log("ERROR", error);
+      });
   }
 
   return (

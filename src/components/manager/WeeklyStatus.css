@@ -11,7 +11,6 @@
     /* display: flex; */
 }
 
-
 .MainContainer{
     width: 80%;
     height: 70%;
@@ -19,4 +18,5 @@
     padding: 2%;
     background-color: rgb(245, 232, 216);
     border-radius: 0px 0px 20px 20px;
+    text-align: left;
 }
