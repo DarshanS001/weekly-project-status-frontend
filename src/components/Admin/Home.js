@@ -51,7 +51,7 @@ const Home = () => {
               <Navbar.Collapse className="justify-content-end">
                 <Navbar.Brand className="text-light">
                   <Button style={{backgroundColor:"#AE445A"}} size="lg" className="my-3">
-                    Add Project
+                  <Link to={'/manager/addProjectPage'} style={{textDecoration: 'None', color:'white'}}>Add Project</Link>
                   </Button>
                   <Button style={{backgroundColor:"#AE445A"}} size="lg" className="ms-2">
                     Weekly Project Report
