@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import axios from 'axios';
 import "./LoginPage.css";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -66,19 +67,24 @@ const LoginPage = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
-
+            
             <div className="d-grid gap-1 mt-4">
             <Button style={{backgroundColor:"#A2678A"}} 
                     size="lg"
                     type="submit"
-                    disabled={!validateForm()}>
+                    disabled={!validateForm()}
+                    className="mb-3">
                   Sign In
             </Button>
           </div>
+
           </Container>
 
         </Form>
       </Container>
+        <Container className="forgotPassword">
+              <Link to={"#"} className="me-3">Forgot Password?</Link>
+          </Container>
     </div>
   );
 };

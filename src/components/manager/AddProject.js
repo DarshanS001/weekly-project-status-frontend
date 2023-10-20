@@ -1,24 +1,76 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from 'axios';
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/Container";
+
 export default function AddProjectTrial() {
   let navigate = useNavigate();
+  const [projectList, setProjectList] = useState([]);
   const [project, setProject] = useState({
-    projectName: "",
-    projectManagerName: "",
-    startDate: "",
-    plannedEndDate: "",
+    project_name: "",
+    summary: "",
+    client_name:"",
+    start_date: "",
+    end_date: "",
+    user: 0
   });
   
-  const { projectName, projectManagerName, startDate, plannedEndDate } = project;
+
+// Code To Get User Id 
+const token = localStorage.getItem("user-token");
+  const config = {
+    headers: { Authorization: `Bearer ${token}` }
+  };
+
+  useEffect(()=>{
+
+    async function getProjectList(){
+        try {
+            const projList = await axios.get("http://127.0.0.1:8000/api/projectplan/projects/", config);
+            console.log("Get projectList Data",projList.data);
+            setProjectList(projList.data);
+            // console.log('projectList:-', projectList[0].user)
+        }catch (error){
+            console.log("Data fetching Error Occured in Project List");
+        }
+    }
+
+    getProjectList();
+    
+
+}, []);
+
+if(projectList.length > 0){
+  console.log('projectList:-', projectList[0].user)
+}
+  
+
+  // To set data in JSON
+  const { project_name, summary, client_name, start_date, end_date, user } = project;
   const onInputChange = (e) => {
-    setProject({ ...project, [e.target.name]: e.target.value });
+    setProject({ ...project, [e.target.name]: e.target.value});
+    setProject(updateUser => {return {...updateUser, user: projectList[0].user}})
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    // await axios.post("http://localhost:8000/api/create/", project);
-    navigate("/");
+    console.log('project data Array:',project);
+
+    try{
+      console.log("API Call")
+
+      await axios.post('http://127.0.0.1:8000/api/projectplan/projects/',project)
+      // .then((response)=>{console.log(response.data)});
+      alert("Project Added Successfully")
+    }
+    catch(error){
+      console.log('error:', error);
+      console.log("error occur in data post");
+    }
+    // navigate("/");
   };
 
   return (
@@ -27,69 +79,83 @@ export default function AddProjectTrial() {
         <div className="col-md-6 offset-md-3 p-4 mt-2 shadow" style={{border: 'rounded solid 6px',backgroundColor:'#E4F1FF',borderRadius:'10px'}}>
           <h2 className="text-center m-4 fs-3" style={{fontFamily: 'Apple Chancery',fontWeight:'bold'}}>Add Project</h2>
 
-          <form onSubmit={(e) => onSubmit(e)} >
+          <form onSubmit={onSubmit} >
             <div className="mb-3">
               <label htmlFor="Name" className="form-label" style={{marginLeft:'-390px',fontWeight:'bold'}}>
                 Project Name
               </label>
               <input
-                type={"text"}
+                type="text"
                 className="form-control"
-                placeholder="Enter project name"
-                name="projectName"
-                value={projectName}
+                placeholder="Enter Project Name"
+                name="project_name"
+                value={project_name}
                 onChange={(e) => onInputChange(e)}
               />
             </div>
-            
-            
 
             <div className="mb-3">
-              <label htmlFor="Address" className="form-label" style={{marginLeft:'-320px',fontWeight:'bold'}}>
-                Project Manager Name
+              <label htmlFor="Summary" className="form-label" style={{marginLeft:'-390px',fontWeight:'bold'}}>
+                Summary
               </label>
               <input
                 type={"text"}
                 className="form-control"
-                placeholder="Enter project manager name"
-                name="projectManagerName"
-                value={projectManagerName}
+                placeholder="Enter project summary"
+                name="summary"
+                value={summary}
                 onChange={(e) => onInputChange(e)}
               />
             </div>
+
             <div className="mb-3">
-              <label htmlFor="Phone" className="form-label" style={{marginLeft:'-420px',fontWeight:'bold'}}>
+              <label htmlFor="client_name" className="form-label" style={{marginLeft:'-390px',fontWeight:'bold'}}>
+                Client Name
+              </label>
+              <input
+                type={"text"}
+                className="form-control"
+                placeholder="Enter Client Name"
+                name="client_name"
+                value={client_name}
+                onChange={(e) => onInputChange(e)}
+              />
+            </div>
+            
+            
+            <div className="mb-3">
+              <label htmlFor="start_date" className="form-label" style={{marginLeft:'-420px',fontWeight:'bold'}}>
                 Start Date
               </label>
               <input
                 type={"date"}
                 className="form-control"
                 placeholder="Enter the start date"
-                name="startDate"
-                value={startDate}
+                name="start_date"
+                value={start_date}
                 onChange={(e) => onInputChange(e)}
               />
             </div>
 
             <div className="mb-3">
-              <label htmlFor="Phone" className="form-label fs-6" style={{marginLeft:'-370px',fontWeight:'bold'}}>
+              <label htmlFor="end_date" className="form-label fs-6" style={{marginLeft:'-370px',fontWeight:'bold'}}>
                 Planned End Date
               </label>
               <input
                 type={"date"}
                 className="form-control"
                 placeholder="Enter planned end date"
-                name="plannedEndDate"
-                value={plannedEndDate}
+                name="end_date"
+                value={end_date}
                 onChange={(e) => onInputChange(e)}
               />
             </div>
 
 
-            <button type="submit" className="btn " style={{fontWeight:'bold',borderRadius:'10px',borderRadius:'5px',color:'white',backgroundColor: 'hsl(244, 77%, 14%)'}}>
+            <Button type="submit" className="btn " style={{fontWeight:'bold',borderRadius:'10px',borderRadius:'5px',color:'white',backgroundColor: 'hsl(244, 77%, 14%)'}}>
               Add Project
-            </button>
-            <Link className="btn btn-outline-danger mx-2" to="/">
+            </Button>
+            <Link className="btn btn-outline-danger mx-2" to="/AdminHome">
               Cancel
             </Link>
           </form>

@@ -37,6 +37,8 @@ const Home = () => {
 
 }, []);
 
+console.log('projectList:-', projectList)
+
   return (
     <>
       <Container className="Heading">
@@ -94,57 +96,6 @@ const Home = () => {
             </thead>
 
             <tbody>
-              {/* <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>12-01-2023</td>
-                <td>30-03-2023</td>
-                <td>In Progress</td>
-                <td>
-                 <Link to={'/manager/projectDetails'}><FaEye style={{ fontSize: "20px", color:'black' }} /></Link> 
-                </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>12-01-2023</td>
-                <td>30-03-2023</td>
-                <td>Done</td>
-                <td>
-                <Link to={'/manager/projectDetails'}><FaEye style={{ fontSize: "20px", color:'black' }} /></Link> 
-                </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Larry the Bird</td>
-                <td>12-01-2023</td>
-                <td>30-03-2023</td>
-                <td>Not Started</td>
-                <td>
-                <Link to={'/manager/projectDetails'}><FaEye style={{ fontSize: "20px", color:'black' }} /></Link> 
-                </td>
-              </tr>
-
-              <tr>
-                <td>4</td>
-                <td>Larry the Bird</td>
-                <td>12-01-2023</td>
-                <td>30-03-2023</td>
-                <td>Not Started</td>
-                <td>
-                <Link to={'/manager/projectDetails'}><FaEye style={{ fontSize: "20px", color:'black' }} /></Link> 
-                </td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>Larry the Bird</td>
-                <td>12-01-2023</td>
-                <td>30-03-2023</td>
-                <td>Not Started</td>
-                <td>
-                <Link to={'/manager/projectDetails'}><FaEye style={{ fontSize: "20px", color:'black' }} /></Link> 
-                </td>
-              </tr> */}
 
                 { projectList.map((x, index) =>{
                     return (
