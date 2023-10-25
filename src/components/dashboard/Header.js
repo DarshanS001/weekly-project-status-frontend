@@ -60,6 +60,10 @@ export default function Header() {
           }
           
           </Navbar.Brand>
+
+          <Navbar.Brand>
+            <Link to={'/adminPage'}><Button style={{marginLeft:'50px'}}>Admin</Button></Link>
+          </Navbar.Brand>
         </Navbar.Collapse>
       </Container>
     </Navbar>
