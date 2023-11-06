@@ -21,7 +21,8 @@ const ProjectDetails = () => {
 
     async function getProjectDetails(){
         try {
-            const projDetails = await axios.get(`http://127.0.0.1:8000/api/projectplan/projects/details/${id}/`);
+            // const projDetails = await axios.get(`http://127.0.0.1:8000/api/projectplan/projects/details/${id}/`);
+            const projDetails = await axios.get(`http://127.0.0.1:8000/api/projectplan/projectsapi/${id}/`);
             console.log("Get projectList Data",projDetails.data);
             setProjectDetails(projDetails.data);
         }catch (error){

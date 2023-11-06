@@ -30,7 +30,7 @@ export default function AddManager() {
 
           <form onSubmit={(e) => onSubmit(e)} >
             <div className="mb-3">
-              <label htmlFor="Name" className="form-label" style={{marginLeft:'-390px',fontWeight:'bold'}}>
+              <label htmlFor="Name" className="form-label ml-0" style={{fontWeight:'bold'}}>
                  Name
               </label>
               <input
@@ -46,7 +46,7 @@ export default function AddManager() {
             
 
             <div className="mb-3">
-              <label htmlFor="Address" className="form-label" style={{marginLeft:'-320px',fontWeight:'bold'}}>
+              <label htmlFor="Address" className="form-label ml-0" style={{fontWeight:'bold'}}>
                 Email
               </label>
               <input
@@ -61,7 +61,7 @@ export default function AddManager() {
             
 
             <div className="mb-3">
-              <label htmlFor="Name" className="form-label" style={{marginLeft:'-390px',fontWeight:'bold'}}>
+              <label htmlFor="Name" className="form-label ml-0" style={{fontWeight:'bold'}}>
                  Phone No.
               </label>
               <input
@@ -75,7 +75,7 @@ export default function AddManager() {
             </div>
 
             <div className="mb-3">
-              <label htmlFor="Name" className="form-label" style={{marginLeft:'-390px',fontWeight:'bold'}}>
+              <label htmlFor="Name" className="form-label ml-0" style={{fontWeight:'bold'}}>
                  Designation
               </label>
               <input

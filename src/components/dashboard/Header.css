@@ -2,6 +2,16 @@
     margin-left: 800px;
 }
 
+.modaldesign{
+    background-color: #E4F1FF;
+    font-family: 'Apple Chancery';
+    font-size: x-large;
+}
+
+.modalbody{
+    background-color: hsl(244, 77%, 14%) ;
+    color: #E4F1FF;
+}
 .bg-body-tertiary{
     background-color: hsl(244, 77%, 14%);
     /* height: 75px;

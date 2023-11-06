@@ -25,7 +25,8 @@ const Home = () => {
 
     async function getProjectList(){
         try {
-            const projList = await axios.get("http://127.0.0.1:8000/api/projectplan/projects/", config);
+            // const projList = await axios.get("http://127.0.0.1:8000/api/projectplan/projects/", config);
+            const projList = await axios.get("http://127.0.0.1:8000/api/projectplan/projectsapi/", config);
             console.log("Get projectList Data",projList.data);
             setProjectList(projList.data);
         }catch (error){
