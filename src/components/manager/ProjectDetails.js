@@ -3,25 +3,33 @@ import "./ProjectDetails.css";
 import Table from "react-bootstrap/Table";
 import Container from "react-bootstrap/Container";
 import Heading from "../Heading";
-
 import Button from "react-bootstrap/Button";
 import {Link} from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from "react-router-dom";
+import WeekReportModal from "./AddWeekData/WeekReportModal";
+
+
 
 const ProjectDetails = () => {
+  // To get Id....
   const { id } = useParams();
   console.log("id:",id);
   const [projectDetails, setProjectDetails] = useState([]);
+
+  // for modal show hide
+  const [modalShow, setModalShow] = useState(false);
+  console.log('modalShow', modalShow);
 
 
   useEffect(()=>{
 
     async function getProjectDetails(){
         try {
-            const projDetails = await axios.get(`http://127.0.0.1:8000/api/projectplan/projects/details/${id}/`);
+            // const projDetails = await axios.get(`http://127.0.0.1:8000/api/projectplan/projects/details/${id}/`);
+            const projDetails = await axios.get(`http://127.0.0.1:8000/api/projectplan/projectsapi/${id}/`);
             console.log("Get projectList Data",projDetails.data);
             setProjectDetails(projDetails.data);
         }catch (error){
@@ -46,8 +54,14 @@ const ProjectDetails = () => {
              
               <Navbar.Collapse className="justify-content-end">
                 <Navbar.Brand className="text-light">
-                  <Button style={{backgroundColor:"#AE445A", marginBottom:'3px'}} size="lg" className="ms-2">
-                    Add/Update Week Data
+                  <Button 
+                  style={{backgroundColor:"#AE445A", marginBottom:'3px'}} 
+                  size="lg" 
+                  className="ms-2"
+                  onClick={() => setModalShow(true)}
+                  >
+                    {/* <Link to={'/manager/addWeekDataPage1'} style={{textDecoration: 'None', color:'white'}}>Add Week Data</Link> */}
+                    Add Week Data
                   </Button>
                 </Navbar.Brand>
 
@@ -65,28 +79,6 @@ const ProjectDetails = () => {
 
 
       <Container className="MainContainer">
-        
-          {/* <Table striped bordered hover variant="light">
-            <thead>
-              <tr>
-                <th>Project Name</th>
-                <th>PM Name</th>
-                <th>Start Date</th>
-                <th>Planned End Date</th>
-                <th>Overall Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Mark</td>
-                <td>Mark</td>
-                <td>12-01-2023</td>
-                <td>30-03-2023</td>
-                <td>In Progress</td>
-              </tr>
-            </tbody>
-
-          </Table> */}
 
         <Container>
 
@@ -100,6 +92,11 @@ const ProjectDetails = () => {
   
       </Container>
       
+                <WeekReportModal
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
+                  projectID = {id}
+                  />
     </>
   )
 }

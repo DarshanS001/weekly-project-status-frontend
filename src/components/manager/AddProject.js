@@ -18,6 +18,8 @@ export default function AddProjectTrial() {
     user: 0
   });
   
+  // To destructure JSON object
+  const { project_name, summary, client_name, start_date, end_date, user } = project;
 
 // Code To Get User Id 
 const token = localStorage.getItem("user-token");
@@ -29,7 +31,8 @@ const token = localStorage.getItem("user-token");
 
     async function getProjectList(){
         try {
-            const projList = await axios.get("http://127.0.0.1:8000/api/projectplan/projects/", config);
+            // const projList = await axios.get("http://127.0.0.1:8000/api/projectplan/projects/", config);
+            const projList = await axios.get("http://127.0.0.1:8000/api/projectplan/projectsapi/", config);
             console.log("Get projectList Data",projList.data);
             setProjectList(projList.data);
             // console.log('projectList:-', projectList[0].user)
@@ -48,8 +51,7 @@ if(projectList.length > 0){
 }
   
 
-  // To set data in JSON
-  const { project_name, summary, client_name, start_date, end_date, user } = project;
+  
   const onInputChange = (e) => {
     setProject({ ...project, [e.target.name]: e.target.value});
     setProject(updateUser => {return {...updateUser, user: projectList[0].user}})
@@ -62,8 +64,9 @@ if(projectList.length > 0){
     try{
       console.log("API Call")
 
-      await axios.post('http://127.0.0.1:8000/api/projectplan/projects/',project)
-      // .then((response)=>{console.log(response.data)});
+      // await axios.post('http://127.0.0.1:8000/api/projectplan/projects/',project)
+      await axios.post('http://127.0.0.1:8000/api/projectplan/projectsapi/',project)
+      .then((response)=>{console.log("==Response Data Add Project==",response.data)});
       alert("Project Added Successfully")
     }
     catch(error){

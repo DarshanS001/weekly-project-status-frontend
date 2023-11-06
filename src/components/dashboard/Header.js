@@ -54,15 +54,19 @@ export default function Header() {
            }
           
           {token ? 
+
+            <Navbar.Brand>
             <Link to={'/'} className='text-light' style={{textDecoration: 'none'}} onClick={handleLogout}><img src={LogoutImage} alt='login - imgage' style={{height:'40px',width:'120px',marginRight:'-50px'}}/></Link>
+            <Link to={'/adminPage'} className='ms-3'><Button style={{marginLeft:'50px'}}>Admin</Button></Link>
+            </Navbar.Brand>
             :
             " "
           }
           
-          </Navbar.Brand>
+          
 
-          <Navbar.Brand>
-            <Link to={'/adminPage'}><Button style={{marginLeft:'50px'}}>Admin</Button></Link>
+          
+            
           </Navbar.Brand>
         </Navbar.Collapse>
       </Container>
