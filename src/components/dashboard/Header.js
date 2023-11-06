@@ -5,13 +5,19 @@ import Navbar from 'react-bootstrap/Navbar';
 import {Link} from "react-router-dom";
 import ylogo from '../../images/ylogo.png';
 import loginb from '../../images/loginb.PNG';
-import LogoutImage from '../../images/LogoutImage.jpg';
+import { useState } from 'react';
+import Modal from 'react-bootstrap/Modal';
+import logoutIcon from '../../images/logoutIcon.png';
 import RegisterNowButton from '../../images/RegisterNowButton.webp';
 import './Header.css';
 import Sidebar from './Sidebar';
 import { useLocation } from "react-router-dom"
 
 export default function Header() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
     const location = useLocation();
     console.log("location",location.pathname)
 
@@ -22,14 +28,15 @@ export default function Header() {
     };
     
 
+
   return (
     <div>
-      <Navbar className="bg-body-tertiary" data-bs-theme="light">
+      <Navbar className="bg-body-tertiary " data-bs-theme="light">
       <Container>
 
         {location.pathname !== '/' ? <Sidebar/>:"" }
 
-        <img src={ylogo} alt='logoimgage' style={{height:'55px',width:'130px',marginLeft:'20px'}}/>
+        <img src={ylogo} alt='logoimgage' style={{height:'50px',width:'120px',marginLeft:'20px'}}/>
 
         {token ? 
         <Link to={'/AdminHome'} className="ms-3 fs-3 fw-bold text-light" style={{textDecoration: 'none',fontFamily: 'Apple Chancery'}}>Weekly Status Report Application</Link>
@@ -54,23 +61,43 @@ export default function Header() {
            }
           
           {token ? 
-
-            <Navbar.Brand>
-            <Link to={'/'} className='text-light' style={{textDecoration: 'none'}} onClick={handleLogout}><img src={LogoutImage} alt='login - imgage' style={{height:'40px',width:'120px',marginRight:'-50px'}}/></Link>
-            <Link to={'/adminPage'} className='ms-3'><Button style={{marginLeft:'50px'}}>Admin</Button></Link>
-            </Navbar.Brand>
+            <Button style={{textDecoration: 'none',backgroundColor:'hsl(244, 77%, 14%)',borderColor:'hsl(244, 77%, 14%)'}} onClick={handleShow}><img src={logoutIcon} alt='login - image' style={{height:'45px',width:'55px',marginRight:'-70px'}}/>
+            <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title className='fw-bold modaldesign'>Logout</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className='modalbody'>
+          Are you sure you want to logout?
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Link to={'/'}><Button variant="danger" onClick={handleLogout}>Logout</Button></Link>
+        </Modal.Footer>
+      </Modal>
+            </Button>
+            
             :
             " "
           }
           
           
 
-          
-            
+          {/* <Navbar.Brand>
+            <Link to={'/adminPage'}><Button style={{marginLeft:'50px'}}>Admin</Button></Link>
+          </Navbar.Brand> */}
           </Navbar.Brand>
         </Navbar.Collapse>
       </Container>
     </Navbar>
+
+    
     </div>
   )
 }

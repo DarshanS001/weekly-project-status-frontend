@@ -90,8 +90,8 @@ const WeekReportModal = (props) => {
             .then((res) => {
               if (res.status === 201) {
                 console.log("result.data:",res.data);
-                console.log("result.data[1]:",res.data["Data"].id);
-                setReportId(res.data["Data"].id); //To set report Id and send to difffenent pages like Add week Data
+                // console.log("result.data[1]:",res.data["Data"].id);
+                // setReportId(res.data["Data"].id); //To set report Id and send to difffenent pages like Add week Data
                 // window.location.href = "/manager/addWeekDataPage1";
                 navigate("/manager/addWeekDataPage1");
               }

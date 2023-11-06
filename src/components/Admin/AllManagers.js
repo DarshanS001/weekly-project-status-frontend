@@ -74,12 +74,12 @@ export default function AllManagers() {
         <div >
         <table style={{marginTop: '10px',marginBottom: '40px',marginLeft:'120px',width: '1000px',height: '700px'}}>
   <thead>
-    <tr style={{backgroundColor: 'orange'}}>
-      <th style={{outline: ''}} scope="col">S. No.</th>
-      <th style={{outline: '',textAlign:'center'}} scope="col">Name</th>
-      <th style={{outline: ''}} scope="col">Email</th>
-      <th style={{outline: ''}} scope="col">Phone</th>
-      <th style={{outline: ''}} scope="col">Designation</th>
+    <tr style={{backgroundColor: 'hsl(244, 77%, 14%)'}}>
+      <th style={{outline: '',color:'white'}} scope="col">S. No.</th>
+      <th style={{outline: '',textAlign:'center',color:'white'}} scope="col">Name</th>
+      <th style={{outline: '',color:'white'}} scope="col">Email</th>
+      <th style={{outline: '',color:'white'}} scope="col">Phone</th>
+      <th style={{outline: '',color:'white'}} scope="col">Designation</th>
       <th scope="col">Actions</th>   
     </tr>
   </thead>

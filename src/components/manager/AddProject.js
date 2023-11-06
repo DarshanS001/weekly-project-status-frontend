@@ -66,8 +66,9 @@ if(projectList.length > 0){
 
       // await axios.post('http://127.0.0.1:8000/api/projectplan/projects/',project)
       await axios.post('http://127.0.0.1:8000/api/projectplan/projectsapi/',project)
-      .then((response)=>{console.log("==Response Data Add Project==",response.data)});
+      // .then((response)=>{console.log(response.data)});
       alert("Project Added Successfully")
+      navigate('/adminHome')
     }
     catch(error){
       console.log('error:', error);
@@ -84,7 +85,7 @@ if(projectList.length > 0){
 
           <form onSubmit={onSubmit} >
             <div className="mb-3">
-              <label htmlFor="Name" className="form-label" style={{marginLeft:'-390px',fontWeight:'bold'}}>
+              <label htmlFor="Name" className="form-label ml-0" style={{fontWeight:'bold'}}>
                 Project Name
               </label>
               <input
@@ -98,7 +99,7 @@ if(projectList.length > 0){
             </div>
 
             <div className="mb-3">
-              <label htmlFor="Summary" className="form-label" style={{marginLeft:'-390px',fontWeight:'bold'}}>
+              <label htmlFor="Summary" className="form-label ml-0" style={{fontWeight:'bold'}}>
                 Summary
               </label>
               <input
@@ -112,7 +113,7 @@ if(projectList.length > 0){
             </div>
 
             <div className="mb-3">
-              <label htmlFor="client_name" className="form-label" style={{marginLeft:'-390px',fontWeight:'bold'}}>
+              <label htmlFor="client_name" className="form-label ml-0" style={{fontWeight:'bold'}}>
                 Client Name
               </label>
               <input
@@ -127,7 +128,7 @@ if(projectList.length > 0){
             
             
             <div className="mb-3">
-              <label htmlFor="start_date" className="form-label" style={{marginLeft:'-420px',fontWeight:'bold'}}>
+              <label htmlFor="start_date" className="form-label ml-0" style={{fontWeight:'bold'}}>
                 Start Date
               </label>
               <input
@@ -141,7 +142,7 @@ if(projectList.length > 0){
             </div>
 
             <div className="mb-3">
-              <label htmlFor="end_date" className="form-label fs-6" style={{marginLeft:'-370px',fontWeight:'bold'}}>
+              <label htmlFor="end_date" className="form-label fs-6 ml-0" style={{fontWeight:'bold'}}>
                 Planned End Date
               </label>
               <input
