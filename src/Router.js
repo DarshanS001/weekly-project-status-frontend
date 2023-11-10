@@ -17,6 +17,9 @@ import AddWeekDataPage1 from './components/manager/AddWeekData/AddWeekDataPage1'
 import AddWeekDataPage2 from './components/manager/AddWeekData/AddWeekDataPage2';
 import AddWeekDataPage3 from './components/manager/AddWeekData/AddWeekDataPage3';
 import Settings from './components/manager/Settings';
+import AllProjectWeeklyReports from './components/manager/ProjectWeeklyReportOverview';
+import ProjectWeeklyReportOverview from './components/manager/ProjectWeeklyReportOverview';
+import WeeklyReports from './components/manager/WeeklyReports';
 
 const Router = () => {
   return (
@@ -30,11 +33,15 @@ const Router = () => {
             <Route path='/admin/managemnet/' element={<AllManagement/>}/>
             <Route path='/admin/addProjectManager/' element={<AddManager/>}/>
             <Route path='/admin/updateManager/' element={<UpdateManager/>}/>
+
             <Route path='/LoginPage' element={<LoginPage/>}/>
+            
             <Route path='/manager/home' element={<Home/>}/>
             <Route path='/manager/addProjectPage' element={<AddProject/>}/>
             <Route path='/manager/managerProfile' element={<ManagerProfile/>}/>
             <Route path='/manager/managerProfile/allProjectsOfParticularManager/' element={<AllProjectOfParticularManager/>}/>
+            <Route path='/manager/allProjectWeeklyReports/' element={<WeeklyReports/>}/>
+            <Route path='/manager/projectWeeklyReportOverview/' element={<ProjectWeeklyReportOverview/>}/>
             <Route path='/manager/settings' element={<Settings/>}/>
             <Route path='/manager/projectDetails/:id' element={<ProjectDetails/>}/>
             <Route path='/manager/projectWeeklyStatus' element={<WeeklyStatus/>}/>

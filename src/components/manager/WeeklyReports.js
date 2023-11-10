@@ -1,38 +1,28 @@
-import React from "react";
+import React from 'react'
 import "./Home.css";
 import Table from "react-bootstrap/Table";
 import Container from "react-bootstrap/Container";
-import { FaEye, FaSistrix } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 import Heading from "../Heading";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+
 import {Link} from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Home = () => {
+const WeeklyReports = () => {
+
   const [projectList, setProjectList] = useState([]);
-  // const [searchedProject, setSearchedProject] = useState("");
-  // const [searchVal, setSearchVal] = useState(""); 
-
-  console.log(localStorage.getItem("user-token"))
-
-  const token = localStorage.getItem("user-token");
-  const config = {
-    headers: { Authorization: `Bearer ${token}` }
-  };
-
  
-
-
+  
 
   useEffect(()=>{
 
     async function getProjectList(){
         try {
             // const projList = await axios.get("http://127.0.0.1:8000/api/projectplan/projects/", config);
-            const projList = await axios.get("http://127.0.0.1:8000/api/projectplan/projectsapi/", config);
+            const projList = await axios.get("http://127.0.0.1:8000/api/projectplan/projectsapi/");
             console.log("Get projectList Data",projList.data);
             setProjectList(projList.data);
         }catch (error){
@@ -46,44 +36,26 @@ const Home = () => {
 
 console.log('projectList:-', projectList)
 
+
   return (
     <>
       <Container className="Heading">
         <Navbar expand="lg">
           <Container fluid>
             <Navbar.Brand>
-              <Heading Heading="Project List" />
+              <Heading className="heading" Heading="Weekly Project Report List" />
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="naFaSistrixvbarScroll">
              
-              <Navbar.Collapse className="justify-content-end">
-                <Navbar.Brand className="text-light">
-                  <Button style={{backgroundColor:"#AE445A"}} size="lg" className="my-3">
-                  <Link to={'/manager/addProjectPage'} style={{textDecoration: 'None', color:'white'}}>Add Project</Link>
-                  </Button>
-                  <Button style={{backgroundColor:"#AE445A"}} size="lg" className="ms-2">
-                    Weekly Project Report
-                  </Button>
-                </Navbar.Brand>
-              </Navbar.Collapse>
+              
 
               <Form className="d-flex ms-auto">
                 <div class="d-flex me-3" style={{ height: "50px" }}>
                   <div class="vr"></div>
                 </div>
 
-                <Form.Control
-                  type="text"
-                  placeholder="Search"
-                  className="me-2"
-                  aria-label="Search"
-                  // onChange={e => setSearchVal(e.target.value)}
-                  // value={searchedProject}
-                  
-                  // size="lg"
-                />
-                <Button style={{backgroundColor:"#183D3D"}}><FaSistrix style={{ fontSize: "20px" }}/></Button>
+                
               </Form>
             </Navbar.Collapse>
           </Container>
@@ -98,9 +70,8 @@ console.log('projectList:-', projectList)
             <thead>
               <tr>
                 <th>Sr. No.</th>
-                <th>Project Name</th>
-                <th>Start Date</th>
-                <th>Planned End Date</th>
+                <th>Report Tittle</th>
+                <th>Week Start Date</th>
                 <th>View Details</th>
               </tr>
             </thead>
@@ -113,9 +84,9 @@ console.log('projectList:-', projectList)
                         <td>{index + 1}</td>
                         <td>{x.project_name }</td>
                         <td>{x.start_date}</td>
-                        <td>{x.end_date}</td>
+                        
                         <td>
-                          <Link to={`/manager/projectDetails/${x.id}`}><FaEye style={{ fontSize: "20px", color:'black' }} /></Link> 
+                          <Link to='/manager/projectWeeklyReportOverview/'><FaEye style={{ fontSize: "20px", color:'black' }} /></Link> 
                         </td>
                       </tr>   
                     )
@@ -127,7 +98,8 @@ console.log('projectList:-', projectList)
         </Container>
       </Container>
     </>
-  );
-};
+  
+  )
+}
 
-export default Home;
+export default WeeklyReports
