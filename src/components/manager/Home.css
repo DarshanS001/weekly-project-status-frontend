@@ -1,6 +1,7 @@
 .Heading{
     width: 80%;
     height: 40%;
+    
     border: 2px solid rgb(173, 170, 170);
     /* padding: 0.5%; */
     margin-top: 2%;
@@ -10,6 +11,7 @@
     text-align: left;
     /* display: flex; */
 }
+
 
 
 .MainContainer{

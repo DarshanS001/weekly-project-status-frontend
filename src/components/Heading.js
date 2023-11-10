@@ -5,7 +5,11 @@ import './Heading.css'
 const Heading = (props) => {
   return (
     <div>
-        <h2>{props.Heading}</h2>
+      {props.textColor?
+      <h2 style={{color:"white"}} >{props.Heading}</h2>:
+      <h2 >{props.Heading}</h2>
+      }
+        
     </div>
   )
 }

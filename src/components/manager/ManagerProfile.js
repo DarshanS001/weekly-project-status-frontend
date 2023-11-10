@@ -1,9 +1,8 @@
 import React from 'react'
+import mbggg from '../../images/mbggg.png';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
-import mbggg from '../../images/mbggg.png';
 import emailicon from '../../images/emailicon.png';
 import contacticon from '../../images/contacticon.png';
 import usernameicon from '../../images/usernameicon.png';
@@ -39,8 +38,18 @@ const ManagerProfile = () => {
       
     // </Container>
 
+    
+
 
     <div>
+       
+
+
+        <Container>
+      <Row>
+        <Col>
+
+
         <div style={{display:'flex',marginLeft:'200px',borderRadius:'20px',width:'750px',boxShadow:'10px 10px 10px 10px #888888'}}>
             <div style={{margin:'10px',borderRadius:'15px',backgroundColor:'orange',height:'450px',width:'300px',boxShadow:'3px  #888888'}}>
               <img src={mbggg} alt='fffff' style={{height:'145px',width:'155px',marginTop:'100px'}}></img>
@@ -64,6 +73,12 @@ const ManagerProfile = () => {
                   </div>
             </div>
         </div>
+        
+        </Col>
+      </Row>
+    </Container>
+   
+
     </div>
   )
 }

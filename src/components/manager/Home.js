@@ -62,6 +62,10 @@ const Home = () => {
     headers: { Authorization: `Bearer ${token}` }
   };
 
+ 
+
+
+
 
   // Code to get project list from API call
   useEffect(()=>{
@@ -110,9 +114,12 @@ console.log("filtered List:", searchProjectList);
 
                 <Form.Control
                   type="search"
-                  placeholder="Search Project"
+                  placeholder="Search"
                   className="me-2"
                   aria-label="Search"
+                  // onChange={e => setSearchVal(e.target.value)}
+                  // value={searchedProject}
+                  
                   // size="lg"
                   name="searchProject"
                   value={searchProject}
