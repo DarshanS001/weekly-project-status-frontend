@@ -10,8 +10,19 @@ import Heading from "../../Heading";
 import Table from "react-bootstrap/Table";
 
 const AddWeekDataPage2 = () => {
+
+   // To get the project report ID from Week Report Modal.js  
+   console.log("Report ID From local storage:",localStorage.getItem("ReportID"));
+   const ReportID = localStorage.getItem("ReportID");
+   console.log("ReportID:=", ReportID);
+
+   // To get the Phase wise timeline ID from AddWeekDataPage1.js  
+   console.log("PhaseWiseTimeLineID From local storage:",localStorage.getItem("PhaseWiseTimeLineID"));
+   const PhaseWiseTimeLineID = localStorage.getItem("PhaseWiseTimeLineID");
+   console.log("PhaseWiseTimeLineID:=", PhaseWiseTimeLineID);
+
   const [prepare, setPrepare] = useState({
-    TimeLinePrep: 1,
+    TimeLinePrep: PhaseWiseTimeLineID,
     PhaseNamePrep: "prepare",
     PlannedStartDatePrep: "",
     PlannedEndDatePrep: "",
@@ -21,7 +32,7 @@ const AddWeekDataPage2 = () => {
   });
 
   const [explore, setExplore] = useState({
-    TimeLineExpl: 1,
+    TimeLineExpl: PhaseWiseTimeLineID,
     PhaseNameExpl: "explore",
     PlannedStartDateExpl: "",
     PlannedEndDateExpl: "",
@@ -31,7 +42,7 @@ const AddWeekDataPage2 = () => {
   });
 
   const [realize, setRealize] = useState({
-    TimeLineReal: 1,
+    TimeLineReal: PhaseWiseTimeLineID,
     PhaseNameReal: "realize",
     PlannedStartDateReal: "",
     PlannedEndDateReal: "",
@@ -41,7 +52,7 @@ const AddWeekDataPage2 = () => {
   });
 
   const [deploy, setDeploy] = useState({
-    TimeLineDepl: 1,
+    TimeLineDepl: PhaseWiseTimeLineID,
     PhaseNameDepl: "deploy",
     PlannedStartDateDepl: "",
     PlannedEndDateDepl: "",
@@ -51,7 +62,7 @@ const AddWeekDataPage2 = () => {
   });
 
   const [run, setRun] = useState({
-    TimeLineRun: 1,
+    TimeLineRun: PhaseWiseTimeLineID,
     PhaseNameRun: "run",
     PlannedStartDateRun: "",
     PlannedEndDateRun: "",
@@ -156,7 +167,7 @@ const AddWeekDataPage2 = () => {
       })
         .then((res) => {
           if (res.status === 201) {
-            console.log("result.data:",res.data);
+            console.log("result.data in AddWeekDataPage2:",res.data);
             // window.location.href = "/manager/addWeekDataPage1";
           }
         })
@@ -262,13 +273,16 @@ const AddWeekDataPage2 = () => {
                           name="StatusPrep" 
                           value={StatusPrep} 
                           onChange={(e)=>onInputChangePrepare(e)} 
-                          aria-label="Default select example">
+                          aria-label="Default select example"
+                          style={{backgroundColor:StatusPrep==="R" ? "#c21a08": StatusPrep==="A" ? 
+                          "#FF5733": "#2dad42", color:"white"}}
+                          >
                             {/* <option selected disabled>
                               Select Status
                             </option> */}
-                            <option value="R">Red</option>
-                            <option value="A">Amber</option>
-                            <option value="G">Green</option>
+                            <option value="R" style={{backgroundColor:"#c21a08", color:"white"}}>Red</option>
+                            <option value="A" style={{backgroundColor:"#FF5733", color:"white"}}>Amber</option>
+                            <option value="G" style={{backgroundColor:"#2dad42", color:"white"}}>Green</option>
                           </Form.Select>
                         </Form.Group>
                       </td>
@@ -341,13 +355,16 @@ const AddWeekDataPage2 = () => {
                           name="StatusExpl" 
                           value={StatusExpl} 
                           onChange={(e)=>onInputChangeExplore(e)} 
-                          aria-label="Default select example">
+                          aria-label="Default select example"
+                          style={{backgroundColor:StatusExpl==="R" ? "#c21a08": StatusExpl==="A" ? 
+                          "#FF5733": "#2dad42", color:"white"}}
+                          >
                             {/* <option selected disabled>
                               Select Status
                             </option> */}
-                            <option value="R">Red</option>
-                            <option value="A">Amber</option>
-                            <option value="G">Green</option>
+                            <option value="R" style={{backgroundColor:"#c21a08", color:"white"}}>Red</option>
+                            <option value="A" style={{backgroundColor:"#FF5733", color:"white"}}>Amber</option>
+                            <option value="G" style={{backgroundColor:"#2dad42", color:"white"}}>Green</option>
                           </Form.Select>
                         </Form.Group>
                       </td>
@@ -420,13 +437,16 @@ const AddWeekDataPage2 = () => {
                           name="StatusReal" 
                           value={StatusReal} 
                           onChange={(e)=>onInputChangeRealize(e)} 
-                          aria-label="Default select example">
+                          aria-label="Default select example"
+                          style={{backgroundColor:StatusReal==="R" ? "#c21a08": StatusReal==="A" ? 
+                          "#FF5733": "#2dad42", color:"white"}}
+                          >
                             {/* <option selected disabled>
                               Select Status
                             </option> */}
-                           <option value="R">Red</option>
-                            <option value="A">Amber</option>
-                            <option value="G">Green</option>
+                           <option value="R" style={{backgroundColor:"#c21a08", color:"white"}}>Red</option>
+                            <option value="A" style={{backgroundColor:"#FF5733", color:"white"}}>Amber</option>
+                            <option value="G" style={{backgroundColor:"#2dad42", color:"white"}}>Green</option>
                           </Form.Select>
                         </Form.Group>
                       </td>
@@ -499,13 +519,16 @@ const AddWeekDataPage2 = () => {
                           name="StatusDepl" 
                           value={StatusDepl} 
                           onChange={(e)=>onInputChangeDeploy(e)} 
-                          aria-label="Default select example">
+                          aria-label="Default select example"
+                          style={{backgroundColor:StatusDepl==="R" ? "#c21a08": StatusDepl==="A" ? 
+                          "#FF5733": "#2dad42", color:"white"}}
+                          >
                             {/* <option selected disabled>
                               Select Status
                             </option> */}
-                            <option value="R">Red</option>
-                            <option value="A">Amber</option>
-                            <option value="G">Green</option>
+                            <option value="R" style={{backgroundColor:"#c21a08", color:"white"}}>Red</option>
+                            <option value="A" style={{backgroundColor:"#FF5733", color:"white"}}>Amber</option>
+                            <option value="G" style={{backgroundColor:"#2dad42", color:"white"}}>Green</option>
                           </Form.Select>
                         </Form.Group>
                       </td>
@@ -578,13 +601,16 @@ const AddWeekDataPage2 = () => {
                           name="StatusRun" 
                           value={StatusRun} 
                           onChange={(e)=>onInputChangeRun(e)} 
-                          aria-label="Default select example">
+                          aria-label="Default select example"
+                          style={{backgroundColor:StatusRun==="R" ? "#c21a08": StatusRun==="A" ? 
+                          "#FF5733": "#2dad42", color:"white"}}
+                          >
                             {/* <option selected disabled>
                               Select Status
                             </option> */}
-                            <option value="R">Red</option>
-                            <option value="A">Amber</option>
-                            <option value="G">Green</option>
+                            <option value="R" style={{backgroundColor:"#c21a08", color:"white"}}>Red</option>
+                            <option value="A" style={{backgroundColor:"#FF5733", color:"white"}}>Amber</option>
+                            <option value="G" style={{backgroundColor:"#2dad42", color:"white"}}>Green</option>
                           </Form.Select>
                         </Form.Group>
                       </td>

@@ -73,6 +73,7 @@ if(projectList.length > 0){
     catch(error){
       console.log('error:', error);
       console.log("error occur in data post");
+      alert("Error In Data Post")
     }
     // navigate("/");
   };

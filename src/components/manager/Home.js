@@ -13,14 +13,57 @@ import axios from 'axios';
 
 const Home = () => {
   const [projectList, setProjectList] = useState([]);
+  const [searchProjectList, setSearchProjectList] = useState([]);
+  const [search, setSearch] = useState({
+    searchProject : ""
+  })
+  const { searchProject } = search;
 
+  // Function for search input Change
+  const onSearchChange = (e) =>{
+    setSearch({...search, [e.target.name]:e.target.value});
+  }
+  console.log("searchText json", search);
+  console.log("searchText", search["searchProject"]);
+
+  // Code to fill the Empty Array for project name from projectList JSON 
+  const projectNameArray = [];
+  for(let i=0; i<projectList.length; i++){
+    projectNameArray.push(projectList[i].project_name);
+  }
+  console.log("projectNameArray", projectNameArray);
+
+
+// Code to fill the search submit
+  let filtered;
+  const searchSubmit = (e) =>{
+    e.preventDefault();
+      filtered = projectList.filter(project => 
+      project.project_name.includes(search["searchProject"]));
+      setSearchProjectList(filtered);
+    
+      if(search["searchProject"] === ""){
+        alert("Project Search Not Found");
+      }
+
+        const projectNameArrayFilter = projectNameArray.filter(proj=>proj.includes(search["searchProject"]));
+        console.log("asasa",projectNameArrayFilter);
+      if(projectNameArrayFilter.length === 0){
+        alert("Project Search Not Found");
+      }
+      
+  }
+
+
+  // Code to get the authorize user token from local storage
   console.log(localStorage.getItem("user-token"))
-
   const token = localStorage.getItem("user-token");
   const config = {
     headers: { Authorization: `Bearer ${token}` }
   };
 
+
+  // Code to get project list from API call
   useEffect(()=>{
 
     async function getProjectList(){
@@ -39,6 +82,7 @@ const Home = () => {
 }, []);
 
 console.log('projectList:-', projectList)
+console.log("filtered List:", searchProjectList);
 
   return (
     <>
@@ -56,9 +100,6 @@ console.log('projectList:-', projectList)
                   <Button style={{backgroundColor:"#AE445A"}} size="lg" className="my-3">
                   <Link to={'/manager/addProjectPage'} style={{textDecoration: 'None', color:'white'}}>Add Project</Link>
                   </Button>
-                  <Button style={{backgroundColor:"#AE445A"}} size="lg" className="ms-2">
-                    Weekly Project Report
-                  </Button>
                 </Navbar.Brand>
               </Navbar.Collapse>
 
@@ -69,12 +110,15 @@ console.log('projectList:-', projectList)
 
                 <Form.Control
                   type="search"
-                  placeholder="Search"
+                  placeholder="Search Project"
                   className="me-2"
                   aria-label="Search"
                   // size="lg"
+                  name="searchProject"
+                  value={searchProject}
+                  onChange={(e)=>onSearchChange(e)}
                 />
-                <Button style={{backgroundColor:"#183D3D"}}><FaSistrix style={{ fontSize: "20px" }}/></Button>
+                <Button style={{backgroundColor:"#183D3D"}} onClick={searchSubmit}><FaSistrix style={{ fontSize: "20px" }}/></Button>
               </Form>
             </Navbar.Collapse>
           </Container>
@@ -98,7 +142,45 @@ console.log('projectList:-', projectList)
 
             <tbody>
 
-                { projectList.map((x, index) =>{
+                {searchProjectList.length > 0 ? searchProjectList.map((x, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{x.project_name }</td>
+                        <td>{x.start_date}</td>
+                        <td>{x.end_date}</td>
+                        <td>
+                          <Link to={`/manager/projectDetails/${x.id}`}><FaEye style={{ fontSize: "20px", color:'black' }} /></Link> 
+                        </td>
+                      </tr>   
+                    )
+                }) :
+                
+                projectList ?  projectList.map((x, index) =>{
+                  return (
+                      <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>{x.project_name }</td>
+                      <td>{x.start_date}</td>
+                      <td>{x.end_date}</td>
+                      <td>
+                        <Link to={`/manager/projectDetails/${x.id}`}><FaEye style={{ fontSize: "20px", color:'black' }} /></Link> 
+                      </td>
+                    </tr>   
+                  )
+              }
+        ) :
+              <tr>
+                <td></td>
+                <td></td>
+                <td><h3>Please Add Projects</h3></td>
+                <td></td>
+                <td></td>
+              </tr>
+
+                }
+
+                {/* { projectList ?  projectList.map((x, index) =>{
                     return (
                         <tr key={index}>
                         <td>{index + 1}</td>
@@ -111,7 +193,15 @@ console.log('projectList:-', projectList)
                       </tr>   
                     )
                 }
-          )}
+          ) :
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td><h3>Please Add Projects</h3></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+        } */}
 
             </tbody>
           </Table>

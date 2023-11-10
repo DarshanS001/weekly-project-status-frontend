@@ -9,10 +9,10 @@ import { useNavigate  } from 'react-router-dom';
 
 
 const WeekReportModal = (props) => {
+  // Props details are comming from project details page..
     console.log('project id in Modal', props.projectID);
     const navigate = useNavigate();
     const [projectDetails, setProjectDetails] = useState([]);
-    const [reportId, setReportId] = useState();
     const [startWeekDate, setStartWeekDate] = useState("");
     const [endWeekDate, setEndWeekDate] = useState("");
   
@@ -90,8 +90,8 @@ const WeekReportModal = (props) => {
             .then((res) => {
               if (res.status === 201) {
                 console.log("result.data:",res.data);
-                // console.log("result.data[1]:",res.data["Data"].id);
-                // setReportId(res.data["Data"].id); //To set report Id and send to difffenent pages like Add week Data
+                console.log("result.data[1]:",res.data["Data"].id);
+                localStorage.setItem("ReportID", res.data["Data"].id);
                 // window.location.href = "/manager/addWeekDataPage1";
                 navigate("/manager/addWeekDataPage1");
               }
@@ -105,7 +105,9 @@ const WeekReportModal = (props) => {
     
     console.log('startWeekDate:', startWeekDate);
     console.log('endWeekDate:', endWeekDate);
-    console.log('reportId:', reportId);    
+    
+    
+    
 
   return (
     <Modal
