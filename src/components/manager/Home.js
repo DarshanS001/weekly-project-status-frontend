@@ -62,9 +62,6 @@ const Home = () => {
     headers: { Authorization: `Bearer ${token}` }
   };
 
- 
-
-
 
 
   // Code to get project list from API call
@@ -186,29 +183,6 @@ console.log("filtered List:", searchProjectList);
               </tr>
 
                 }
-
-                {/* { projectList ?  projectList.map((x, index) =>{
-                    return (
-                        <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>{x.project_name }</td>
-                        <td>{x.start_date}</td>
-                        <td>{x.end_date}</td>
-                        <td>
-                          <Link to={`/manager/projectDetails/${x.id}`}><FaEye style={{ fontSize: "20px", color:'black' }} /></Link> 
-                        </td>
-                      </tr>   
-                    )
-                }
-          ) :
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td><h3>Please Add Projects</h3></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-        } */}
 
             </tbody>
           </Table>

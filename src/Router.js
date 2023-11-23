@@ -41,7 +41,7 @@ const Router = () => {
             <Route path='/manager/managerProfile' element={<ManagerProfile/>}/>
             <Route path='/manager/managerProfile/allProjectsOfParticularManager/' element={<AllProjectOfParticularManager/>}/>
             <Route path='/manager/allProjectWeeklyReports/' element={<WeeklyReports/>}/>
-            <Route path='/manager/projectWeeklyReportOverview/' element={<ProjectWeeklyReportOverview/>}/>
+            <Route path='/manager/projectWeeklyReportOverview/:id' element={<ProjectWeeklyReportOverview/>}/>
             <Route path='/manager/settings' element={<Settings/>}/>
             <Route path='/manager/projectDetails/:id' element={<ProjectDetails/>}/>
             <Route path='/manager/projectWeeklyStatus' element={<WeeklyStatus/>}/>

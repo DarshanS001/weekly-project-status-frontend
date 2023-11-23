@@ -13,28 +13,27 @@ import axios from 'axios';
 
 const WeeklyReports = () => {
 
-  const [projectList, setProjectList] = useState([]);
+  const [projectReportList, setProjectReportList] = useState([]);
  
-  
+
 
   useEffect(()=>{
 
-    async function getProjectList(){
+    async function getProjectReportList(){
         try {
-            // const projList = await axios.get("http://127.0.0.1:8000/api/projectplan/projects/", config);
-            const projList = await axios.get("http://127.0.0.1:8000/api/projectplan/projectsapi/");
-            console.log("Get projectList Data",projList.data);
-            setProjectList(projList.data);
+            const projReportList = await axios.get("http://127.0.0.1:8000/api/projectplan/weeklyreportapi/");
+            console.log("Get projectList Data",projReportList.data);
+            setProjectReportList(projReportList.data);
         }catch (error){
             console.log("Data fetching Error Occured in Project List");
         }
     }
 
-    getProjectList();
+    getProjectReportList();
 
 }, []);
 
-console.log('projectList:-', projectList)
+console.log('projectReportList:-', projectReportList)
 
 
   return (
@@ -78,15 +77,14 @@ console.log('projectList:-', projectList)
 
             <tbody>
 
-                { projectList.map((x, index) =>{
+                { projectReportList.map((x, index) =>{
                     return (
                         <tr key={index}>
                         <td>{index + 1}</td>
-                        <td>{x.project_name }</td>
-                        <td>{x.start_date}</td>
-                        
+                        <td>{x.title }</td>
+                        <td>{x.week_start_date}</td>
                         <td>
-                          <Link to='/manager/projectWeeklyReportOverview/'><FaEye style={{ fontSize: "20px", color:'black' }} /></Link> 
+                          <Link to={`/manager/projectWeeklyReportOverview/${x.id}`}><FaEye style={{ fontSize: "20px", color:'black' }} /></Link> 
                         </td>
                       </tr>   
                     )
