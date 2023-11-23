@@ -277,12 +277,28 @@ const ProjectWeeklyReportOverview = () => {
 
                         <tr>
                           <td><b>Project Name:</b></td>
-                          <td>{projectDetails.project_name}</td>
+                          <td><Form.Control
+                        type="text"
+                        value={projectDetails.project_name}
+                        id="exampleColorInput"
+                        title="Choose your color"
+                        disabled
+                        size="sm"
+                        />
+                        </td>
                         </tr>
 
                         <tr>
                           <td><b>Project Manager Name:</b></td>
-                          <td>{projectDetails.manager_name}</td>
+                          <td><Form.Control
+                        type="text"
+                        value={projectDetails.manager_name}
+                        id="exampleColorInput"
+                        title="Choose your color"
+                        disabled
+                        size="sm"
+                        />
+                        </td>
                         </tr>
                 
               </tbody>
