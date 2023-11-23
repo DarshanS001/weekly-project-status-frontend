@@ -1,0 +1,54 @@
+.me-auto{
+    margin-left: 800px;
+}
+
+.modaldesign{
+    background-color: #E4F1FF;
+    font-family: 'Apple Chancery';
+    font-size: x-large;
+}
+
+.modalbody{
+    background-color: hsl(244, 77%, 14%) ;
+    color: #E4F1FF;
+}
+.bg-body-tertiary{
+    background-color: hsl(244, 77%, 14%);
+    /* height: 75px;
+    margin-left: 0px;
+    width: 100%;
+    color: aliceblue; */
+    /* box-shadow:0.5rem 1rem #f0e199; */
+}
+/* .school-logo{
+    height: 100px;
+    width: 100px;
+} */
+
+.lower-header{
+    display: flex;
+    
+}
+
+/* .logo-tittle{
+    text-decoration: solid;
+    word-wrap: break-word;
+            word-break: break-word;
+    margin-top: 60px;
+} */
+
+#content1::after{
+    /* margin-top: 60px; */
+
+    font-family: sans-serif;
+    font-weight: bold;
+    content: "\a";
+    white-space: pre;
+}
+#content2::before{
+
+    margin-left: '-1000px';
+    content: "\a";
+    white-space: pre;
+
+}
