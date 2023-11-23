@@ -20,6 +20,11 @@ import Settings from './components/manager/Settings';
 import AllProjectWeeklyReports from './components/manager/ProjectWeeklyReportOverview';
 import ProjectWeeklyReportOverview from './components/manager/ProjectWeeklyReportOverview';
 import WeeklyReports from './components/manager/WeeklyReports';
+import AdminProfile from './components/Admin/AdminProfile';
+import ManagementProfile from './components/management/ManagementProfile';
+import ManagementList from './components/Admin/ManagementList';
+import addUser from './components/Admin/addUser';
+import ManagementProjectList from './components/management/ManagementProjectList';
 
 const Router = () => {
   return (
@@ -28,14 +33,18 @@ const Router = () => {
             <Route path='/' element={<LoginPage/>}/>
             <Route path='/Register' element={<RegisterPage/>}/>
             
+            {/* Admin's routing */}
             <Route path='/AdminPage' element={<AdminDashboard/>}/>
             <Route path='/admin/managers/' element={<AllManagers/>}/>
             <Route path='/admin/managemnet/' element={<AllManagement/>}/>
             <Route path='/admin/addProjectManager/' element={<AddManager/>}/>
             <Route path='/admin/updateManager/' element={<UpdateManager/>}/>
+            <Route path='/admin/adminProfile/' element={<AdminProfile/>}/>
+            <Route path='/admin/user/managementlist/' element={<ManagementList/>}/>
+            <Route path='/admin/addUser/' element={<addUser/>}/>
 
             <Route path='/LoginPage' element={<LoginPage/>}/>
-            
+            {/* Manager's routing */}
             <Route path='/manager/home' element={<Home/>}/>
             <Route path='/manager/addProjectPage' element={<AddProject/>}/>
             <Route path='/manager/managerProfile' element={<ManagerProfile/>}/>
@@ -48,6 +57,10 @@ const Router = () => {
             <Route path='/manager/addWeekDataPage1' element={<AddWeekDataPage1/>}/>
             <Route path='/manager/addWeekDataPage2' element={<AddWeekDataPage2/>}/>
             <Route path='/manager/addWeekDataPage3' element={<AddWeekDataPage3/>}/>
+            
+            {/* Management routing */}
+            <Route path='/management/home' element={<ManagementProjectList/>}/>
+            <Route path='/management/managementProfile' element={<ManagementProfile/>}/>
         </Routes>
     </div>
   )
