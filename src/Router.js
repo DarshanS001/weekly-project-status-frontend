@@ -21,21 +21,24 @@ import AllProjectWeeklyReports from './components/manager/ProjectWeeklyReportOve
 import ProjectWeeklyReportOverview from './components/manager/ProjectWeeklyReportOverview';
 import WeeklyReports from './components/manager/WeeklyReports';
 
+
 const Router = () => {
   return (
     <div>
         <Routes>
             <Route path='/' element={<LoginPage/>}/>
             <Route path='/Register' element={<RegisterPage/>}/>
+            <Route path='/LoginPage' element={<LoginPage/>}/>
             
+            {/*---------------------- Admin's Routing-----------------------------*/}
             <Route path='/AdminPage' element={<AdminDashboard/>}/>
             <Route path='/admin/managers/' element={<AllManagers/>}/>
             <Route path='/admin/managemnet/' element={<AllManagement/>}/>
             <Route path='/admin/addProjectManager/' element={<AddManager/>}/>
             <Route path='/admin/updateManager/' element={<UpdateManager/>}/>
 
-            <Route path='/LoginPage' element={<LoginPage/>}/>
-            
+
+            {/*---------------------- Manager's Routing-----------------------------*/}
             <Route path='/manager/home' element={<Home/>}/>
             <Route path='/manager/addProjectPage' element={<AddProject/>}/>
             <Route path='/manager/managerProfile' element={<ManagerProfile/>}/>
