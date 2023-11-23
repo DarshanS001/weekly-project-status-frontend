@@ -38,11 +38,17 @@ export default function Header() {
       <Navbar className="bg-body-tertiary " data-bs-theme="light">
       <Container>
 
-        {location.pathname !== '/' && location.pathname !== '/Register' ? <Sidebar/>: "" }
+        {location.pathname !== '/' && 
+        location.pathname !== '/Register' && 
+        location.pathname !== '/forgotpasswordpage' && 
+        location.pathname !== '/resetpassword' ? <Sidebar/>: "" }
 
         <img src={ylogo} alt='logoimgage' style={{height:'50px',width:'120px',marginLeft:'20px'}}/>
 
-        {location.pathname !== '/' && location.pathname !== '/Register' ? 
+        {location.pathname !== '/' && 
+        location.pathname !== '/Register' && 
+        location.pathname !== '/forgotpasswordpage' &&  
+        location.pathname !== '/resetpassword' ? 
         <Link to={'/manager/home'} className="ms-3 fs-3 fw-bold text-light" style={{textDecoration: 'none',fontFamily: 'Apple Chancery'}}>Weekly Status Report Application</Link>
         :
         <Link className="ms-3 fs-3 fw-bold text-light" style={{textDecoration: 'none',fontFamily: 'Apple Chancery'}}>Weekly Status Report Application</Link>
@@ -62,8 +68,15 @@ export default function Header() {
             : ""
            }
            
+           {location.pathname === '/forgotpasswordpage' ?
+            <Link to={'/'} className='text-light' style={{textDecoration: 'none'}}><img src={loginb} alt='login - imgage' style={{height:'40px',width:'120px',marginRight:'-50px'}}/></Link>
+            : ""
+           }
           
-          {location.pathname !== '/' && location.pathname !== '/Register' ? 
+          {location.pathname !== '/' && 
+          location.pathname !== '/Register' && 
+          location.pathname !== '/forgotpasswordpage' &&  
+          location.pathname !== '/resetpassword' ? 
             <Button style={{textDecoration: 'none',backgroundColor:'hsl(244, 77%, 14%)',borderColor:'hsl(244, 77%, 14%)'}} onClick={handleShow}>
               <img src={logoutIcon} alt='login - image' style={{height:'45px',width:'55px',marginRight:'-70px'}}/>
             </Button>

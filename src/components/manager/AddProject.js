@@ -54,7 +54,9 @@ if(projectList.length > 0){
   
   const onInputChange = (e) => {
     setProject({ ...project, [e.target.name]: e.target.value});
-    setProject(updateUser => {return {...updateUser, user: projectList[0].user}})
+    if(projectList.length > 0){
+      setProject(updateUser => {return {...updateUser, user: projectList[0].user}})
+    }
   };
 
   const onSubmit = async (e) => {
