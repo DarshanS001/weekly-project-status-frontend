@@ -6,8 +6,43 @@ import {Link} from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { FaEye } from "react-icons/fa";
 
 const WeeklyStatus = () => {
+
+
+  const [projectReportList, setProjectReportList] = useState([]);
+ 
+  // Code to get the authorize user token from local storage
+  console.log(localStorage.getItem("user-token"))
+  const token = localStorage.getItem("user-token");
+  const config = {
+    headers: { Authorization: `Bearer ${token}` }
+  };
+
+  useEffect(()=>{
+
+    async function getProjectReportList(){
+        try {
+            const projReportList = await axios.get(`http://127.0.0.1:8000/api/projectplan/projectweeklyreportapi/1/`, config);
+            console.log("Get projectList Data",projReportList.data);
+            setProjectReportList(projReportList.data);
+        }catch (error){
+            console.log("Data fetching Error Occured in Project List");
+        }
+    }
+
+    getProjectReportList();
+
+}, []);
+
+console.log('projectReportList:-', projectReportList)
+
+
+
   return (
     <>
         <Container className="Heading">
@@ -31,34 +66,34 @@ const WeeklyStatus = () => {
       <Container className="MainContainer">
         
         <Container>
-                    <Table striped bordered hover variant="light">
-                    <thead>
-                    <tr>
-                        <th>Weekly Status</th>
-                        <th>Week Date</th>
-                        <th>Status On Week</th>
-                    </tr>
-                    </thead>
+          <Table striped bordered hover variant="light">
+            <thead>
+              <tr>
+                <th>Sr. No.</th>
+                <th>Report Tittle</th>
+                <th>Week Start Date</th>
+                <th>View Details</th>
+              </tr>
+            </thead>
 
-                    <tbody>
-                    <tr>
-                        <td><Link to={'#'}>weekly Status 1</Link></td>
-                        <td>12-01-2023</td>
-                        <td>In Progress</td>
-                    </tr>
-                    <tr>
-                        <td><Link to={'#'}>weekly Status 2</Link></td>
-                        <td>12-01-2023</td>
-                        <td>Done</td>
-                    </tr>
-                    <tr>
-                        <td><Link to={'#'}>weekly Status 3</Link></td>
-                        <td>12-01-2023</td>
-                        <td>In Complete</td>
-                    </tr>
-                    </tbody>
+            <tbody>
 
-                </Table>
+                { projectReportList.map((x, index) =>{
+                    return (
+                        <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{x.title }</td>
+                        <td>{x.week_start_date}</td>
+                        <td>
+                          <Link to={`/manager/projectWeeklyReportOverview/${x.id}`}><FaEye style={{ fontSize: "20px", color:'black' }} /></Link> 
+                        </td>
+                      </tr>   
+                    )
+                }
+          )}
+
+            </tbody>
+          </Table>
         </Container>
   
       </Container>
