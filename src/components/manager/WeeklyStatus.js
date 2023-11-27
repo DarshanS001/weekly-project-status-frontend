@@ -12,7 +12,9 @@ import axios from 'axios';
 import { FaEye } from "react-icons/fa";
 
 const WeeklyStatus = () => {
-
+  // To get Id....
+  const { id } = useParams();
+  console.log("id in weekly status:",id);
 
   const [projectReportList, setProjectReportList] = useState([]);
  
@@ -27,7 +29,7 @@ const WeeklyStatus = () => {
 
     async function getProjectReportList(){
         try {
-            const projReportList = await axios.get(`http://127.0.0.1:8000/api/projectplan/projectweeklyreportapi/1/`, config);
+            const projReportList = await axios.get(`http://127.0.0.1:8000/api/projectplan/projectweeklyreportapi/${id}/`, config);
             console.log("Get projectList Data",projReportList.data);
             setProjectReportList(projReportList.data);
         }catch (error){
@@ -55,7 +57,7 @@ console.log('projectReportList:-', projectReportList)
 
             <Navbar.Brand className="text-light">
                   <Button style={{backgroundColor:"#AE445A", marginBottom:'3px'}} size="lg" className="ms-2">
-                    <Link to={'/manager/projectDetails'} style={{textDecoration: 'None', color:'white'}}>Project Details</Link>
+                    <Link to={`/manager/projectDetails/${id}/`} style={{textDecoration: 'None', color:'white'}}>Project Details</Link>
                   </Button>
             </Navbar.Brand>
 
