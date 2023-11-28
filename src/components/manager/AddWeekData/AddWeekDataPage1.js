@@ -125,7 +125,7 @@ const AddWeekDataPage1 = () => {
 
   return (
     <>
-    
+
       <Container className="Heading">
         <Navbar expand="lg">
           <Container fluid>

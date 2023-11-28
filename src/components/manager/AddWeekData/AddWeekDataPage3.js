@@ -320,7 +320,7 @@ const AddWeekDataPage3 = () => {
                           value={RiskStatus} 
                           onChange={(e)=>onRiskChange(e)} 
                           aria-label="Default select example"
-                          style={{backgroundColor:RiskStatus==="R" ? "#f56153": RiskStatus==="A" ? 
+                          style={{backgroundColor:RiskStatus==="R" ? "#c21a08": RiskStatus==="A" ? 
                           "#FF5733": "#2dad42", color:"white"}}
                           >
                             {/* <option selected disabled>
@@ -407,7 +407,7 @@ const AddWeekDataPage3 = () => {
                           value={IssueStatus} 
                           onChange={(e)=>onIssueChange(e)} 
                           aria-label="Default select example"
-                          style={{backgroundColor:IssueStatus==="R" ? "#f56153": IssueStatus==="A" ? 
+                          style={{backgroundColor:IssueStatus==="R" ? "#c21a08": IssueStatus==="A" ? 
                           "#FF5733": "#2dad42", color:"white"}}
                           >
                             {/* <option selected disabled>
@@ -465,7 +465,7 @@ const AddWeekDataPage3 = () => {
                           value={DependencyStatus} 
                           onChange={(e)=>onDependencyChange(e)} 
                           aria-label="Default select example"
-                          style={{backgroundColor: DependencyStatus==="R" ? "#f56153": DependencyStatus==="A" ? 
+                          style={{backgroundColor: DependencyStatus==="R" ? "#c21a08": DependencyStatus==="A" ? 
                           "#FF5733": "#2dad42", color:"white"}}
                           >
                             {/* <option selected disabled>
