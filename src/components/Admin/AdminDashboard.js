@@ -8,6 +8,7 @@ export default function AdminDashboard() {
     <div>
         <Link to={'/admin/managers/'}><Button style={{marginLeft:'30px',backgroundColor:'orange'}}>Managers</Button></Link>
         <Link to={'/admin/management/'}><Button style={{marginLeft:'30px',backgroundColor:'orange'}}>Management</Button></Link>
+        <Link to={'/admin/adminList/'}><Button style={{marginLeft:'30px',backgroundColor:'orange'}}>Admins</Button></Link>
     </div>
   )
 }
