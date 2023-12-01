@@ -24,18 +24,37 @@ background-color: rgb(159, 156, 156);
 }
 
 
-.Project-phase{
+.Project-phase1{
+    width: 30%;
     border: 2px solid rgb(173, 170, 170);
     border-radius: 10px 10px 10px 10px;
-    /* background-color: #F5F7F8; */
     background-color: #D3D3D3;
     padding: 2%;
+    margin-left: 2%;
+}
+
+.Project-phase2{
+    width: 30%;
+    border: 2px solid rgb(173, 170, 170);
+    border-radius: 10px 10px 10px 10px;
+    background-color: #D3D3D3;
+    padding: 2%;
+    margin-left: 2%;
+}
+
+.Planned{
+    /* width: 10px; */
+    border: 2px solid rgb(173, 170, 170);
+    border-radius: 10px 10px 10px 10px;
+    background-color: #D3D3D3;
+    padding: 2%;
+    margin-left: 2%;
 }
 
 
 .MainContainer1{
     width: 100%;
-    height: 70%;
+    /* height: 70%; */
     /* border: 2px solid rgb(173, 170, 170); */
     border: 2px solid #848884;
     padding: 2%;
@@ -73,7 +92,7 @@ background-color: rgb(159, 156, 156);
 
 .Heading-PhaseWiseTimeline{
     width: 100%;
-    height: 15%;
+    /* height: 15%; */
     
     border: 2px solid #848884;
     /* padding: 0.5%; */

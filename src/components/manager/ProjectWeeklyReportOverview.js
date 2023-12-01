@@ -30,9 +30,9 @@ const ProjectWeeklyReportOverview = () => {
   const [dependencies, setDependencies] = useState([]);
   const [weeklyProjectReport, setWeeklyProjectReport] = useState([]);
   const [projectDetails, setProjectDetails] = useState([]);
+  const [taskTodo, setTaskTodo] = useState([]);
 
   useEffect(() => {
-
     // ------------------------------ProjectStatusApi---------------------------------------------------
     async function getProjectStatusApi() {
       try {
@@ -47,7 +47,6 @@ const ProjectWeeklyReportOverview = () => {
     }
 
     getProjectStatusApi();
-
 
     // ------------------------------PhaseWiseTimelineApi---------------------------------------------------
     async function getPhaseWiseTimelineApi() {
@@ -64,7 +63,6 @@ const ProjectWeeklyReportOverview = () => {
 
     getPhaseWiseTimelineApi();
 
-
     // -------------------------------AccompolishmentApi-------------------------------------------------
     async function getAccompolishmentApi() {
       try {
@@ -79,7 +77,6 @@ const ProjectWeeklyReportOverview = () => {
     }
 
     getAccompolishmentApi();
-
 
     // ------------------------------RiskApi---------------------------------------------------
     async function getRiskApi() {
@@ -96,7 +93,6 @@ const ProjectWeeklyReportOverview = () => {
 
     getRiskApi();
 
-
     // -----------------------------IssueApi----------------------------------------------------
     async function getIssueApi() {
       try {
@@ -111,7 +107,6 @@ const ProjectWeeklyReportOverview = () => {
     }
 
     getIssueApi();
-
 
     // ------------------------------AssumptionApi---------------------------------------------------
     async function getAssumptionApi() {
@@ -128,7 +123,6 @@ const ProjectWeeklyReportOverview = () => {
 
     getAssumptionApi();
 
-
     // -----------------------------DependenciesApi----------------------------------------------------
     async function getDependenciesApi() {
       try {
@@ -144,31 +138,41 @@ const ProjectWeeklyReportOverview = () => {
 
     getDependenciesApi();
 
-  
-  // -----------------------------WeeklyProjectReportApi----------------------------------------------------
-  async function getWeeklyProjectReportApi() {
-    try {
-      const weeklyReportData = await axios.get(
-        `http://127.0.0.1:8000/api/projectplan/weeklyreportapi/${id}/`
-      );
-      console.log("Get Dependencies Data", weeklyReportData.data);
-      setWeeklyProjectReport(weeklyReportData.data);
-    } catch (error) {
-      console.log("Data fetching Error Occured in Weekly Project Report API");
+    // -----------------------------WeeklyProjectReportApi----------------------------------------------------
+    async function getWeeklyProjectReportApi() {
+      try {
+        const weeklyReportData = await axios.get(
+          `http://127.0.0.1:8000/api/projectplan/weeklyreportapi/${id}/`
+        );
+        console.log("Get weeklyReportData Data", weeklyReportData.data);
+        setWeeklyProjectReport(weeklyReportData.data);
+      } catch (error) {
+        console.log("Data fetching Error Occured in Weekly Project Report API");
+      }
     }
-  }
 
-  getWeeklyProjectReportApi();
+    getWeeklyProjectReportApi();
 
+    // -----------------------------TaskTodoApi----------------------------------------------------
+    async function getTaskTodoApi() {
+      try {
+        const TaskTodoData = await axios.get(
+          `http://127.0.0.1:8000/api/projectplan/tasktodoapi/${id}/`
+        );
+        console.log("Get TaskTodoData Data", TaskTodoData.data);
+        setTaskTodo(TaskTodoData.data);
+      } catch (error) {
+        console.log("Data fetching Error Occured in Task Todo Data API");
+      }
+    }
 
+    getTaskTodoApi();
   }, []);
 
-
-  useEffect(()=>{
-
+  useEffect(() => {
     // -----------------------------PhaseViewApi----------------------------------------------------
 
-    if(phaseWiseTime.id){
+    if (phaseWiseTime.id) {
       console.log("phase Wise Time Line Data ID", phaseWiseTime.id);
       async function getPhaseViewApi() {
         try {
@@ -183,15 +187,11 @@ const ProjectWeeklyReportOverview = () => {
       }
       getPhaseViewApi();
     }
-
   }, [phaseWiseTime.id]);
 
-
-  useEffect(()=>{
-    
+  useEffect(() => {
     // -----------------------------ProjectDetails----------------------------------------------------
-    if(weeklyProjectReport.project){
-
+    if (weeklyProjectReport.project) {
       async function getProjectDetails() {
         try {
           const projectDetailsData = await axios.get(
@@ -203,14 +203,10 @@ const ProjectWeeklyReportOverview = () => {
           console.log("Data fetching Error Occured in Project Details API");
         }
       }
-  
+
       getProjectDetails();
-
     }
-    
-
   }, [weeklyProjectReport.project]);
-
 
   console.log("projectStatusDetails", projectStatusDetails);
   console.log("phase Wise Time Line Data", phaseWiseTime);
@@ -224,7 +220,7 @@ const ProjectWeeklyReportOverview = () => {
   console.log("Weekly Project Report Data", weeklyProjectReport);
   console.log("Weekly Project Report ID", weeklyProjectReport.project);
   console.log("Project Details Data", projectDetails);
-
+  console.log("Task Todo Data", taskTodo);
 
   return (
     <div className="ParentContainer">
@@ -232,86 +228,115 @@ const ProjectWeeklyReportOverview = () => {
       <Container fluid>
         {/* Overall phases and status  */}
         <Row>
-        <Col>
-              <Container className="MainContainer3">
-              
+          <Col>
+            <Container className="MainContainer3">
               <Table responsive>
-              <tbody>
-                <tr>
-                  <td><b>Current Phase:</b></td>
+                <tbody>
+                  <tr>
+                    <td>
+                      <b>Current Phase:</b>
+                    </td>
 
-                  <div className="phaseViewArray">
-                  {phaseView && phaseView.map((x, index)=>{
-                    return(
-                      
+                    <div className="phaseViewArray">
+                      {phaseView &&
+                        phaseView.map((x, index) => {
+                          return (
                             <div key={index} className="me-2 mt-2 mb-2 ms-2">
-                            <Form.Control
-                              type="text"
-                              id="exampleColorInput"
-                              disabled
-                              value={x.phase_name}
-                              size="sm"
-                              style={{backgroundColor:x.status==="R" ? "#c21a08": x.status==="A" ? 
-                                      "#FF5733": "#2dad42", width:100}}
-                                />
-                        </div>
-                    )
-                  })}
+                              <Form.Control
+                                type="text"
+                                id="exampleColorInput"
+                                disabled
+                                value={x.phase_name}
+                                size="sm"
+                                style={{
+                                  backgroundColor:
+                                    x.status === "R"
+                                      ? "#c21a08"
+                                      : x.status === "A"
+                                      ? "#FF5733"
+                                      : "#2dad42",
+                                  width: 100,
+                                }}
+                              />
+                            </div>
+                          );
+                        })}
+                    </div>
+                  </tr>
 
-                  </div>
-                  
-                </tr>
+                  <tr>
+                    <td>
+                      <b>Overall Health:</b>
+                    </td>
+                    {projectStatusDetails.overall_health ? (
+                      <td>
+                        <Form.Control
+                          className="ms-2"
+                          type="text"
+                          id="exampleColorInput"
+                          title="Choose your color"
+                          disabled
+                          size="sm"
+                          style={{
+                            backgroundColor:
+                              projectStatusDetails.overall_health === "R"
+                                ? "#c21a08"
+                                : projectStatusDetails.overall_health === "A"
+                                ? "#FF5733"
+                                : "#2dad42",
+                            width: 100,
+                          }}
+                        />
+                      </td>
+                    ) : (
+                      ""
+                    )}
+                  </tr>
 
-                        <tr>
-                          <td><b>Overall Health:</b></td>
-                          <td><Form.Control
-                        type="text"
-                        id="exampleColorInput"
-                        title="Choose your color"
-                        disabled
-                        size="sm"
-                        style={{backgroundColor:projectStatusDetails.overall_health==="R" ? "#c21a08": 
-                        projectStatusDetails.overall_health==="A" ? "#FF5733": "#2dad42", width:100}}/>
-                        </td>
-                        </tr>
-
-                        <tr>
-                          <td><b>Project Name:</b></td>
-                          <td><Form.Control
+                  <tr>
+                    <td>
+                      <b>Project Name:</b>
+                    </td>
+                    <td>
+                      <Form.Control
                         type="text"
                         value={projectDetails.project_name}
                         id="exampleColorInput"
                         title="Choose your color"
                         disabled
                         size="sm"
-                        />
-                        </td>
-                        </tr>
+                      />
+                    </td>
+                  </tr>
 
-                        <tr>
-                          <td><b>Project Manager Name:</b></td>
-                          <td><Form.Control
+                  <tr>
+                    <td>
+                      <b>Project Manager Name:</b>
+                    </td>
+                    <td>
+                      <Form.Control
                         type="text"
                         value={projectDetails.manager_name}
                         id="exampleColorInput"
                         title="Choose your color"
                         disabled
                         size="sm"
-                        />
-                        </td>
-                        </tr>
-                
-              </tbody>
+                      />
+                    </td>
+                  </tr>
+                </tbody>
               </Table>
             </Container>
-
           </Col>
         </Row>
 
         {/* phase wise timeline table */}
         <Row>
           <Col>
-            <Container className="Heading-PhaseWiseTimeline">
+            <Container
+              style={{ height: phaseView.length ? "15%" : "25%" }}
+              className="Heading-PhaseWiseTimeline"
+            >
               <Navbar expand="lg">
                 <Container>
                   <Navbar.Brand>
@@ -322,69 +347,75 @@ const ProjectWeeklyReportOverview = () => {
               </Navbar>
             </Container>
 
-            <Container className="MainContainer1">
-
+            <Container
+              style={{ height: phaseView.length ? "70%" : "50%" }}
+              className="MainContainer1"
+            >
               <Container>
-
-              <Table striped bordered hover variant="light" responsive>
-              <thead>
-                <tr>
-                  
+                <Table striped bordered hover variant="light" responsive>
+                  <thead>
+                    <tr>
                       <th>Phase</th>
                       <th>Planned Start Date</th>
                       <th>Planned End Date</th>
                       <th>Revised End Date</th>
                       <th>Status</th>
                       <th>Remarks</th>
-                  
-                </tr>
-              </thead>
+                    </tr>
+                  </thead>
 
-              <tbody>
-
-                  { phaseView ?  phaseView.map((x, index) =>{
-                            return (
-                                <tr key={index}>
-                                <td>{x.phase_name}</td>
-                                <td>{x.planned_end_date}</td>
-                                <td>{x.planned_start_date}</td>
-                                <td>{x.revised_end_date}</td>
-                                <td>
-                                <Form.Control
-                        className="ms-3"
-                        type="text"
-                        id="exampleColorInput"
-                        title="Choose your color"
-                        disabled
-                        size="sm"
-                        style={{backgroundColor:x.status==="R" ? "#c21a08": 
-                        x.status==="A" ? "#FF5733": "#2dad42", width:80}}/>
-                                </td>
-                                <td>{x.remark}</td>
-                              </tr>   
-                              )
-                          }
-                      ) 
-
-                      : ""
-                    }
-                    
-                  
-              </tbody>
-            </Table>
-
+                  <tbody>
+                    {phaseView.length ? (
+                      phaseView.map((x, index) => {
+                        return (
+                          <tr key={index}>
+                            <td>{x.phase_name}</td>
+                            <td>{x.planned_end_date}</td>
+                            <td>{x.planned_start_date}</td>
+                            <td>{x.revised_end_date}</td>
+                            <td>
+                              <Form.Control
+                                className="ms-3"
+                                type="text"
+                                id="exampleColorInput"
+                                title="Choose your color"
+                                disabled
+                                size="sm"
+                                style={{
+                                  backgroundColor:
+                                    x.status === "R"
+                                      ? "#c21a08"
+                                      : x.status === "A"
+                                      ? "#FF5733"
+                                      : "#2dad42",
+                                  width: 80,
+                                }}
+                              />
+                            </td>
+                            <td>{x.remark}</td>
+                          </tr>
+                        );
+                      })
+                    ) : (
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td>No Data Yet</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    )}
+                  </tbody>
+                </Table>
               </Container>
-
             </Container>
           </Col>
         </Row>
 
         {/* Project status table */}
-        <Container>
-          
-        </Container>
-        <Row style={{ marginLeft: "1%" }}>
-          <Col sm={8}>
+        <Row>
+          <Col>
             <Container className="Heading-OverallStatus">
               <Navbar expand="lg">
                 <Container fluid>
@@ -397,10 +428,8 @@ const ProjectWeeklyReportOverview = () => {
             </Container>
 
             <Container className="MainContainer2">
-
               <Container>
-
-              <Table striped bordered hover variant="light" responsive>
+                <Table striped bordered hover variant="light" responsive>
                   <thead>
                     <tr>
                       <th>Overall last Week</th>
@@ -412,138 +441,492 @@ const ProjectWeeklyReportOverview = () => {
                   </thead>
 
                   <tbody>
-
                     <tr>
-                    
-                      <td><Form.Control
-                        className="ms-5"
-                        type="text"
-                        id="exampleColorInput"
-                        title="Choose your color"
-                        disabled
-                        size="sm"
-                        style={{backgroundColor:projectStatusDetails.overall_last_week==="R" ? "#c21a08": 
-                        projectStatusDetails.overall_last_week==="A" ? "#FF5733": "#2dad42", width:80}}/></td>
+                      <td>
+                        {projectStatusDetails.overall_last_week ? (
+                          <Form.Control
+                            className="ms-5"
+                            type="text"
+                            id="exampleColorInput"
+                            title="Choose your color"
+                            disabled
+                            size="sm"
+                            style={{
+                              backgroundColor:
+                                projectStatusDetails.overall_last_week === "R"
+                                  ? "#c21a08"
+                                  : projectStatusDetails.overall_last_week ===
+                                    "A"
+                                  ? "#FF5733"
+                                  : "#2dad42",
+                              width: 80,
+                            }}
+                          />
+                        ) : (
+                          ""
+                        )}
+                      </td>
 
-                      
-                        <td><Form.Control
-                        className="ms-5"
-                        type="text"
-                        id="exampleColorInput"
-                        title="Choose your color"
-                        disabled
-                        size="sm"
-                        style={{backgroundColor:projectStatusDetails.overall_this_week==="R" ? "#c21a08": 
-                        projectStatusDetails.overall_this_week==="A" ? "#FF5733": "#2dad42", width:80}}/></td>
+                      <td>
+                        {projectStatusDetails.overall_this_week ? (
+                          <Form.Control
+                            className="ms-5"
+                            type="text"
+                            id="exampleColorInput"
+                            title="Choose your color"
+                            disabled
+                            size="sm"
+                            style={{
+                              backgroundColor:
+                                projectStatusDetails.overall_this_week === "R"
+                                  ? "#c21a08"
+                                  : projectStatusDetails.overall_this_week ===
+                                    "A"
+                                  ? "#FF5733"
+                                  : "#2dad42",
+                              width: 80,
+                            }}
+                          />
+                        ) : (
+                          "No Data Yet"
+                        )}
+                      </td>
 
-                        <td><Form.Control
-                        className="ms-3"
-                        type="text"
-                        id="exampleColorInput"
-                        title="Choose your color"
-                        disabled
-                        size="sm"
-                        style={{backgroundColor:projectStatusDetails.scope==="R" ? "#c21a08": 
-                        projectStatusDetails.scope==="A" ? "#FF5733": "#2dad42", width:80}}/></td>
+                      <td>
+                        {projectStatusDetails.scope ? (
+                          <Form.Control
+                            className="ms-3"
+                            type="text"
+                            id="exampleColorInput"
+                            title="Choose your color"
+                            disabled
+                            size="sm"
+                            style={{
+                              backgroundColor:
+                                projectStatusDetails.scope === "R"
+                                  ? "#c21a08"
+                                  : projectStatusDetails.scope === "A"
+                                  ? "#FF5733"
+                                  : "#2dad42",
+                              width: 80,
+                            }}
+                          />
+                        ) : (
+                          ""
+                        )}
+                      </td>
 
+                      <td>
+                        {projectStatusDetails.schedule ? (
+                          <Form.Control
+                            className="ms-3"
+                            type="text"
+                            id="exampleColorInput"
+                            title="Choose your color"
+                            disabled
+                            size="sm"
+                            style={{
+                              backgroundColor:
+                                projectStatusDetails.schedule === "R"
+                                  ? "#c21a08"
+                                  : projectStatusDetails.schedule === "A"
+                                  ? "#FF5733"
+                                  : "#2dad42",
+                              width: 80,
+                            }}
+                          />
+                        ) : (
+                          ""
+                        )}
+                      </td>
 
-                        <td><Form.Control
-                        className="ms-3"
-                        type="text"
-                        id="exampleColorInput"
-                        title="Choose your color"
-                        disabled
-                        size="sm"
-                        style={{backgroundColor:projectStatusDetails.schedule==="R" ? "#c21a08": 
-                        projectStatusDetails.schedule==="A" ? "#FF5733": "#2dad42", width:80}}/></td>
-
-
-                        <td><Form.Control
-                        className="ms-3"
-                        type="text"
-                        id="exampleColorInput"
-                        title="Choose your color"
-                        disabled
-                        size="sm"
-                        style={{backgroundColor:projectStatusDetails.cost==="R" ? "#c21a08": 
-                        projectStatusDetails.cost==="A" ? "#FF5733": "#2dad42", width:80}}/></td>
+                      <td>
+                        {projectStatusDetails.cost ? (
+                          <Form.Control
+                            className="ms-3"
+                            type="text"
+                            id="exampleColorInput"
+                            title="Choose your color"
+                            disabled
+                            size="sm"
+                            style={{
+                              backgroundColor:
+                                projectStatusDetails.cost === "R"
+                                  ? "#c21a08"
+                                  : projectStatusDetails.cost === "A"
+                                  ? "#FF5733"
+                                  : "#2dad42",
+                              width: 80,
+                            }}
+                          />
+                        ) : (
+                          ""
+                        )}
+                      </td>
                     </tr>
-
                   </tbody>
                 </Table>
-
               </Container>
-
-              </Container>
-            
-          </Col>
-
-          <Col sm={4} className="Project-phase">
-            <Form>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlTextarea1"
-              >
-                <Form.Label className="p-2" style={{ fontWeight: "bold" }}>
-                  Activities Planned for Next Week
-                </Form.Label>
-                <Form.Control as="textarea" rows={7} />
-              </Form.Group>
-            </Form>
+            </Container>
           </Col>
         </Row>
 
-        <Row style={{ marginTop: "2%"}}>
-          <Col sm={5} style={{ marginLeft: "4%" }} className="Project-phase ">
-            <Form>
-              <Form.Group
-                className="mb-3  big-inputfields"
-                controlId="exampleForm.ControlTextarea1"
-              >
-                <Form.Label className="p-2" style={{ fontWeight: "bold" }}>
-                  Key Accommplishments
-                </Form.Label>
-                <Form.Control as="textarea" 
-                rows={8} 
-                value={accomplishment.Description}
-                />
-              </Form.Group>
-            </Form>
-          </Col>
+        <Container className="Row1">
+          <Table responsive>
+            <tbody>
+              <tr style={{ backgroundColor: "rgb(159, 156, 156)" }}>
 
-          <Col sm={5} className="Project-phase" style={{ marginLeft: "4%" }}>
-            <Form>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlTextarea1"
-              >
-                <Form.Label className="p-2" style={{ fontWeight: "bold" }}>
-                  Risks,Assumptions,Issues,Dependencies
-                </Form.Label>
-                
-                <Form.Control type="text" 
-                value={risk.risk_description}
-                />
+              <td>
+                  <Container className="Project-phase2">
+                  <Form.Label className="p-2" style={{ fontWeight: "bold" }}>
+                      Activities Planned for Next Week
+                    </Form.Label>
 
-                <Form.Control type="text"  
-                className="mt-2"
-                value={assumptions.assumption}
-                />
+                    <Table striped bordered hover responsive>
+                      {
+                        taskTodo.length ? 
+                        <thead>
+                        <tr>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      : ""
+                      }
+                      
+                        {taskTodo.length ? (
+                          taskTodo.map((x, index) => {
+                            return (
+                              <tbody>
+                              <tr key={index}>
+                                <td>
+                                  <Form.Control
+                                    as="textarea"
+                                    rows={1}
+                                    value={x.description}
+                                    className="mt-2"
+                                  />
+                                </td>
+                              </tr>
+                              </tbody>
+                            );
+                          })
+                        ) : (
+                          <Form.Control
+                            as="textarea"
+                            placeholder="No Data Yet"
+                            rows={7}
+                          />
+                        )}
+                      
+                    </Table>
+                  </Container>
+                </td>
 
-                <Form.Control type="text" 
-                className="mt-2"
-                value={issues.issue_description}
-                />
+                <td>
+                  <Container className="Project-phase2">
+                  <Form.Label className="p-2" style={{ fontWeight: "bold" }}>
+                      Key Accomplishment
+                    </Form.Label>
 
-                <Form.Control type="text"
-                className="mt-2" 
-                value={dependencies.dependency_description}
-                />
+                    <Table striped bordered hover responsive>
+                      {
+                        accomplishment.length ? 
+                        <thead>
+                        <tr>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      : ""
+                      }
+                      
+                        {accomplishment.length ? (
+                          accomplishment.map((x, index) => {
+                            return (
+                              <tbody>
+                              <tr key={index}>
+                                <td>
+                                  <Form.Control
+                                    as="textarea"
+                                    rows={1}
+                                    value={x.Description}
+                                    className="mt-2"
+                                  />
+                                </td>
+                              </tr>
+                              </tbody>
+                            );
+                          })
+                        ) : (
+                          <Form.Control
+                            as="textarea"
+                            placeholder="No Data Yet"
+                            rows={7}
+                          />
+                        )}
+                      
+                    </Table>
+                  </Container>
+                </td>
 
-              </Form.Group>
-            </Form>
-          </Col>
-        </Row>
+                <td>
+                  <Container className="Project-phase1">
+                    <Form.Label className="p-2" style={{ fontWeight: "bold" }}>
+                      Risk
+                    </Form.Label>
+
+                    <Table striped bordered hover responsive>
+                      {
+                        risk.length ? 
+                        <thead>
+                        <tr>
+                          <th>Description</th>
+                          <th>RAG Status</th>
+                        </tr>
+                      </thead>
+                      : ""
+                      }
+                      
+                      
+                        {risk.length ? (
+                          risk.map((x, index) => {
+                            return (
+                              <tbody>
+                              <tr key={index}>
+                                <td>
+                                  <Form.Control
+                                    as="textarea"
+                                    rows={1}
+                                    value={x.risk_description}
+                                    className="mt-2"
+                                  />
+                                </td>
+                                <td>
+                                  <Form.Control
+                                    className="ms-3"
+                                    type="text"
+                                    id="exampleColorInput"
+                                    title="Choose your color"
+                                    disabled
+                                    size="sm"
+                                    style={{
+                                      backgroundColor:
+                                        x.RAGStatus === "R"
+                                          ? "#c21a08"
+                                          : x.RAGStatus === "A"
+                                          ? "#FF5733"
+                                          : "#2dad42",
+                                      width: 80,
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                              </tbody>
+                            );
+                          })
+                        ) : (
+                          <Form.Control
+                            as="textarea"
+                            placeholder="No Data Yet"
+                            rows={7}
+                          />
+                        )}
+                      
+                    </Table>
+                  </Container>
+                </td>
+              </tr>
+            </tbody>
+          </Table>
+        </Container>
+
+        <Container className="Row2">
+          <Table responsive>
+            <tbody>
+              <tr style={{ backgroundColor: "rgb(159, 156, 156)" }}>
+
+                <td>
+                  <Container className="Project-phase2">
+                  <Form.Label className="p-2" style={{ fontWeight: "bold" }}>
+                      Assumptions
+                    </Form.Label>
+
+                    <Table striped bordered hover responsive>
+                      {
+                        assumptions.length ? 
+                        <thead>
+                        <tr>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      : ""
+                      }
+                      
+                        {assumptions.length ? (
+                          assumptions.map((x, index) => {
+                            return (
+                              <tbody>
+                              <tr key={index}>
+                                <td>
+                                  <Form.Control
+                                    as="textarea"
+                                    rows={1}
+                                    value={x.assumption}
+                                    className="mt-2"
+                                  />
+                                </td>
+                              </tr>
+                              </tbody>
+                            );
+                          })
+                        ) : (
+                          <Form.Control
+                            as="textarea"
+                            placeholder="No Data Yet"
+                            rows={7}
+                          />
+                        )}
+                      
+                    </Table>
+                  </Container>
+                </td>
+
+                <td>
+                  <Container className="Project-phase2">
+                  <Form.Label className="p-2" style={{ fontWeight: "bold" }}>
+                      Issues
+                    </Form.Label>
+
+                    <Table striped bordered hover responsive>
+                      {
+                        issues.length ? 
+                        <thead>
+                        <tr>
+                          <th>Description</th>
+                          <th>RAG Status</th>
+                        </tr>
+                      </thead>
+                      : ""
+                      }
+                      
+                      
+                        {issues.length ? (
+                          issues.map((x, index) => {
+                            return (
+                              <tbody>
+                              <tr key={index}>
+                                <td>
+                                  <Form.Control
+                                    as="textarea"
+                                    rows={1}
+                                    value={x.issue_description}
+                                    className="mt-2"
+                                  />
+                                </td>
+                                <td>
+                                  <Form.Control
+                                    className="ms-3"
+                                    type="text"
+                                    id="exampleColorInput"
+                                    title="Choose your color"
+                                    disabled
+                                    size="sm"
+                                    style={{
+                                      backgroundColor:
+                                        x.RAGStatus === "R"
+                                          ? "#c21a08"
+                                          : x.RAGStatus === "A"
+                                          ? "#FF5733"
+                                          : "#2dad42",
+                                      width: 80,
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                              </tbody>
+                            );
+                          })
+                        ) : (
+                          <Form.Control
+                            as="textarea"
+                            placeholder="No Data Yet"
+                            rows={7}
+                          />
+                        )}
+                      
+                    </Table>
+                  </Container>
+                </td>
+
+                <td>
+                  <Container className="Project-phase2">
+                  <Form.Label className="p-2" style={{ fontWeight: "bold" }}>
+                      Dependencies
+                    </Form.Label>
+
+                    <Table striped bordered hover responsive>
+                      {
+                        dependencies.length ? 
+                        <thead>
+                        <tr>
+                          <th>Description</th>
+                          <th>RAG Status</th>
+                        </tr>
+                      </thead>
+                      : ""
+                      }
+                      
+                      
+                        {dependencies.length ? (
+                          dependencies.map((x, index) => {
+                            return (
+                              <tbody>
+                              <tr key={index}>
+                                <td>
+                                  <Form.Control
+                                    as="textarea"
+                                    rows={1}
+                                    value={x.dependency_description}
+                                    className="mt-2"
+                                  />
+                                </td>
+                                <td>
+                                  <Form.Control
+                                    className="ms-3"
+                                    type="text"
+                                    id="exampleColorInput"
+                                    title="Choose your color"
+                                    disabled
+                                    size="sm"
+                                    style={{
+                                      backgroundColor:
+                                        x.RAGStatus === "R"
+                                          ? "#c21a08"
+                                          : x.RAGStatus === "A"
+                                          ? "#FF5733"
+                                          : "#2dad42",
+                                      width: 80,
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                              </tbody>
+                            );
+                          })
+                        ) : (
+                          <Form.Control
+                            as="textarea"
+                            placeholder="No Data Yet"
+                            rows={7}
+                          />
+                        )}
+                      
+                    </Table>
+                  </Container>
+                </td>
+              </tr>
+            </tbody>
+          </Table>
+        </Container>
       </Container>
     </div>
   );

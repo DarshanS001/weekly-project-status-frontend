@@ -36,6 +36,7 @@ const LoginPage = () => {
       })
       .catch((error) => {
         console.log("ERROR", error);
+        alert("Error!! Please provide valid credentials");
       });
   }
 
@@ -83,7 +84,7 @@ const LoginPage = () => {
         </Form>
       </Container>
         <Container className="forgotPassword">
-              <Link to={"#"} className="me-3">Forgot Password?</Link>
+              <Link to={"/forgotpasswordpage"} className="me-3">Forgot Password?</Link>
           </Container>
     </div>
   );
