@@ -36,6 +36,7 @@ const LoginPage = () => {
       })
       .catch((error) => {
         console.log("ERROR", error);
+        alert("Error!! Please provide valid credentials");
       });
   }
 

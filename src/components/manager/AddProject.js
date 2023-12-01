@@ -8,18 +8,19 @@ import Container from "react-bootstrap/Container";
 
 export default function AddProjectTrial() {
   let navigate = useNavigate();
-  const [projectList, setProjectList] = useState([]);
+  const [userDetails, setUserDetails] = useState([]);
   const [project, setProject] = useState({
     project_name: "",
     summary: "",
     client_name:"",
     start_date: "",
     end_date: "",
-    user: 0
+    user: userDetails.id
   });
   
   // To destructure JSON object
   const { project_name, summary, client_name, start_date, end_date, user } = project;
+
 
 // Code To Get User Id 
 const token = localStorage.getItem("user-token");
@@ -27,36 +28,31 @@ const token = localStorage.getItem("user-token");
     headers: { Authorization: `Bearer ${token}` }
   };
 
-  useEffect(()=>{
-
-    async function getProjectList(){
-        try {
-            // const projList = await axios.get("http://127.0.0.1:8000/api/projectplan/projects/", config);
-            const projList = await axios.get("http://127.0.0.1:8000/api/projectplan/projectsapi/", config);
-            console.log("Get projectList Data",projList.data);
-            setProjectList(projList.data);
-            // console.log('projectList:-', projectList[0].user)
-        }catch (error){
-            console.log("Data fetching Error Occured in Project List");
-        }
+ // Code to get User Data from API call
+ useEffect(() => {
+  async function getUserData() {
+    try {
+      const userData = await axios.get(
+        "http://127.0.0.1:8000/api/user/profile/",
+        config
+      );
+      console.log("Get User Data", userData.data);
+      setUserDetails(userData.data);
+    } catch (error) {
+      console.log("Data fetching Error Occured in User Data");
     }
+  }
 
-    getProjectList();
-    
-
+  getUserData();
+  
 }, []);
 
-if(projectList.length > 0){
-  console.log('projectList:-', projectList[0].user)
-}
-  
+console.log("User id Details:-", userDetails.id);
 
   
   const onInputChange = (e) => {
     setProject({ ...project, [e.target.name]: e.target.value});
-    if(projectList.length > 0){
-      setProject(updateUser => {return {...updateUser, user: projectList[0].user}})
-    }
+    setProject(updateUser => {return {...updateUser, user: userDetails.id}})
   };
 
   const onSubmit = async (e) => {
@@ -64,13 +60,10 @@ if(projectList.length > 0){
     console.log('project data Array:',project);
 
     try{
-      console.log("API Call")
-
-      // await axios.post('http://127.0.0.1:8000/api/projectplan/projects/',project)
-      await axios.post('http://127.0.0.1:8000/api/projectplan/projectsapi/',project)
-      // .then((response)=>{console.log(response.data)});
-      alert("Project Added Successfully")
-      navigate('/adminHome')
+      console.log("API Call");
+      await axios.post('http://127.0.0.1:8000/api/projectplan/projectsapi/',project);
+      alert("Project Added Successfully");
+      navigate('/manager/home');
     }
     catch(error){
       console.log('error:', error);

@@ -106,7 +106,6 @@ export default function Header() {
                 </Modal>
 
                 :""}
-
           
           </Navbar.Brand>
         </Navbar.Collapse>

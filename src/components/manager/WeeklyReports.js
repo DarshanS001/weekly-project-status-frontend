@@ -14,6 +14,13 @@ import axios from 'axios';
 const WeeklyReports = () => {
 
   const [projectReportList, setProjectReportList] = useState([]);
+
+  // Code to get the authorize user token from local storage
+  console.log(localStorage.getItem("user-token"))
+  const token = localStorage.getItem("user-token");
+  const config = {
+    headers: { Authorization: `Bearer ${token}` }
+  };
  
 
 
@@ -21,7 +28,7 @@ const WeeklyReports = () => {
 
     async function getProjectReportList(){
         try {
-            const projReportList = await axios.get("http://127.0.0.1:8000/api/projectplan/weeklyreportapi/");
+            const projReportList = await axios.get("http://127.0.0.1:8000/api/projectplan/weeklyreportapi/", config);
             console.log("Get projectList Data",projReportList.data);
             setProjectReportList(projReportList.data);
         }catch (error){
