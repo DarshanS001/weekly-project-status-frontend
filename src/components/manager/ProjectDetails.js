@@ -103,7 +103,7 @@ console.log("User Details:-", userDetails.user_type);
 
                 <Navbar.Brand className="text-light">
                   <Button style={{backgroundColor:"#AE445A", marginBottom:'3px'}} size="lg" className="ms-2">
-                    <Link to={'/manager/projectWeeklyStatus'} style={{textDecoration: 'None', color:'white'}}>Weekly Status</Link>
+                    <Link to={`/manager/projectWeeklyStatus/${id}/`} style={{textDecoration: 'None', color:'white'}}>Weekly Status</Link>
                   </Button>
                 </Navbar.Brand>
               </Navbar.Collapse>

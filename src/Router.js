@@ -23,6 +23,7 @@ import ProjectWeeklyReportOverview from './components/manager/ProjectWeeklyRepor
 import WeeklyReports from './components/manager/WeeklyReports';
 import ForgotPasswordPage from './components/Login/ForgotPasswordPage';
 import ResetPassword from './components/Login/ResetPassword';
+import AdminList from './components/Admin/AdminList';
 
 
 const Router = () => {
@@ -39,6 +40,7 @@ const Router = () => {
             <Route path='/admin/managemnet/' element={<AllManagement/>}/>
             <Route path='/admin/addProjectManager/' element={<AddManager/>}/>
             <Route path='/admin/updateManager/' element={<UpdateManager/>}/>
+            <Route path='/admin/adminList/' element={<AdminList/>}/>
 
             <Route path='/LoginPage' element={<LoginPage/>}/>
             <Route path='/forgotPasswordPage' element={<ForgotPasswordPage/>}/>
@@ -52,7 +54,7 @@ const Router = () => {
             <Route path='/manager/projectWeeklyReportOverview/:id' element={<ProjectWeeklyReportOverview/>}/>
             <Route path='/manager/settings' element={<Settings/>}/>
             <Route path='/manager/projectDetails/:id' element={<ProjectDetails/>}/>
-            <Route path='/manager/projectWeeklyStatus' element={<WeeklyStatus/>}/>
+            <Route path='/manager/projectWeeklyStatus/:id' element={<WeeklyStatus/>}/>
             <Route path='/manager/addWeekDataPage1' element={<AddWeekDataPage1/>}/>
             <Route path='/manager/addWeekDataPage2' element={<AddWeekDataPage2/>}/>
             <Route path='/manager/addWeekDataPage3' element={<AddWeekDataPage3/>}/>
