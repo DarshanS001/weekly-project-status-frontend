@@ -101,15 +101,6 @@ console.log("filtered List:", searchProjectList);
                   <Button style={{backgroundColor:"#AE445A"}} size="lg" className="my-3">
                   <Link to={'/manager/addProjectPage'} style={{textDecoration: 'None', color:'white'}}>Add Project</Link>
                   </Button>
-                  <Button style={{backgroundColor:"#AABBCC", marginBottom:'3px'}} size="lg" className="ms-2">
-                    <Link to={`/admin/adminlist/`} style={{textDecoration: 'None', color:'white'}}>Admin List</Link>
-                  </Button>
-                  <Button style={{backgroundColor:"#AABBCC", marginBottom:'3px'}} size="lg" className="ms-2">
-                    <Link to={`/admin/managers/`} style={{textDecoration: 'None', color:'white'}}>Manager List</Link>
-                  </Button>
-                  <Button style={{backgroundColor:"#AABBCC", marginBottom:'3px'}} size="lg" className="ms-2">
-                    <Link to={`/admin/managemnet/`} style={{textDecoration: 'None', color:'white'}}>Management List</Link>
-                  </Button>
                 </Navbar.Brand>
               </Navbar.Collapse>
 

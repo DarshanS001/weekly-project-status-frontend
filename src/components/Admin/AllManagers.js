@@ -41,7 +41,7 @@ export default function AllManagers() {
 
       <div style={{ display: 'flex' }}>
         <h2 style={{ marginLeft: '500px', fontWeight: 'bold', fontFamily: 'Apple Chancery' }}>Project Managers</h2>
-        <Link to={'/admin/addProjectManager/'}><Button style={{ marginLeft: '300px' }}>Add Manager</Button></Link>
+        <Link to={'/Register/'}><Button style={{ marginLeft: '300px' }}>Add User</Button></Link>
       </div>
       <Container className='mt-5'>
       <Table striped bordered hover>
