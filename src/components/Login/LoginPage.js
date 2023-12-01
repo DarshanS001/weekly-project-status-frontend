@@ -84,7 +84,7 @@ const LoginPage = () => {
         </Form>
       </Container>
         <Container className="forgotPassword">
-              <Link to={"/forgotpasswordpage"} className="me-3">Forgot Password?</Link>
+              <Link to={"/forgotPasswordPage"} className="me-3">Forgot Password?</Link>
           </Container>
     </div>
   );

@@ -47,7 +47,7 @@ const ForgotPasswordPage = () => {
                     className="mb-3"
                     disabled={!validateForm()}
                     onClick={msg}>
-                  Reset Password
+                  Send Link
             </Button>
           </div>
 

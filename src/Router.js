@@ -41,7 +41,7 @@ const Router = () => {
             <Route path='/admin/updateManager/' element={<UpdateManager/>}/>
 
             <Route path='/LoginPage' element={<LoginPage/>}/>
-            <Route path='/forgotpasswordpage' element={<ForgotPasswordPage/>}/>
+            <Route path='/forgotPasswordPage' element={<ForgotPasswordPage/>}/>
             <Route path='/resetpassword' element={<ResetPassword/>}/>
             
             <Route path='/manager/home' element={<Home/>}/>
