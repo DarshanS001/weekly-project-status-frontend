@@ -22,12 +22,6 @@ const WeeklyReports = () => {
     headers: { Authorization: `Bearer ${token}` }
   };
  
-  // Code to get the authorize user token from local storage
-  console.log(localStorage.getItem("user-token"))
-  const token = localStorage.getItem("user-token");
-  const config = {
-    headers: { Authorization: `Bearer ${token}` }
-  };
 
   useEffect(()=>{
 

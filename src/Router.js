@@ -7,8 +7,8 @@ import AddProject from './components/manager/AddProject';
 import ProjectDetails from './components/manager/ProjectDetails';
 import WeeklyStatus from './components/manager/WeeklyStatus';
 import AdminDashboard from './components/Admin/AdminDashboard';
-import AddManager from './components/Admin/AddManager';
-import UpdateManager from './components/Admin/UpdateManager';
+import AdminList from './components/Admin/AdminList';
+import UpdateUser from './components/Admin/UpdateUser';
 import AllManagers from './components/Admin/AllManagers';
 import AllManagement from './components/Admin/AllManagement';
 import ManagerProfile from './components/manager/ManagerProfile';
@@ -23,7 +23,7 @@ import ProjectWeeklyReportOverview from './components/manager/ProjectWeeklyRepor
 import WeeklyReports from './components/manager/WeeklyReports';
 import ForgotPasswordPage from './components/Login/ForgotPasswordPage';
 import ResetPassword from './components/Login/ResetPassword';
-import AdminList from './components/Admin/AdminList';
+
 
 
 const Router = () => {
@@ -38,8 +38,8 @@ const Router = () => {
             <Route path='/AdminPage' element={<AdminDashboard/>}/>
             <Route path='/admin/managers/' element={<AllManagers/>}/>
             <Route path='/admin/managemnet/' element={<AllManagement/>}/>
-            <Route path='/admin/addProjectManager/' element={<AddManager/>}/>
-            <Route path='/admin/updateManager/' element={<UpdateManager/>}/>
+
+            <Route path='/admin/updateUser/:id' element={<UpdateUser/>}/>
             <Route path='/admin/adminList/' element={<AdminList/>}/>
 
             <Route path='/LoginPage' element={<LoginPage/>}/>
@@ -53,8 +53,9 @@ const Router = () => {
             <Route path='/manager/allProjectWeeklyReports/' element={<WeeklyReports/>}/>
             <Route path='/manager/projectWeeklyReportOverview/:id' element={<ProjectWeeklyReportOverview/>}/>
             <Route path='/manager/settings' element={<Settings/>}/>
+            
             <Route path='/manager/projectDetails/:id' element={<ProjectDetails/>}/>
-            <Route path='/manager/projectWeeklyStatus/:id' element={<WeeklyStatus/>}/>
+            <Route path='/manager/projectWeeklyStatus' element={<WeeklyStatus/>}/>
             <Route path='/manager/addWeekDataPage1' element={<AddWeekDataPage1/>}/>
             <Route path='/manager/addWeekDataPage2' element={<AddWeekDataPage2/>}/>
             <Route path='/manager/addWeekDataPage3' element={<AddWeekDataPage3/>}/>
