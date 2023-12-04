@@ -54,6 +54,7 @@ const Home = () => {
       
   }
 
+  
 
   // Code to get the authorize user token from local storage
   console.log(localStorage.getItem("user-token"))
