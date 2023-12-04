@@ -47,6 +47,8 @@ const Router = () => {
             <Route path='/resetpassword' element={<ResetPassword/>}/>
             
             <Route path='/manager/home' element={<Home/>}/>
+
+           
             <Route path='/manager/addProjectPage' element={<AddProject/>}/>
             <Route path='/manager/managerProfile' element={<ManagerProfile/>}/>
             <Route path='/manager/managerProfile/allProjectsOfParticularManager/' element={<AllProjectOfParticularManager/>}/>

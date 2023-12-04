@@ -1,5 +1,7 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import  "./Footer.css";
+import { Button } from 'react-bootstrap';
 
 export default function Footer() {
   return (
@@ -8,7 +10,8 @@ export default function Footer() {
 
             <div className="col-6" style={{marginTop:'0 px'}}>
               <p>Copyright 2023-2024 Weekly Status App Pvt.Ltd. All right reserved.</p>
-
+              <Link to='/AdminPage' ><Button>Admin</Button></Link>
+              
             </div>
           </div>
     </div>
