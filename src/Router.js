@@ -22,6 +22,7 @@ import ProjectWeeklyReportOverview from './components/manager/ProjectWeeklyRepor
 import WeeklyReports from './components/manager/WeeklyReports';
 import ForgotPasswordPage from './components/Login/ForgotPasswordPage';
 import ResetPassword from './components/Login/ResetPassword';
+import AdminList from './components/Admin/AdminList';
 
 const Router = () => {
   return (
@@ -35,6 +36,7 @@ const Router = () => {
             <Route path='/admin/managemnet/' element={<AllManagement/>}/>
             <Route path='/admin/addProjectManager/' element={<AddManager/>}/>
             <Route path='/admin/updateManager/' element={<UpdateManager/>}/>
+            <Route path='/admin/adminList/' element={<AdminList/>}/>
 
             <Route path='/LoginPage' element={<LoginPage/>}/>
             <Route path='/forgotpasswordpage' element={<ForgotPasswordPage/>}/>

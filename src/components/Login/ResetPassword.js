@@ -1,25 +1,38 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import axios from 'axios';
 import Container from "react-bootstrap/Container";
 import "./ResetPassword.css";
 
 const ResetPassword = () => {
-  const [password,setPassword] = useState("");
+  const [password1,setPassword] = useState("");
+  const [password2,setPassword1] = useState("");
+
   
 
   function validateForm() {
-    return password.length > 0
+    return password1.length > 0 && password2.length>0
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log('password:', password);
-    
-
-
-   
+    console.log('password:', password1);
+    console.log('password:',password2)
   }
+  axios({
+    baseURL: 'http://127.0.0.1:8000/api/user/reset-password/<uid>/<token>/',
+    method: "POST",
+    data: {
+      password1:password1,
+      password2:password2
+    },
+  })
+    
+    
+    .catch((error) => {
+      console.log("ERROR", error);
+    });
 
   return (
     <div className="Reset">
@@ -30,23 +43,23 @@ const ResetPassword = () => {
       <Container className="form">
         <Form onSubmit={handleSubmit}>
           <Container>
-          <Form.Group size="lg" controlId="password">
+          <Form.Group size="lg" controlId="password1">
               <Form.Label className="mt-3"> New Password</Form.Label>
 
               <Form.Control
                 type="password"
-                value={password}
+                value={password1}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
 
-            <Form.Group size="lg" controlId="password">
+            <Form.Group size="lg" controlId="password2">
               <Form.Label className="mt-3">Confirm Password</Form.Label>
 
               <Form.Control
                 type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={password2}
+                onChange={(e) => setPassword1(e.target.value)}
               />
             </Form.Group>
             
