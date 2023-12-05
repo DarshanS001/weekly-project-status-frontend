@@ -13,11 +13,12 @@ const RegisterPage = () => {
     user_email: "",
     user_name: "",
     user_type: "",
+    designation: "",
     password:"",
     password2: "",
   });
   
-  const { user_email, user_name, user_type, password, password2} = userRegistration;
+  const { user_email, user_name, user_type, designation, password, password2} = userRegistration;
 
   const onInputChange = (e) => {
     setUserRegistration({ ...userRegistration, [e.target.name]: e.target.value });
@@ -93,6 +94,17 @@ const RegisterPage = () => {
                 type="select"
                 name="user_type"
                 value={user_type}
+                onChange={(e) => onInputChange(e)}
+              />
+            </Form.Group>
+
+            <Form.Group size="lg" controlId="designation">
+              <Form.Label className="mt-3">Designation</Form.Label>
+              <Form.Control
+                autoFocus
+                type="text"
+                name="designation"
+                value={designation}
                 onChange={(e) => onInputChange(e)}
               />
             </Form.Group>

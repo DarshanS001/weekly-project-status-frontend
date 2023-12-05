@@ -4,25 +4,26 @@ import Button from "react-bootstrap/Button";
 import axios from 'axios';
 import Container from "react-bootstrap/Container";
 import "./ResetPassword.css";
-import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ResetPassword = () => {
-  const [password1,setPassword] = useState("");
-  const [password2,setPassword1] = useState("");
-  const {uid, token} = useParams();
-  console.log("uid", uid);
-  console.log("token", token);
-
+  const [password1,setPassword1] = useState("");
+  const [password2,setPassword2] = useState("");
+  const navigate = useNavigate();
   
 
   function validateForm() {
-    return password1.length > 0 && password2.length>0
+    if(password1.length > 0){
+      return password1 === password2
+    }
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log('password:', password1);
-    console.log('password:',password2)
+    console.log('password1:', password1);
+    console.log('password2:', password2);
+    navigate("/");
+   
   }
   axios({
     baseURL: `http://127.0.0.1:8000/api/user/reset-password/${uid}/${token}/`,
@@ -61,7 +62,7 @@ const ResetPassword = () => {
               <Form.Control
                 type="password"
                 value={password1}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => setPassword1(e.target.value)}
               />
             </Form.Group>
 
@@ -71,7 +72,7 @@ const ResetPassword = () => {
               <Form.Control
                 type="password"
                 value={password2}
-                onChange={(e) => setPassword1(e.target.value)}
+                onChange={(e) => setPassword2(e.target.value)}
               />
             </Form.Group>
             

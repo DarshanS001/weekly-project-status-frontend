@@ -47,13 +47,14 @@ const Home = () => {
       }
 
         const projectNameArrayFilter = projectNameArray.filter(proj=>proj.includes(search["searchProject"]));
-        console.log("asasa",projectNameArrayFilter);
+        console.log("Filtered Array:",projectNameArrayFilter);
       if(projectNameArrayFilter.length === 0){
         alert("Project Search Not Found");
       }
       
   }
 
+  
 
   // Code to get the authorize user token from local storage
   console.log(localStorage.getItem("user-token"))

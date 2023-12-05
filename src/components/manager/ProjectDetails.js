@@ -18,12 +18,14 @@ const ProjectDetails = () => {
   const { id } = useParams();
   console.log("id:",id);
   const [projectDetails, setProjectDetails] = useState([]);
+  const [userDetails, setUserDetails] = useState([]);
 
   // for modal show hide
   const [modalShow, setModalShow] = useState(false);
   console.log('modalShow', modalShow);
 
 
+  //  Code to get the project details
   useEffect(()=>{
 
     async function getProjectDetails(){
@@ -41,6 +43,35 @@ const ProjectDetails = () => {
 
 }, []);
 
+
+
+// Code to get the authorize user token from local storage
+console.log(localStorage.getItem("user-token"));
+const token = localStorage.getItem("user-token");
+const config = {
+  headers: { Authorization: `Bearer ${token}` },
+};
+
+// Code to get User Data from API call
+useEffect(() => {
+  async function getUserData() {
+    try {
+      const userData = await axios.get(
+        "http://127.0.0.1:8000/api/user/profile/",
+        config
+      );
+      console.log("Get User Data", userData.data);
+      setUserDetails(userData.data);
+    } catch (error) {
+      console.log("Data fetching Error Occured in User Data");
+    }
+  }
+
+  getUserData();
+}, []);
+
+console.log("User Details:-", userDetails.user_type);
+
   return (
     <>
         <Container className="Heading">
@@ -54,7 +85,9 @@ const ProjectDetails = () => {
              
               <Navbar.Collapse className="justify-content-end">
                 <Navbar.Brand className="text-light">
-                  <Button 
+                  {
+                    userDetails.user_type === "Project_manager" ?
+                    <Button 
                   style={{backgroundColor:"#AE445A", marginBottom:'3px'}} 
                   size="lg" 
                   className="ms-2"
@@ -63,11 +96,14 @@ const ProjectDetails = () => {
                     {/* <Link to={'/manager/addWeekDataPage1'} style={{textDecoration: 'None', color:'white'}}>Add Week Data</Link> */}
                     Add Week Data
                   </Button>
+                  : ""
+                  }
+                  
                 </Navbar.Brand>
 
                 <Navbar.Brand className="text-light">
                   <Button style={{backgroundColor:"#AE445A", marginBottom:'3px'}} size="lg" className="ms-2">
-                    <Link to={'/manager/projectWeeklyStatus'} style={{textDecoration: 'None', color:'white'}}>Weekly Status</Link>
+                    <Link to={`/manager/projectWeeklyStatus/${id}/`} style={{textDecoration: 'None', color:'white'}}>Weekly Status</Link>
                   </Button>
                 </Navbar.Brand>
               </Navbar.Collapse>

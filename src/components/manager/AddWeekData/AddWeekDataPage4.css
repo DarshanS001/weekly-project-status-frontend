@@ -1,7 +1,6 @@
 .Heading{
     width: 80%;
     height: 40%;
-    
     border: 2px solid rgb(173, 170, 170);
     /* padding: 0.5%; */
     margin-top: 2%;
@@ -13,7 +12,6 @@
 }
 
 
-
 .MainContainer{
     width: 80%;
     height: 70%;
@@ -21,4 +19,24 @@
     padding: 2%;
     background-color: rgb(245, 232, 216);
     border-radius: 0px 0px 20px 20px;
+    text-align: left;
+}
+
+.AddWeekForm1{
+  width: 100%;
+  /* width: 170vh; */
+  height: 100%;
+  /* margin-top: 2%;  */
+  padding: 3%;
+  margin-left: 0px;
+  /* border: 2px solid rgb(173, 170, 170); */
+  background-color: #E4F1FF ;
+  border-radius: 15px;
+}
+
+.formMainData{
+    display: flex;
+}
+.formPart2{
+    margin-left: 5%;
 }
