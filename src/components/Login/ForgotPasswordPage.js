@@ -9,6 +9,7 @@ import "./ForgotPasswordPage.css";
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState("");
 
+  
   function validateForm() {
     return email.length > 0 ;
   }

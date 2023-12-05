@@ -40,7 +40,7 @@ const Router = () => {
 
             <Route path='/LoginPage' element={<LoginPage/>}/>
             <Route path='/forgotpasswordpage' element={<ForgotPasswordPage/>}/>
-            <Route path='/resetpassword' element={<ResetPassword/>}/>
+            <Route path='/resetpassword/:uid/:token/' element={<ResetPassword/>}/>
             
             <Route path='/manager/home' element={<Home/>}/>
             <Route path='/manager/addProjectPage' element={<AddProject/>}/>

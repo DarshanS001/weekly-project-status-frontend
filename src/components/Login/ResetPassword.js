@@ -4,10 +4,14 @@ import Button from "react-bootstrap/Button";
 import axios from 'axios';
 import Container from "react-bootstrap/Container";
 import "./ResetPassword.css";
+import { useParams } from "react-router-dom";
 
 const ResetPassword = () => {
   const [password1,setPassword] = useState("");
   const [password2,setPassword1] = useState("");
+  const {uid, token} = useParams();
+  console.log("uid", uid);
+  console.log("token", token);
 
   
 
@@ -21,18 +25,26 @@ const ResetPassword = () => {
     console.log('password:',password2)
   }
   axios({
-    baseURL: 'http://127.0.0.1:8000/api/user/reset-password/<uid>/<token>/',
+    baseURL: `http://127.0.0.1:8000/api/user/reset-password/${uid}/${token}/`,
     method: "POST",
     data: {
-      password1:password1,
+      password:password1,
       password2:password2
     },
   })
+  .then((res) => {
+    if (res.status === 200) {
+      console.log("result.data:",res.data);
+      // alert("Success")
+      window.location.href = "/";
+    }
+  })
+  .catch((error) => {
+    console.log("ERROR", error);
+  });
     
     
-    .catch((error) => {
-      console.log("ERROR", error);
-    });
+    
 
   return (
     <div className="Reset">
