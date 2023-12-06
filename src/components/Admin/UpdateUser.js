@@ -73,8 +73,8 @@ const getNewUserData = (event) => {
    console.error("Error occured in Update User",error);
  })
  alert("User details updated successfully");
- 
-//  navigate("/adminPage");
+ navigate(-1);
+
 }
 
 
@@ -150,7 +150,7 @@ const getNewUserData = (event) => {
             <button onClick={onHandleUpdate} type="submit" className="btn " style={{fontWeight:'bold',borderRadius:'10px',borderRadius:'5px',color:'white',backgroundColor: 'hsl(244, 77%, 14%)'}}>
               Update User
             </button>
-            <Link className="btn btn-outline-danger mx-2" to="/">
+            <Link className="btn btn-outline-danger mx-2" onClick={()=>{navigate(-1)}}>
               Cancel
             </Link>
           </form>

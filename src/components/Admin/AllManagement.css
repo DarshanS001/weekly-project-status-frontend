@@ -1,4 +1,4 @@
-.ManagerHeading{
+.ManagementHeading{
     width: 80%;
     height: 20%;
     margin-top: 2%;
@@ -6,8 +6,9 @@
 }
 
 
-.ManagerMainContainer{
+.ManagementMainContainer{
     width: 80%;
     height: 70%;
     padding: 2%;
 }
+

@@ -86,7 +86,7 @@ console.log("User Details:-", userDetails.user_type);
               <Navbar.Collapse className="justify-content-end">
                 <Navbar.Brand className="text-light">
                   {
-                    userDetails.user_type === "Project_manager" ?
+                    userDetails.user_type === "Project Manager" ?
                     <Button 
                   style={{backgroundColor:"#AE445A", marginBottom:'3px'}} 
                   size="lg" 

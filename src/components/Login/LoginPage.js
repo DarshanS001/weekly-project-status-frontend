@@ -31,7 +31,7 @@ const LoginPage = () => {
         if (res.status === 200) {
           console.log("result.data:",res.data);
           localStorage.setItem("user-token", res.data.token["access"]);
-          window.location.href = "/manager/home";
+          window.location.href = "/WeeklyStatusReport";
         }
       })
       .catch((error) => {
