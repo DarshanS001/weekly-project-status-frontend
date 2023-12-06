@@ -53,7 +53,7 @@ console.log('projectReportList:-', projectReportList)
             <Navbar.Brand>
               <Heading Heading="Project Weekly Status" />
             </Navbar.Brand>
-            <Navbar.Toggle aria-controls="navbarScroll" />
+           
 
             <Navbar.Brand className="text-light">
                   <Button style={{backgroundColor:"#AE445A", marginBottom:'3px'}} size="lg" className="ms-2">

@@ -40,14 +40,29 @@ const RegisterPage = () => {
 
           console.log('Registration data Array:',userRegistration);
             // Api Calling
-          try{
-            console.log("API Call");
-            // await axios.post('http://127.0.0.1:8000/api/projectplan/projects/',userRegistration)
-            alert("Registration Successfull")
-          }catch(error){
-            console.log('error:', error);
-            console.log("error occur in data post");
-          }
+            axios({
+              baseURL: 'http://127.0.0.1:8000/api/user/register/',
+              method: "POST",
+              data: {
+                user_email: user_email,
+                user_name: user_name,
+                user_type: user_type,
+                // designation: designation,
+                password: password,
+                password2: password2,
+              },
+            })
+              .then((res) => {
+                if (res.status === 201) {
+                  console.log("result.data:",res.data);
+                  alert("Registration Successful !!");
+                  navigate(-1);
+                }
+              })
+              .catch((error) => {
+                console.log("ERROR", error);
+                alert("Error Orrured In Registration");
+              });
 
     }
 
@@ -89,16 +104,29 @@ const RegisterPage = () => {
 
             <Form.Group size="lg" controlId="userType">
               <Form.Label className="mt-3">User Type</Form.Label>
-              <Form.Control
+              {/* <Form.Control
                 autoFocus
                 type="select"
                 name="user_type"
                 value={user_type}
                 onChange={(e) => onInputChange(e)}
-              />
+              /> */}
+
+              <Form.Select aria-label="Default select example"
+                  name="user_type"
+                  value={user_type}
+                  onChange={(e) => onInputChange(e)}
+                  >
+                    {/* <option selected disabled>Select</option> */}
+                    <option value="Admin">Admin</option>
+                    <option value="Project Manager">Project Manager</option>
+                    <option value="Management">Management</option>
+                  </Form.Select>
             </Form.Group>
 
-            <Form.Group size="lg" controlId="designation">
+            
+
+            {/* <Form.Group size="lg" controlId="designation">
               <Form.Label className="mt-3">Designation</Form.Label>
               <Form.Control
                 autoFocus
@@ -107,7 +135,7 @@ const RegisterPage = () => {
                 value={designation}
                 onChange={(e) => onInputChange(e)}
               />
-            </Form.Group>
+            </Form.Group> */}
 
             <Form.Group size="lg" controlId="password">
               <Form.Label className="mt-3">Password</Form.Label>

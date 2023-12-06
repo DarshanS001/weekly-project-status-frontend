@@ -178,7 +178,7 @@ function Sidebar() {
               </Nav.Link>
               <Nav.Link
                 className="text-white fs-5 fw-bold sidebarcontent"
-                href="#"
+                href="/manager/settings"
               >
                 <img
                   src={profileIcon}
@@ -186,17 +186,6 @@ function Sidebar() {
                   style={{ height: "55px", width: "65px", marginRight: "0px" }}
                 />
                 Settings
-              </Nav.Link>
-              <Nav.Link
-                className="text-white fs-5 fw-bold sidebarcontent"
-                href="#"
-              >
-                <img
-                  src={settingIcon}
-                  alt="projectIcon - image"
-                  style={{ height: "55px", width: "65px", marginRight: "0px" }}
-                />
-                Logout
               </Nav.Link>
             </Nav>
           </Offcanvas.Body>
@@ -253,7 +242,7 @@ function Sidebar() {
               </Nav.Link>
               <Nav.Link
                 className="text-white fs-5 fw-bold sidebarcontent"
-                href="#"
+                href="/manager/settings"
               >
                 <img
                   src={profileIcon}
@@ -261,17 +250,6 @@ function Sidebar() {
                   style={{ height: "55px", width: "65px", marginRight: "0px" }}
                 />
                 Settings
-              </Nav.Link>
-              <Nav.Link
-                className="text-white fs-5 fw-bold sidebarcontent"
-                href="#"
-              >
-                <img
-                  src={settingIcon}
-                  alt="projectIcon - image"
-                  style={{ height: "55px", width: "65px", marginRight: "0px" }}
-                />
-                Logout
               </Nav.Link>
             </Nav>
           </Offcanvas.Body>
