@@ -7,7 +7,6 @@ import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
 // import { ExportCSV } from './ExportCSV';
 // import AdminHeader from './AdminHeader';
-
 export default function AllManagement() {
 
   // const [manager,setManager] = useState([])
@@ -77,3 +76,4 @@ export default function AllManagement() {
     </div>
   )
 }
+ 
