@@ -12,7 +12,7 @@ import UpdateUser from './components/Admin/UpdateUser';
 import AllManagers from './components/Admin/AllManagers';
 import AllManagement from './components/Admin/AllManagement';
 import ManagerProfile from './components/manager/ManagerProfile';
-import AllProjectOfParticularManager from './components/manager/AllProjectOfParticularManager';
+
 import AddWeekDataPage1 from './components/manager/AddWeekData/AddWeekDataPage1';
 import AddWeekDataPage2 from './components/manager/AddWeekData/AddWeekDataPage2';
 import AddWeekDataPage3 from './components/manager/AddWeekData/AddWeekDataPage3';
@@ -24,7 +24,7 @@ import WeeklyReports from './components/manager/WeeklyReports';
 import ForgotPasswordPage from './components/Login/ForgotPasswordPage';
 import ResetPassword from './components/Login/ResetPassword';
 
-
+import AdminProfile from './components/Admin/AdminProfile';
 
 const Router = () => {
   return (
@@ -39,8 +39,11 @@ const Router = () => {
             <Route path='/admin/managers/' element={<AllManagers/>}/>
             <Route path='/admin/managemnet/' element={<AllManagement/>}/>
 
+           
             <Route path='/admin/updateUser/:id' element={<UpdateUser/>}/>
+            <Route path='/admin/adminProfile' element={<AdminProfile/>}/>
             <Route path='/admin/adminList/' element={<AdminList/>}/>
+
 
             <Route path='/LoginPage' element={<LoginPage/>}/>
             <Route path='/forgotPasswordPage' element={<ForgotPasswordPage/>}/>
@@ -51,7 +54,8 @@ const Router = () => {
            
             <Route path='/manager/addProjectPage' element={<AddProject/>}/>
             <Route path='/manager/managerProfile' element={<ManagerProfile/>}/>
-            <Route path='/manager/managerProfile/allProjectsOfParticularManager/' element={<AllProjectOfParticularManager/>}/>
+            
+            
             <Route path='/manager/allProjectWeeklyReports/' element={<WeeklyReports/>}/>
             <Route path='/manager/projectWeeklyReportOverview/:id' element={<ProjectWeeklyReportOverview/>}/>
             <Route path='/manager/settings' element={<Settings/>}/>

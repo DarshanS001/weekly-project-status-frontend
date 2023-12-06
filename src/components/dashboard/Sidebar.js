@@ -3,8 +3,10 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import "./Sidebar.css";
 
 import projectIcon from "../../images/projectIcon.png";
+import AddUserIcon from "../../images/AddUserIcon.PNG";
 import reportsIcon from "../../images/reportsIcon.png";
 import userIcon from "../../images/userIcon.png";
+import logoutIcon from '../../images/logoutIcon.png';
 import profileIcon from "../../images/profileIcon.png";
 import settingIcon from "../../images/settingIcon.png";
 import newsidebaricon from "../../images/newsidebaricon.png";
@@ -145,12 +147,12 @@ function Sidebar() {
             <Nav className="justify-content-end flex-grow-1 pe-3">
               <Nav.Link
                 className="text-white fs-5 fw-bold sidebarcontent"
-                href="#"
+                href='/Register'
               >
                 <img
-                  src={projectIcon}
+                  src={AddUserIcon}
                   alt="projectIcon - image"
-                  style={{ height: "55px", width: "65px", marginRight: "0px" }}
+                  style={{ height: "45px", width: "55px", marginRight: "0px" }}
                 />
                 Add User
               </Nav.Link>
@@ -159,7 +161,7 @@ function Sidebar() {
                 href="#"
               >
                 <img
-                  src={reportsIcon}
+                  src={userIcon}
                   alt="projectIcon - image"
                   style={{ height: "55px", width: "65px", marginRight: "0px" }}
                 />
@@ -167,10 +169,10 @@ function Sidebar() {
               </Nav.Link>
               <Nav.Link
                 className="text-white fs-5 fw-bold sidebarcontent"
-                href="#action2"
+                href="admin/adminProfile"
               >
                 <img
-                  src={userIcon}
+                  src={profileIcon}
                   alt="projectIcon - image"
                   style={{ height: "55px", width: "65px", marginRight: "0px" }}
                 />
@@ -181,23 +183,13 @@ function Sidebar() {
                 href="#"
               >
                 <img
-                  src={profileIcon}
+                  src={settingIcon}
                   alt="projectIcon - image"
                   style={{ height: "55px", width: "65px", marginRight: "0px" }}
                 />
                 Settings
               </Nav.Link>
-              <Nav.Link
-                className="text-white fs-5 fw-bold sidebarcontent"
-                href="#"
-              >
-                <img
-                  src={settingIcon}
-                  alt="projectIcon - image"
-                  style={{ height: "55px", width: "65px", marginRight: "0px" }}
-                />
-                Logout
-              </Nav.Link>
+              
             </Nav>
           </Offcanvas.Body>
         </Offcanvas>
@@ -234,7 +226,7 @@ function Sidebar() {
                 href="#"
               >
                 <img
-                  src={reportsIcon}
+                  src={userIcon}
                   alt="projectIcon - image"
                   style={{ height: "55px", width: "65px", marginRight: "0px" }}
                 />
@@ -245,7 +237,7 @@ function Sidebar() {
                 href="#action2"
               >
                 <img
-                  src={userIcon}
+                  src={profileIcon}
                   alt="projectIcon - image"
                   style={{ height: "55px", width: "65px", marginRight: "0px" }}
                 />
@@ -256,23 +248,13 @@ function Sidebar() {
                 href="#"
               >
                 <img
-                  src={profileIcon}
+                  src={settingIcon}
                   alt="projectIcon - image"
                   style={{ height: "55px", width: "65px", marginRight: "0px" }}
                 />
                 Settings
               </Nav.Link>
-              <Nav.Link
-                className="text-white fs-5 fw-bold sidebarcontent"
-                href="#"
-              >
-                <img
-                  src={settingIcon}
-                  alt="projectIcon - image"
-                  style={{ height: "55px", width: "65px", marginRight: "0px" }}
-                />
-                Logout
-              </Nav.Link>
+              
             </Nav>
           </Offcanvas.Body>
         </Offcanvas>

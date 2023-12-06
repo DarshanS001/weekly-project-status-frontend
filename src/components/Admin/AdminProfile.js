@@ -1,5 +1,5 @@
 import React from 'react'
-import './ManagerProfile.css'
+import './AdminProfile.css'
 import mbggg from '../../images/mbggg.png';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -14,7 +14,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 //import usernameicon from '../../images/usernameicon.png';
 
-const ManagerProfile = () => {
+const AdminProfile = () => {
 
   const [userDetails, setUserDetails] = useState([]);
 
@@ -48,7 +48,7 @@ const ManagerProfile = () => {
     return(
       <Container>
       <Row className="justify-content-md-center mainContainer mx-auto"  >
-          <Col lg="4" style={{marginBottom:'20px'}}>
+          <Col lg="4" style={{marginBottom:'10px'}}>
   
           <div className='profile-background'>
                 <img src={mbggg} alt='profile-imgg' className='profile-img'></img>
@@ -61,7 +61,7 @@ const ManagerProfile = () => {
           </Col>
   
   
-          <Col md={5} style={{marginBottom:'20px'}}>
+          <Col md={5} style={{marginBottom:'10px'}}>
              
           <div className='info-container'>
                     
@@ -74,7 +74,7 @@ const ManagerProfile = () => {
                       <p ><img src={irmicon} alt='contact icon' className='icons' /> Reporting Manager: </p>
                       
                       <div className='underline'></div>
-                      <Link to={'/manager/allProjectsOfParticularManager/'} ><img src={projectsButton} alt='project button' className='project-img' /></Link>
+                      
                     </div>
               </div>
   
@@ -89,4 +89,4 @@ const ManagerProfile = () => {
   
 }
 
-export default ManagerProfile
+export default AdminProfile
