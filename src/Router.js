@@ -51,6 +51,7 @@ const Router = () => {
             <Route path='/' element={<LoginPage/>}/>
             <Route path='/forgotPasswordPage' element={<ForgotPasswordPage/>}/>
             <Route path='/resetpassword' element={<ResetPassword/>}/>
+            <Route path='/resetpassword/:uid/:token/' element={<ResetPassword/>}/>
             <Route path="*" element={<PageNotFound/>}/>
             </Routes>
             :
@@ -62,7 +63,7 @@ const Router = () => {
             
             <Route path='/WeeklyStatusReport' element={<WelcomeApplication/>}/>
             <Route path='/forgotPasswordPage' element={<ForgotPasswordPage/>}/>
-            <Route path='/resetpassword/:uid/:token/' element={<ResetPassword/>}/>
+            
             <Route path='/admin/updateUser/:id' element={<UpdateUser/>}/>
 
             
