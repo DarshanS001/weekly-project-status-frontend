@@ -6,7 +6,7 @@ import RegisterPage from './components/Login/RegisterPage';
 import AddProject from './components/manager/AddProject';
 import ProjectDetails from './components/manager/ProjectDetails';
 import WeeklyStatus from './components/manager/WeeklyStatus';
-import AdminDashboard from './components/Admin/AdminDashboard';
+
 import AdminList from './components/Admin/AdminList';
 import UpdateUser from './components/Admin/UpdateUser';
 import AllManagers from './components/Admin/AllManagers';
@@ -25,6 +25,9 @@ import ForgotPasswordPage from './components/Login/ForgotPasswordPage';
 import ResetPassword from './components/Login/ResetPassword';
 
 import AdminProfile from './components/Admin/AdminProfile';
+import AllAdmin from './components/Admin/AllAdmin';
+import User from './components/Admin/User';
+import ManagementProfile from './components/management/ManagementProfile';
 
 const Router = () => {
   return (
@@ -35,11 +38,10 @@ const Router = () => {
             <Route path='/LoginPage' element={<LoginPage/>}/>
             
             {/*---------------------- Admin's Routing-----------------------------*/}
-            <Route path='/AdminPage' element={<AdminDashboard/>}/>
+            <Route path='/AdminPage' element={<User/>}/>
             <Route path='/admin/managers/' element={<AllManagers/>}/>
-            <Route path='/admin/managemnet/' element={<AllManagement/>}/>
-
-           
+            <Route path='/admin/management/' element={<AllManagement/>}/>
+   
             <Route path='/admin/updateUser/:id' element={<UpdateUser/>}/>
             <Route path='/admin/adminProfile' element={<AdminProfile/>}/>
             <Route path='/admin/adminList/' element={<AdminList/>}/>
@@ -66,6 +68,10 @@ const Router = () => {
             <Route path='/manager/addWeekDataPage2' element={<AddWeekDataPage2/>}/>
             <Route path='/manager/addWeekDataPage3' element={<AddWeekDataPage3/>}/>
             <Route path='/manager/addWeekDataPage4' element={<AddWeekDataPage4/>}/>
+
+           {/*---------------------- Management's Routing-----------------------------*/}
+           <Route path='/management/managementProfile' element={<ManagementProfile/>}/>
+
             
         </Routes>
     </div>

@@ -15,7 +15,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
+
+import { useRef } from "react";
+
 const ProjectWeeklyReportOverview = () => {
+
+  
   // To get Id from project weekly report list page....
   const { id } = useParams();
   console.log("id of project weekly report in overview:-", id);
@@ -221,6 +226,8 @@ const ProjectWeeklyReportOverview = () => {
   console.log("Weekly Project Report ID", weeklyProjectReport.project);
   console.log("Project Details Data", projectDetails);
   console.log("Task Todo Data", taskTodo);
+
+
 
   return (
     <div className="ParentContainer">
@@ -926,6 +933,7 @@ const ProjectWeeklyReportOverview = () => {
               </tr>
             </tbody>
           </Table>
+          
         </Container>
       </Container>
     </div>

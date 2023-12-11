@@ -48,7 +48,7 @@ const AdminProfile = () => {
     return(
       <Container>
       <Row className="justify-content-md-center mainContainer mx-auto"  >
-          <Col lg="4" style={{marginBottom:'10px'}}>
+          <Col lg="4" style={{marginBottom:'20px',marginLeft:'-20%'}}>
   
           <div className='profile-background'>
                 <img src={mbggg} alt='profile-imgg' className='profile-img'></img>
@@ -61,7 +61,7 @@ const AdminProfile = () => {
           </Col>
   
   
-          <Col md={5} style={{marginBottom:'10px'}}>
+          <Col md={5} style={{marginBottom:'20px'}} className='justify-content-end'>
              
           <div className='info-container'>
                     
@@ -69,7 +69,7 @@ const AdminProfile = () => {
                     <div className='underline'></div>
                     <div className='info-content'>
                       <p ><img src={emailicon} alt='email icon' style={{ height: '2.0em'}}  className='icons' /> Email : {userDetails.user_email}</p>
-                      <p><img src={contacticon} alt='contact icon' className='icons' /> Phone : </p>
+                      <p><img src={contacticon} alt='contact icon' className='icons' /> Phone : 9756094522</p>
                       <p ><img src={usernameicon} alt='contact icon' className='icons' /> Username : {userDetails.user_email}</p>
                       <p ><img src={irmicon} alt='contact icon' className='icons' /> Reporting Manager: </p>
                       

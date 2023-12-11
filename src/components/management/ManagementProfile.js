@@ -1,5 +1,5 @@
 import React from 'react'
-import './ManagerProfile.css'
+import './ManagementProfile.css'
 import mbggg from '../../images/mbggg.png';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -11,15 +11,15 @@ import usernameicon from '../../images/usernameicon.png';
 import irmicon from '../../images/irmicon.png';
 import projectsButton from '../../images/projectsButton.png';
 import { Link } from 'react-router-dom';
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect , useRef} from "react";
 import axios from "axios";
 
 //import usernameicon from '../../images/usernameicon.png';
 
-const ManagerProfile = () => {
+const ManagementProfile = () => {
 
-  
   const [userDetails, setUserDetails] = useState([]);
+  
   
    // Code to get the authorize user token from local storage
    console.log(localStorage.getItem("user-token"));
@@ -49,14 +49,10 @@ const ManagerProfile = () => {
    console.log("User Details:-", userDetails);
 
    
-   
-
-
-
 
     return(
       <Container>
-      <Row className="justify-content-md-center mainContainer mx-auto" >
+      <Row className="justify-content-md-center mainContainer mx-auto"  >
           <Col lg="4" style={{marginBottom:'20px',marginLeft:'-20%'}}>
   
           <div className='profile-background'>
@@ -75,6 +71,7 @@ const ManagerProfile = () => {
           <div className='info-container'>
                     
                     <h3 className='info-heading'>Information</h3>
+                    
                     <div className='underline'></div>
                     <div className='info-content'>
                       <p ><img src={emailicon} alt='email icon' style={{ height: '2.0em'}}  className='icons' /> Email : {userDetails.user_email}</p>
@@ -93,11 +90,10 @@ const ManagerProfile = () => {
           
           
         </Row>
-
-       
+         
     </Container>
    )
   
 }
 
-export default ManagerProfile
+export default ManagementProfile

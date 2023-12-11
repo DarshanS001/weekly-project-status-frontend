@@ -5,7 +5,6 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import { faL } from '@fortawesome/free-solid-svg-icons';
-import ErrorModal from '../dashboard/ErrorModal';
 
 const Settings = () => {
 
