@@ -31,18 +31,35 @@ import ManagementProfile from './components/Management/ManagementProfile';
 import UserProfile from './components/Admin/UserProfile';
 import PageNotFound from './components/PageNotFound';
 
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const Router = () => {
+  const [userDetails, setUserDetails] = useState([]);
+
+  // Code to get the authorize user token from local storage
+  console.log(localStorage.getItem("user-token"));
+  const token = localStorage.getItem("user-token");
+
   return (
     <div>
-        <Routes>
+        
+          {
+            !token 
+            ?
+            <Routes>
             <Route path='/' element={<LoginPage/>}/>
-            <Route path='/Register' element={<RegisterPage/>}/>
+            <Route path='/forgotPasswordPage' element={<ForgotPasswordPage/>}/>
+            <Route path='/resetpassword' element={<ResetPassword/>}/>
+            <Route path="*" element={<PageNotFound/>}/>
+            </Routes>
+            :
+            <Routes>
+               <Route path='/Register' element={<RegisterPage/>}/>
             
             {/*---------------------- Admin's Routing-----------------------------*/}
 
-            <Route path='/forgotPasswordPage' element={<ForgotPasswordPage/>}/>
-            <Route path='/resetpassword' element={<ResetPassword/>}/>
+            
             <Route path='/WeeklyStatusReport' element={<WelcomeApplication/>}/>
             <Route path='/forgotPasswordPage' element={<ForgotPasswordPage/>}/>
             <Route path='/resetpassword/:uid/:token/' element={<ResetPassword/>}/>
@@ -79,7 +96,11 @@ const Router = () => {
             <Route path='/management/managementProfile' element={<ManagementProfile/>}/>
 
             <Route path="*" element={<PageNotFound/>}/>
-        </Routes>
+          </Routes>
+
+          }
+           
+           
     </div>
   )
 }
