@@ -5,10 +5,19 @@ import Container from "react-bootstrap/Container";
 import axios from 'axios';
 import "./LoginPage.css";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { FaEye } from "react-icons/fa";
+import InputGroup from 'react-bootstrap/InputGroup';
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [togglePassword, setTogglePassword] = useState(false);
+
+  const togglePass = () => {
+    setTogglePassword(!togglePassword);
+  }
 
   function validateForm() {
     return email.length > 0 && password.length > 0;
@@ -31,12 +40,18 @@ const LoginPage = () => {
         if (res.status === 200) {
           console.log("result.data:",res.data);
           localStorage.setItem("user-token", res.data.token["access"]);
-          window.location.href = "/manager/home";
+          window.location.href = "/WeeklyStatusReport";
         }
       })
       .catch((error) => {
         console.log("ERROR", error);
-        alert("Error!! Please provide valid credentials");
+        // alert("Error!! Please provide valid credentials");
+        const showToastLoginErrorMessage = () => {
+          toast.error("Error!! Please provide valid credentials", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        };
+        showToastLoginErrorMessage();
       });
   }
 
@@ -59,14 +74,28 @@ const LoginPage = () => {
               />
             </Form.Group>
 
+      
             <Form.Group size="lg" controlId="password">
               <Form.Label className="mt-3">Password</Form.Label>
 
-              <Form.Control
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
+              <InputGroup className="mb-3">
+           {togglePassword ? 
+                  <Form.Control
+                  type="text"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                :
+                <Form.Control
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)} 
+                />
+                }
+              
+              <InputGroup.Text id="basic-addon2"><FaEye onClick={togglePass} style={{ fontSize: "20px", color:'black' }} /></InputGroup.Text>
+              </InputGroup>
+              
             </Form.Group>
             
             <div className="d-grid gap-1 mt-4">
@@ -85,7 +114,9 @@ const LoginPage = () => {
       </Container>
         <Container className="forgotPassword">
               <Link to={"/forgotPasswordPage"} className="me-3">Forgot Password?</Link>
-          </Container>
+        </Container>
+
+        <ToastContainer />
     </div>
   );
 };

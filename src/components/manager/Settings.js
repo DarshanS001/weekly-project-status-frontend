@@ -17,8 +17,8 @@ const Settings = () => {
     let navigate = useNavigate();
   
     function validateForm() {
-        return newPassword===confirmNewPassword;
-      }
+        return newPassword === confirmNewPassword
+    }
 
     const onCurrentPasswordChangeHandler=(e)=>{
         setCurrentPassword(e.target.value);
@@ -35,10 +35,52 @@ const Settings = () => {
         console.log(e.target.value);
     }
 
+    // Code to get the authorize user token from local storage
+  console.log(localStorage.getItem("user-token"));
+  const token = localStorage.getItem("user-token");
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
-     console.log('project data Array:');
+     console.log('currentPassword:', currentPassword);
+     console.log('newPassword:', newPassword);
+     console.log('confirmNewPassword:', confirmNewPassword);
 
+     // Form Validation
+    if(currentPassword.length === 0){
+      alert("Please enter current password")
+    }else if(newPassword.length === 0){
+      alert("Please enter new password")
+    }else if( newPassword !== confirmNewPassword){
+      alert("Please enter same password")
+    }else{
+
+       // Api Calling
+       axios({
+        baseURL: 'http://127.0.0.1:8000/api/user/changepassword/',
+        method: "POST",
+        data: {
+          old_password: currentPassword,
+          password: newPassword,
+          password2: confirmNewPassword,
+        },
+        headers: { Authorization: `Bearer ${token}` },
+      })
+        .then((res) => {
+          if (res.status === 201) {
+            console.log("result.data:",res.data);
+            alert("Password Changed Successfully !!");
+            navigate(-1);
+          }
+        })
+        .catch((error) => {
+          console.log("ERROR", error);
+          alert("Error Orrured In Password Change");
+        });
+
+    }
   };
 
   return (
@@ -100,7 +142,7 @@ const Settings = () => {
             
               Change Password
             </Button>
-            <Link className="btn btn-outline-danger mx-2" to="/AdminHome">
+            <Link className="btn btn-outline-danger mx-2" onClick={()=>navigate(-1)}>
               Cancel
             </Link>
           </form>

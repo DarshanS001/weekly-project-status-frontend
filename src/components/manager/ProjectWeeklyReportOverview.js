@@ -14,13 +14,16 @@ import Navbar from "react-bootstrap/Navbar";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useReactToPrint } from "react-to-print";
+
+import { useRef } from "react";
 
 
 import { useRef } from "react";
 
 const ProjectWeeklyReportOverview = () => {
 
-  
+  const conponentPDF= useRef();
   // To get Id from project weekly report list page....
   const { id } = useParams();
   console.log("id of project weekly report in overview:-", id);
@@ -227,12 +230,19 @@ const ProjectWeeklyReportOverview = () => {
   console.log("Project Details Data", projectDetails);
   console.log("Task Todo Data", taskTodo);
 
-
+// -----------------------------Downloading pdf----------------------------------------------------
+  const generatePDF= useReactToPrint({
+    content: ()=>conponentPDF.current,
+    documentTitle:"Userdata",
+    onAfterPrint:()=>alert("Data saved in PDF")
+   
+});
 
   return (
-    <div className="ParentContainer">
+    <div className="ParentContainer" >
+      
+      <Container ref={conponentPDF} fluid>
       <h2 className="pb-3">Project Report Overview</h2>
-      <Container fluid>
         {/* Overall phases and status  */}
         <Row>
           <Col>
@@ -936,6 +946,7 @@ const ProjectWeeklyReportOverview = () => {
           
         </Container>
       </Container>
+      <Button className="btn btn-success " onClick={ generatePDF}>Download PDF</Button> 
     </div>
   );
 };

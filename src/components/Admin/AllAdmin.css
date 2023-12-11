@@ -1,13 +1,14 @@
-.ManagerHeading{
+.AdminHeading{
     width: 80%;
-    height: 20%;
+    height: 40%;
     margin-top: 2%;
     text-align: center;
 }
 
 
-.ManagerMainContainer{
+.AdminMainContainer{
     width: 80%;
     height: 70%;
     padding: 2%;
 }
+

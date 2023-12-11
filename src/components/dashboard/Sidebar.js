@@ -139,7 +139,13 @@ function Sidebar() {
               className="fs-2 fw-bold"
               style={{ fontFamily: "Apple Chancery" }}
             >
-              Admin Dashboard
+             
+              <Nav.Link
+                className="text-dark fs-12 fw-bold sidebarcontent"
+                href='/AdminPage'
+              >
+                 Admin Dashboard
+              </Nav.Link>
             </Offcanvas.Title>
           </Offcanvas.Header>
 
@@ -147,7 +153,7 @@ function Sidebar() {
             <Nav className="justify-content-end flex-grow-1 pe-3">
               <Nav.Link
                 className="text-white fs-5 fw-bold sidebarcontent"
-                href='/Register'
+                href="#"
               >
                 <img
                   src={AddUserIcon}
@@ -155,71 +161,6 @@ function Sidebar() {
                   style={{ height: "45px", width: "55px", marginRight: "0px" }}
                 />
                 Add User
-              </Nav.Link>
-              <Nav.Link
-                className="text-white fs-5 fw-bold sidebarcontent"
-                href="#"
-              >
-                <img
-                  src={userIcon}
-                  alt="projectIcon - image"
-                  style={{ height: "55px", width: "65px", marginRight: "0px" }}
-                />
-                Users
-              </Nav.Link>
-              <Nav.Link
-                className="text-white fs-5 fw-bold sidebarcontent"
-                href="admin/adminProfile"
-              >
-                <img
-                  src={profileIcon}
-                  alt="projectIcon - image"
-                  style={{ height: "55px", width: "65px", marginRight: "0px" }}
-                />
-                Profile
-              </Nav.Link>
-              <Nav.Link
-                className="text-white fs-5 fw-bold sidebarcontent"
-                href="#"
-              >
-                <img
-                  src={settingIcon}
-                  alt="projectIcon - image"
-                  style={{ height: "55px", width: "65px", marginRight: "0px" }}
-                />
-                Settings
-              </Nav.Link>
-              
-            </Nav>
-          </Offcanvas.Body>
-        </Offcanvas>
-      ) : (
-        " "
-      )}
-
-      {userDetails.user_type === "Management" ? (
-        <Offcanvas show={show} onHide={handleClose}>
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title
-              className="fs-2 fw-bold"
-              style={{ fontFamily: "Apple Chancery" }}
-            >
-              Management Dashboard
-            </Offcanvas.Title>
-          </Offcanvas.Header>
-          
-          <Offcanvas.Body className="toggler">
-            <Nav className="justify-content-end flex-grow-1 pe-3">
-              <Nav.Link
-                className="text-white fs-5 fw-bold sidebarcontent"
-                href="#"
-              >
-                <img
-                  src={projectIcon}
-                  alt="projectIcon - image"
-                  style={{ height: "55px", width: "65px", marginRight: "0px" }}
-                />
-                Projects
               </Nav.Link>
               <Nav.Link
                 className="text-white fs-5 fw-bold sidebarcontent"
@@ -245,7 +186,7 @@ function Sidebar() {
               </Nav.Link>
               <Nav.Link
                 className="text-white fs-5 fw-bold sidebarcontent"
-                href="#"
+                href="/manager/settings"
               >
                 <img
                   src={settingIcon}
@@ -254,7 +195,92 @@ function Sidebar() {
                 />
                 Settings
               </Nav.Link>
-              
+              <Nav.Link
+                className="text-white fs-5 fw-bold sidebarcontent"
+                href="#"
+              >
+                <img
+                  src={settingIcon}
+                  alt="projectIcon - image"
+                  style={{ height: "55px", width: "65px", marginRight: "0px" }}
+                />
+                Logout
+              </Nav.Link>
+            </Nav>
+          </Offcanvas.Body>
+        </Offcanvas>
+      ) : (
+        " "
+      )}
+
+      {userDetails.user_type === "Management" ? (
+        <Offcanvas show={show} onHide={handleClose}>
+          <Offcanvas.Header closeButton>
+            <Offcanvas.Title
+              className="fs-2 fw-bold"
+              style={{ fontFamily: "Apple Chancery" }}
+            >
+              Management Dashboard
+            </Offcanvas.Title>
+          </Offcanvas.Header>
+          
+          <Offcanvas.Body className="toggler">
+            <Nav className="justify-content-end flex-grow-1 pe-3">
+              <Nav.Link
+                className="text-white fs-5 fw-bold sidebarcontent"
+                href="/admin/managers/"
+              >
+                <img
+                  src={projectIcon}
+                  alt="projectIcon - image"
+                  style={{ height: "55px", width: "65px", marginRight: "0px" }}
+                />
+                Project Managers
+              </Nav.Link>
+              <Nav.Link
+                className="text-white fs-5 fw-bold sidebarcontent"
+                href="#"
+              >
+                <img
+                  src={userIcon}
+                  alt="projectIcon - image"
+                  style={{ height: "55px", width: "65px", marginRight: "0px" }}
+                />
+                Users
+              </Nav.Link>
+              <Nav.Link
+                className="text-white fs-5 fw-bold sidebarcontent"
+                href="/management/managementProfile"
+              >
+                <img
+                  src={profileIcon}
+                  alt="projectIcon - image"
+                  style={{ height: "55px", width: "65px", marginRight: "0px" }}
+                />
+                Profile
+              </Nav.Link>
+              <Nav.Link
+                className="text-white fs-5 fw-bold sidebarcontent"
+                href="/manager/settings"
+              >
+                <img
+                  src={settingIcon}
+                  alt="projectIcon - image"
+                  style={{ height: "55px", width: "65px", marginRight: "0px" }}
+                />
+                Settings
+              </Nav.Link>
+              <Nav.Link
+                className="text-white fs-5 fw-bold sidebarcontent"
+                href="#"
+              >
+                <img
+                  src={settingIcon}
+                  alt="projectIcon - image"
+                  style={{ height: "55px", width: "65px", marginRight: "0px" }}
+                />
+                Logout
+              </Nav.Link>
             </Nav>
           </Offcanvas.Body>
         </Offcanvas>

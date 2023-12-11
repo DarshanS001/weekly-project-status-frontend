@@ -70,8 +70,8 @@ const AdminProfile = () => {
                     <div className='info-content'>
                       <p ><img src={emailicon} alt='email icon' style={{ height: '2.0em'}}  className='icons' /> Email : {userDetails.user_email}</p>
                       <p><img src={contacticon} alt='contact icon' className='icons' /> Phone : 9756094522</p>
-                      <p ><img src={usernameicon} alt='contact icon' className='icons' /> Username : {userDetails.user_email}</p>
-                      <p ><img src={irmicon} alt='contact icon' className='icons' /> Reporting Manager: </p>
+                      <p ><img src={usernameicon} alt='contact icon' className='icons' /> Username : {userDetails.user_name}</p>
+                      <p ><img src={irmicon} alt='contact icon' className='icons' /> Reports To: </p>
                       
                       <div className='underline'></div>
                       
