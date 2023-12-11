@@ -55,7 +55,7 @@ function Sidebar() {
         onClick={handleShow}
       />
 
-      {userDetails.user_type === "Project_manager" ? (
+      {userDetails.user_type === "Project Manager" ? (
         <Offcanvas show={show} onHide={handleClose}>
           <Offcanvas.Header closeButton>
             <Offcanvas.Title
