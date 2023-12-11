@@ -27,25 +27,38 @@ import ForgotPasswordPage from './components/Login/ForgotPasswordPage';
 import ResetPassword from './components/Login/ResetPassword';
 
 
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const Router = () => {
+  const [userDetails, setUserDetails] = useState([]);
+
+  // Code to get the authorize user token from local storage
+  console.log(localStorage.getItem("user-token"));
+  const token = localStorage.getItem("user-token");
+
   return (
     <div>
-        <Routes>
+        
+          {
+            !token 
+            ?
+            <Routes>
             <Route path='/' element={<LoginPage/>}/>
-            <Route path='/Register' element={<RegisterPage/>}/>
+            <Route path='/forgotPasswordPage' element={<ForgotPasswordPage/>}/>
+            <Route path='/resetpassword' element={<ResetPassword/>}/>
+            <Route path="*" element={<PageNotFound/>}/>
+            </Routes>
+            :
+            <Routes>
+               <Route path='/Register' element={<RegisterPage/>}/>
             
             {/*---------------------- Admin's Routing-----------------------------*/}
             <Route path='/AdminPage' element={<AdminDashboard/>}/>
             <Route path='/admin/managers/' element={<AllManagers/>}/>
             <Route path='/admin/managemnet/' element={<AllManagement/>}/>
 
-            <Route path='/admin/updateUser/:id' element={<UpdateUser/>}/>
-            <Route path='/admin/adminList/' element={<AdminList/>}/>
-
-            <Route path='/LoginPage' element={<LoginPage/>}/>
-            <Route path='/forgotPasswordPage' element={<ForgotPasswordPage/>}/>
-            <Route path='/resetpassword' element={<ResetPassword/>}/>
+            
             <Route path='/WeeklyStatusReport' element={<WelcomeApplication/>}/>
             <Route path='/forgotPasswordPage' element={<ForgotPasswordPage/>}/>
             <Route path='/resetpassword/:uid/:token/' element={<ResetPassword/>}/>
@@ -77,8 +90,16 @@ const Router = () => {
             <Route path='/manager/addWeekDataPage2' element={<AddWeekDataPage2/>}/>
             <Route path='/manager/addWeekDataPage3' element={<AddWeekDataPage3/>}/>
             <Route path='/manager/addWeekDataPage4' element={<AddWeekDataPage4/>}/>
-            
-        </Routes>
+
+            {/* --------------------------Management---------------------------------- */}
+            <Route path='/management/managementProfile' element={<ManagementProfile/>}/>
+
+            <Route path="*" element={<PageNotFound/>}/>
+          </Routes>
+
+          }
+           
+           
     </div>
   )
 }

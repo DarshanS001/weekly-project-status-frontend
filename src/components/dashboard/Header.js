@@ -32,6 +32,7 @@ export default function Header() {
       localStorage.clear("user-token");
       localStorage.clear("ResetPassword-uid");
       localStorage.clear("ResetPassword-token");
+      window.location.href = "/";
     };
     
     const handleClose = () => {
@@ -58,7 +59,7 @@ export default function Header() {
         location.pathname !== '/Register' && 
         location.pathname !== '/forgotPasswordPage' &&  
         // location.pathname !== '/resetpassword' 
-        !resetPageURL
+        !resetPageURL 
         ? 
         <Link className="ms-3 fs-3 fw-bold text-light" style={{textDecoration: 'none',fontFamily: 'Apple Chancery'}}>Weekly Status Report Application</Link>
         :
@@ -79,7 +80,7 @@ export default function Header() {
           location.pathname !== '/Register' && 
           location.pathname !== '/forgotPasswordPage' &&  
           // location.pathname !== `/resetpassword/${uid}/${token}` 
-          !resetPageURL
+          !resetPageURL 
           ? 
               <img src={logoutIcon} alt='login - image' style={{height:'45px',width:'55px',marginRight:'-70px'}} onClick={handleShow}/>
             
@@ -91,7 +92,7 @@ export default function Header() {
           location.pathname !== '/Register' && 
           location.pathname !== '/forgotPasswordPage' && 
           // location.pathname !== '/resetpassword' 
-          !resetPageURL
+          !resetPageURL  
           ? 
                 <Modal
                 show={show}
