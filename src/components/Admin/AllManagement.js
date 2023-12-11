@@ -7,6 +7,7 @@ import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
 import Navbar from "react-bootstrap/Navbar";
 import Heading from "../Heading";
+import { FaEye } from "react-icons/fa";
 // import { ExportCSV } from './ExportCSV';
 // import AdminHeader from './AdminHeader';
 export default function AllManagement() {
@@ -74,6 +75,7 @@ export default function AllManagement() {
               <th style={{ outline: '', color: 'white' }} scope="col">Email</th>
               <th style={{ outline: '', color: 'white' }} scope="col">Phone</th>
               <th style={{ outline: '', color: 'white' }} scope="col">Designation</th>
+              <th style={{ outline: '', color: 'white' }} scope="col">User Type</th>
               <th style={{ outline: '', color: 'white' }} scope="col">Actions</th>
             </tr>
           </thead>
@@ -85,11 +87,12 @@ export default function AllManagement() {
                   <td>{s.user_name}</td>
                   <td>{s.user_email}</td>
                   <td>{s.phone}</td>
+                  <td>{s.designation}</td>
                   <td>{s.user_type}</td>
                   <td>
                     <Link to={`/admin/updateUser/${s.id}`}><img src='https://img.icons8.com/?size=2x&id=12082&format=png' alt='editimg' style={{ height: '25px', width: '25px', marginLeft: '30px', marginRight: '20px' }} /></Link>
                     {/* <button  onMouseOver={()=>setId(s.id)} onClick={() => deleteManager()}><img src='https://img.icons8.com/?size=2x&id=102350&format=png' alt='deleteimg' style={{height:'25px',width:'25px'}}/></button> */}
-                    <img src='https://img.icons8.com/?size=2x&id=102350&format=png' alt='deleteimg' style={{ height: '25px', width: '25px' }} />
+                    <Link to={`/admin/UserProfile/${s.id}`}><FaEye style={{ fontSize: "20px", color:'black' }} /></Link> 
                   </td>
                 </tr>
               ))}

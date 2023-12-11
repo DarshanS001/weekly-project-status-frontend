@@ -7,6 +7,7 @@ import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
 import Navbar from "react-bootstrap/Navbar";
 import Heading from "../Heading";
+import { FaEye } from "react-icons/fa";
 // import { ExportCSV } from './ExportCSV';
 // import AdminHeader from './AdminHeader';
 export default function AllAdmin() {
@@ -53,7 +54,7 @@ export default function AllAdmin() {
               <Navbar.Collapse className="justify-content-end">
                 <Navbar.Brand className="text-light">
                   <Button style={{backgroundColor:"#AE445A"}} size="lg" className="my-3">
-                  <Link to={'/admin/addAdmin'} style={{textDecoration: 'None', color:'white'}}>Add Admin</Link>
+                  <Link to={'/Register/'} style={{textDecoration: 'None', color:'white'}}>Add User</Link>
                   </Button>
                 </Navbar.Brand>
               </Navbar.Collapse>
@@ -74,6 +75,7 @@ export default function AllAdmin() {
             <th style={{ outline: '', color: 'white' }} scope="col">Email</th>
             <th style={{ outline: '', color: 'white' }} scope="col">Phone</th>
             <th style={{ outline: '', color: 'white' }} scope="col">Designation</th>
+            <th style={{ outline: '', color: 'white' }} scope="col">User Type</th>
             <th style={{ outline: '', color: 'white' }} scope="col">Actions</th>
           </tr>
         </thead>
@@ -85,11 +87,12 @@ export default function AllAdmin() {
                 <td>{s.user_name}</td>
                 <td>{s.user_email}</td>
                 <td>{s.phone}</td>
+                <td>{s.designation}</td>
                 <td>{s.user_type}</td>
                 <td>
  
                   <Link to={`/admin/updateUser/${s.id}`}><img src='https://img.icons8.com/?size=2x&id=12082&format=png' alt='editimg' style={{ height: '25px', width: '25px', marginLeft: '30px', marginRight: '20px' }} /></Link>
-                  
+                  <Link to={`/admin/UserProfile/${s.id}`}><FaEye style={{ fontSize: "20px", color:'black' }} /></Link> 
                 </td>
               </tr>
             ))}

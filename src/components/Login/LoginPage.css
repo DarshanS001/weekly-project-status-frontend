@@ -42,4 +42,8 @@
   text-align: right;
 }
 
+.PasswordDiv{
+  display: flex;
+}
+
 

@@ -10,7 +10,6 @@ import ProjectDetails from './components/manager/ProjectDetails';
 import WeeklyStatus from './components/manager/WeeklyStatus';
 import AllManagers from './components/Admin/AllManagers';
 import AllManagement from './components/Admin/AllManagement';
-import ManagerProfile from './components/manager/ManagerProfile';
 import AllProjectOfParticularManager from './components/manager/AllProjectOfParticularManager';
 import AddWeekDataPage1 from './components/manager/AddWeekData/AddWeekDataPage1';
 import AddWeekDataPage2 from './components/manager/AddWeekData/AddWeekDataPage2';
@@ -26,6 +25,12 @@ import User from './components/Admin/User';
 import AllAdmin from './components/Admin/AllAdmin';
 import AddAdmin from './components/Admin/AddAdmin';
 import UpdateUser from './components/Admin/UpdateUser';
+import ManagerProfile from './components/manager/ManagerProfile';
+import AdminProfile from './components/Admin/AdminProfile';
+import ManagementProfile from './components/Management/ManagementProfile';
+import UserProfile from './components/Admin/UserProfile';
+import PageNotFound from './components/PageNotFound';
+
 
 const Router = () => {
   return (
@@ -33,18 +38,14 @@ const Router = () => {
         <Routes>
             <Route path='/' element={<LoginPage/>}/>
             <Route path='/Register' element={<RegisterPage/>}/>
-            <Route path='/LoginPage' element={<LoginPage/>}/>
             
             {/*---------------------- Admin's Routing-----------------------------*/}
 
-            
-
-            <Route path='/LoginPage' element={<LoginPage/>}/>
             <Route path='/forgotPasswordPage' element={<ForgotPasswordPage/>}/>
             <Route path='/resetpassword' element={<ResetPassword/>}/>
             <Route path='/WeeklyStatusReport' element={<WelcomeApplication/>}/>
             <Route path='/forgotPasswordPage' element={<ForgotPasswordPage/>}/>
-            <Route path='/resetpassword' element={<ResetPassword/>}/>
+            <Route path='/resetpassword/:uid/:token/' element={<ResetPassword/>}/>
             <Route path='/admin/updateUser/:id' element={<UpdateUser/>}/>
 
             
@@ -54,8 +55,8 @@ const Router = () => {
             <Route path='/admin/management/' element={<AllManagement/>}/>
             <Route path='/admin/addAdmin' element={<AddAdmin/>}/>
             <Route path='/admin/management/addManagement' element={<AddManagement/>}/>
-            
-            
+            <Route path='/admin/profile' element={<AdminProfile/>}/>
+            <Route path='/admin/UserProfile/:id' element={<UserProfile/>}/>
 
             
             {/*---------------------- Managers's Routing-----------------------------*/}
@@ -73,6 +74,11 @@ const Router = () => {
             <Route path='/manager/addWeekDataPage2' element={<AddWeekDataPage2/>}/>
             <Route path='/manager/addWeekDataPage3' element={<AddWeekDataPage3/>}/>
             <Route path='/manager/addWeekDataPage4' element={<AddWeekDataPage4/>}/>
+
+            {/* --------------------------Management---------------------------------- */}
+            <Route path='/management/managementProfile' element={<ManagementProfile/>}/>
+
+            <Route path="*" element={<PageNotFound/>}/>
         </Routes>
     </div>
   )

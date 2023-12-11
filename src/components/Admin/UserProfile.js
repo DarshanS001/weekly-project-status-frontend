@@ -1,5 +1,5 @@
 import React from 'react'
-import './ManagerProfile.css'
+import './UserProfile.css'
 import mbggg from '../../images/mbggg.png';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -11,11 +11,16 @@ import irmicon from '../../images/irmicon.png';
 import projectsButton from '../../images/projectsButton.png';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 //import usernameicon from '../../images/usernameicon.png';
 
-const ManagerProfile = () => {
+const UserProfile = () => {
 
+  // To get Id....
+  const { id } = useParams();
+  console.log("id:",id);
+  
   const [userDetails, setUserDetails] = useState([]);
 
    // Code to get the authorize user token from local storage
@@ -30,7 +35,7 @@ const ManagerProfile = () => {
      async function getUserData() {
        try {
          const userData = await axios.get(
-           "http://127.0.0.1:8000/api/user/profile/",
+           `http://127.0.0.1:8000/api/user/profileid/${id}/`,
            config
          );
          console.log("Get User Data", userData.data);
@@ -74,7 +79,7 @@ const ManagerProfile = () => {
                       <p ><img src={irmicon} alt='contact icon' className='icons' /> Reports To: </p>
                       
                       <div className='underline'></div>
-                      <Link to={'/manager/home'} ><img src={projectsButton} alt='project button' className='project-img' /></Link>
+                      
                     </div>
               </div>
   
@@ -89,4 +94,4 @@ const ManagerProfile = () => {
   
 }
 
-export default ManagerProfile
+export default UserProfile

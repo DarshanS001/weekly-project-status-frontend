@@ -56,11 +56,11 @@ console.log('projectList:-', projectList)
               {projectList.length ? 
               <Heading Heading={`${projectList[0].manager_name}'s Project List`} />
               :
-              ""
+              <Heading Heading={`Manager's Project List`} />
               }
               
             </Navbar.Brand>
-            <Navbar.Toggle aria-controls="navbarScroll" />
+            
           </Container>
         </Navbar>
       </Container>

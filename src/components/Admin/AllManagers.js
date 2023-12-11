@@ -15,6 +15,7 @@ export default function AllManagers() {
   // const [admin,setAdmin] = useState([])
   const [id, setId] = useState("");
   const [managerList, setManagerList] = useState([]);
+  const [userDetails, setUserDetails] = useState([]);
 
   // Code to get the authorize user token from local storage
   console.log(localStorage.getItem("user-token"))
@@ -38,6 +39,30 @@ export default function AllManagers() {
     getManagerList();
 
   }, []);
+
+
+
+  // Code to get User Data from API call
+  useEffect(() => {
+    async function getUserData() {
+      try {
+        const userData = await axios.get(
+          "http://127.0.0.1:8000/api/user/profile/",
+          config
+        );
+        console.log("Get User Data", userData.data);
+        setUserDetails(userData.data);
+      } catch (error) {
+        console.log("Data fetching Error Occured in User Data");
+      }
+    }
+
+    getUserData();
+  }, []);
+
+  console.log("User Details:-", userDetails.user_type);
+
+
   return (
 
     <div >
@@ -47,14 +72,26 @@ export default function AllManagers() {
             <Navbar.Brand>
               <Heading Heading="Project Managers" />
             </Navbar.Brand>
+            {userDetails.user_type === "Admin" 
+                    ? 
             <Navbar.Toggle aria-controls="navbarScroll" />
+            : ""
+            }
             <Navbar.Collapse id="naFaSistrixvbarScroll">
              
               <Navbar.Collapse className="justify-content-end">
                 <Navbar.Brand className="text-light">
-                  <Button style={{backgroundColor:"#AE445A"}} size="lg" className="my-3">
-                  <Link to={'/Register/'} style={{textDecoration: 'None', color:'white'}}>Add User</Link>
-                  </Button>
+                  
+                    {userDetails.user_type === "Admin" 
+                    ? 
+                    <Button style={{backgroundColor:"#AE445A"}} size="lg" className="my-3">
+                    <Link to={'/Register/'} style={{textDecoration: 'None', color:'white'}}>Add User</Link>
+                    </Button>
+                    : 
+                    ""
+                  }
+                  
+                 
                 </Navbar.Brand>
               </Navbar.Collapse>
             </Navbar.Collapse>
@@ -74,6 +111,7 @@ export default function AllManagers() {
             <th style={{ outline: '', color: 'white' }} scope="col">Email</th>
             <th style={{ outline: '', color: 'white' }} scope="col">Phone</th>
             <th style={{ outline: '', color: 'white' }} scope="col">Designation</th>
+            <th style={{ outline: '', color: 'white' }} scope="col">User Type</th>
             <th style={{ outline: '', color: 'white' }} scope="col">Actions</th>
           </tr>
         </thead>
@@ -85,9 +123,15 @@ export default function AllManagers() {
                 <td>{s.user_name}</td>
                 <td>{s.user_email}</td>
                 <td>{s.phone}</td>
+                <td>{s.designation}</td>
                 <td>{s.user_type}</td>
                 <td>
-                  <Link to={`/admin/updateUser/${s.id}`}><img src='https://img.icons8.com/?size=2x&id=12082&format=png' alt='editimg' style={{ height: '25px', width: '25px', marginLeft: '30px', marginRight: '20px' }} /></Link>
+                  {
+                    userDetails.user_type === "Admin" ?
+                    <Link to={`/admin/updateUser/${s.id}`}><img src='https://img.icons8.com/?size=2x&id=12082&format=png' alt='editimg' style={{ height: '25px', width: '25px', marginLeft: '30px', marginRight: '20px' }} /></Link>
+                    : ""
+                  }
+                  
                   <Link to={`/manager/managerProfile/allProjectsOfParticularManager/${s.id}`}><FaEye style={{ fontSize: "20px", color:'black' }} /></Link> 
                 </td>
               </tr>

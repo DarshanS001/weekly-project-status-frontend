@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import axios from 'axios';
 import Container from "react-bootstrap/Container";
 import "./ForgotPasswordPage.css";
 
@@ -8,6 +9,7 @@ import "./ForgotPasswordPage.css";
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState("");
 
+  
   function validateForm() {
     return email.length > 0 ;
   }
@@ -16,9 +18,21 @@ const ForgotPasswordPage = () => {
     event.preventDefault();
     console.log('email:', email);
 
-  }
-  const msg=()=>{
-    alert("password reset email sent! kindly check your email.")
+    axios({
+      baseURL: 'http://127.0.0.1:8000/api/user/send-reset-password-email/',
+      method: "POST",
+      data: {
+        email: email,
+      },
+    }).then((res) => {
+      if (res.status === 200) {
+        console.log("result.data:",res.data);
+        alert("password reset email sent! kindly check your email.");
+      }
+    }).catch((error) => {
+        console.log("ERROR", error);
+      });
+
   }
 
   return (
@@ -46,7 +60,7 @@ const ForgotPasswordPage = () => {
                     type="submit"
                     className="mb-3"
                     disabled={!validateForm()}
-                    onClick={msg}>
+                    >
                   Send Link
             </Button>
           </div>

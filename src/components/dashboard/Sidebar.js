@@ -137,7 +137,13 @@ function Sidebar() {
               className="fs-2 fw-bold"
               style={{ fontFamily: "Apple Chancery" }}
             >
-              Admin Dashboard
+             
+              <Nav.Link
+                className="text-dark fs-12 fw-bold sidebarcontent"
+                href='/AdminPage'
+              >
+                 Admin Dashboard
+              </Nav.Link>
             </Offcanvas.Title>
           </Offcanvas.Header>
 
@@ -145,7 +151,7 @@ function Sidebar() {
             <Nav className="justify-content-end flex-grow-1 pe-3">
               <Nav.Link
                 className="text-white fs-5 fw-bold sidebarcontent"
-                href="#"
+                href='/Register/'
               >
                 <img
                   src={projectIcon}
@@ -167,7 +173,7 @@ function Sidebar() {
               </Nav.Link>
               <Nav.Link
                 className="text-white fs-5 fw-bold sidebarcontent"
-                href="#action2"
+                href="/admin/profile"
               >
                 <img
                   src={userIcon}
@@ -209,14 +215,14 @@ function Sidebar() {
             <Nav className="justify-content-end flex-grow-1 pe-3">
               <Nav.Link
                 className="text-white fs-5 fw-bold sidebarcontent"
-                href="#"
+                href="/admin/managers/"
               >
                 <img
                   src={projectIcon}
                   alt="projectIcon - image"
                   style={{ height: "55px", width: "65px", marginRight: "0px" }}
                 />
-                Projects
+                Project Managers
               </Nav.Link>
               <Nav.Link
                 className="text-white fs-5 fw-bold sidebarcontent"
@@ -231,7 +237,7 @@ function Sidebar() {
               </Nav.Link>
               <Nav.Link
                 className="text-white fs-5 fw-bold sidebarcontent"
-                href="#action2"
+                href="/management/managementProfile"
               >
                 <img
                   src={userIcon}

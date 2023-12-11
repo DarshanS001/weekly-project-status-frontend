@@ -1,0 +1,64 @@
+.mainContainer{
+    border-radius: 20px;
+    width: 60%;
+    
+    box-shadow: 10px 10px 10px 10px #888888;
+}
+
+.profile-background{
+    margin-top: 8%;
+    margin-left: 0%;
+    width: 100%;
+    border-radius:15px;
+    background-color:orange;
+    height:95%;
+    box-shadow: 3px  #888888;
+}
+
+.profile-img{
+    height:145px;
+    width:155px;
+    margin-top:35%;
+}
+
+.profile-imgInfo{
+    color: white;
+    margin-top: 8%;
+    font-family: Apple Chancery;
+    font-weight: bold
+}
+
+.info-container{
+    background-color: white;
+    border-radius: 15px;
+    height:90%;
+}
+
+.info-heading{
+    margin-top:  10%;
+    font-family:'Apple Chancery';
+    font-weight:bold;
+}
+
+.info-content{
+    margin-top: 35px ;
+    text-align:left;
+     padding-left:2.5%;
+}
+
+.icons{
+    height: 2.5em;
+    width: 2.5em;
+}
+
+.project-img{
+    height: 6em;
+     width: 13em;
+     margin-right: 0.6em;
+     margin-top: 2%;
+}
+
+.underline{
+    height: 3px;
+    background-color: gray;
+}

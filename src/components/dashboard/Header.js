@@ -11,20 +11,27 @@ import logoutIcon from '../../images/logoutIcon.png';
 import RegisterNowButton from '../../images/RegisterNowButton.webp';
 import './Header.css';
 import Sidebar from './Sidebar';
-import { useLocation } from "react-router-dom"
+import { useLocation, useMatch } from "react-router-dom"
+
 
 export default function Header() {
   const [show, setShow] = useState(false);
+  const location = useLocation();
+  const resetPageURL = useMatch("/resetpassword/:uid/:token/");
+  console.log("location",location.pathname)
+
+  // Code to get the Reset Password uid & token from local storage
+  console.log(localStorage.getItem("ResetPassword-uid"));
+  console.log(localStorage.getItem("ResetPassword-token"));
+  const uid = localStorage.getItem("ResetPassword-uid");
+  const token = localStorage.getItem("ResetPassword-token");
 
   const handleShow = () => setShow(true);
-    const location = useLocation();
-    console.log("location",location.pathname)
-
-    const token = localStorage.getItem("user-token");
-    console.log("token in Header Page",token);
-
-    const handleLogout = () => {
-      localStorage.clear();
+    
+  const handleLogout = () => {
+      localStorage.clear("user-token");
+      localStorage.clear("ResetPassword-uid");
+      localStorage.clear("ResetPassword-token");
     };
     
     const handleClose = () => {
@@ -41,15 +48,19 @@ export default function Header() {
         {location.pathname !== '/' && 
         location.pathname !== '/Register' && 
         location.pathname !== '/forgotPasswordPage' && 
-        location.pathname !== '/resetpassword' ? <Sidebar/>: "" }
+        // location.pathname !== `/resetpassword/${uid}/${token}` 
+        !resetPageURL
+        ? <Sidebar/> : "" }
 
         <img src={ylogo} alt='logoimgage' style={{height:'50px',width:'120px',marginLeft:'20px'}}/>
 
         {location.pathname !== '/' && 
         location.pathname !== '/Register' && 
         location.pathname !== '/forgotPasswordPage' &&  
-        location.pathname !== '/resetpassword' ? 
-        <Link to={'/manager/home'} className="ms-3 fs-3 fw-bold text-light" style={{textDecoration: 'none',fontFamily: 'Apple Chancery'}}>Weekly Status Report Application</Link>
+        // location.pathname !== '/resetpassword' 
+        !resetPageURL
+        ? 
+        <Link className="ms-3 fs-3 fw-bold text-light" style={{textDecoration: 'none',fontFamily: 'Apple Chancery'}}>Weekly Status Report Application</Link>
         :
         <Link className="ms-3 fs-3 fw-bold text-light" style={{textDecoration: 'none',fontFamily: 'Apple Chancery'}}>Weekly Status Report Application</Link>
         }
@@ -67,10 +78,11 @@ export default function Header() {
           {location.pathname !== '/' && 
           location.pathname !== '/Register' && 
           location.pathname !== '/forgotPasswordPage' &&  
-          location.pathname !== '/resetpassword' ? 
-            <Button style={{textDecoration: 'none',backgroundColor:'hsl(244, 77%, 14%)',borderColor:'hsl(244, 77%, 14%)'}} onClick={handleShow}>
-              <img src={logoutIcon} alt='login - image' style={{height:'45px',width:'55px',marginRight:'-70px'}}/>
-            </Button>
+          // location.pathname !== `/resetpassword/${uid}/${token}` 
+          !resetPageURL
+          ? 
+              <img src={logoutIcon} alt='login - image' style={{height:'45px',width:'55px',marginRight:'-70px'}} onClick={handleShow}/>
+            
             :
             " "
           }
@@ -78,7 +90,9 @@ export default function Header() {
           {location.pathname !== '/' && 
           location.pathname !== '/Register' && 
           location.pathname !== '/forgotPasswordPage' && 
-          location.pathname !== '/resetpassword' ? 
+          // location.pathname !== '/resetpassword' 
+          !resetPageURL
+          ? 
                 <Modal
                 show={show}
                 onHide={handleClose}
@@ -99,7 +113,7 @@ export default function Header() {
                 </Modal.Footer>
                 </Modal>
 
-                :""}
+                : ""}
           
           </Navbar.Brand>
         </Navbar.Collapse>
