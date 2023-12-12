@@ -39,7 +39,7 @@ const WelcomeApplication = () => {
   return (
     <div>
         {
-           userDetails.user_type === "Project_manager" &&
+           userDetails.user_type === "Project Manager" &&
            <Home/>
         }
 
