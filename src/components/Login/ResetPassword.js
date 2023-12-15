@@ -18,8 +18,6 @@ const ResetPassword = () => {
   const { uid, token } = useParams();
   console.log("uid", uid);
   console.log("token", token);
-  localStorage.setItem("ResetPassword-uid", uid);
-  localStorage.setItem("ResetPassword-token", token);
 
 
   const togglePass1 = () => {

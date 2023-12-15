@@ -535,8 +535,8 @@ const AddWeekDataPage3 = () => {
                         title="Choose your color"
                         disabled
                         size="sm"
-                        style={{backgroundColor:x.RiskStatus==="R" ? "#c21a08": 
-                        x.RiskStatus==="A" ? "#FF5733": "#2dad42", width:80}}/></td>
+                        style={{backgroundColor:x.RiskStatus==="R" ? "#ed5247": 
+                        x.RiskStatus==="A" ? "#f7c95e": "#53cf7a", width:80}}/></td>
 
                                 <td>
                                 <Button variant="light" 
@@ -617,8 +617,8 @@ const AddWeekDataPage3 = () => {
                         title="Choose your color"
                         disabled
                         size="sm"
-                        style={{backgroundColor:x.IssueStatus==="R" ? "#c21a08": 
-                        x.IssueStatus==="A" ? "#FF5733": "#2dad42", width:80}}/></td>
+                        style={{backgroundColor:x.IssueStatus==="R" ? "#ed5247": 
+                        x.IssueStatus==="A" ? "#f7c95e": "#53cf7a", width:80}}/></td>
                                 
                                 <td>
                                 <Button variant="light" 
@@ -696,8 +696,8 @@ const AddWeekDataPage3 = () => {
                         title="Choose your color"
                         disabled
                         size="sm"
-                        style={{backgroundColor:x.DependencyStatus==="R" ? "#c21a08": 
-                        x.DependencyStatus==="A" ? "#FF5733": "#2dad42", width:80}}/></td>
+                        style={{backgroundColor:x.DependencyStatus==="R" ? "#ed5247": 
+                        x.DependencyStatus==="A" ? "#f7c95e": "#53cf7a", width:80}}/></td>
 
                                 <td>
                                   <Button variant="light" 
@@ -814,13 +814,13 @@ const AddWeekDataPage3 = () => {
                           value={RiskStatus} 
                           onChange={(e)=>onRiskChange(e)} 
                           aria-label="Default select example"
-                          style={{backgroundColor:RiskStatus==="R" ? "#c21a08": RiskStatus==="A" ? 
-                          "#FF5733": "#2dad42", color:"white"}}
+                          style={{backgroundColor:RiskStatus==="R" ? "#ed5247": RiskStatus==="A" ? 
+                          "#f7c95e": "#53cf7a", color:"white"}}
                           >
                             
-                            <option value="R" style={{backgroundColor:"#f56153", color:"white"}}>Red</option>
-                            <option value="A" style={{backgroundColor:"#FF5733", color:"white"}}>Amber</option>
-                            <option value="G" style={{backgroundColor:"#2dad42", color:"white"}}>Green</option>
+                            <option value="R" style={{backgroundColor:"#ed5247", color:"white"}}>Red</option>
+                            <option value="A" style={{backgroundColor:"#f7c95e", color:"white"}}>Amber</option>
+                            <option value="G" style={{backgroundColor:"#53cf7a", color:"white"}}>Green</option>
                           </Form.Select>
                         </Form.Group>
       </Modal.Body>
@@ -912,13 +912,13 @@ const AddWeekDataPage3 = () => {
                           value={IssueStatus} 
                           onChange={(e)=>onIssueChange(e)} 
                           aria-label="Default select example"
-                          style={{backgroundColor:IssueStatus==="R" ? "#c21a08": IssueStatus==="A" ? 
-                          "#FF5733": "#2dad42", color:"white"}}
+                          style={{backgroundColor:IssueStatus==="R" ? "#ed5247": IssueStatus==="A" ? 
+                          "#f7c95e": "#53cf7a", color:"white"}}
                           >
                             
-                            <option value="R" style={{backgroundColor:"#f56153", color:"white"}}>Red</option>
-                            <option value="A" style={{backgroundColor:"#FF5733", color:"white"}}>Amber</option>
-                            <option value="G" style={{backgroundColor:"#2dad42", color:"white"}}>Green</option>
+                            <option value="R" style={{backgroundColor:"#ed5247", color:"white"}}>Red</option>
+                            <option value="A" style={{backgroundColor:"#f7c95e", color:"white"}}>Amber</option>
+                            <option value="G" style={{backgroundColor:"#53cf7a", color:"white"}}>Green</option>
                           </Form.Select>
                         </Form.Group>
 
@@ -991,13 +991,13 @@ const AddWeekDataPage3 = () => {
                           value={DependencyStatus} 
                           onChange={(e)=>onDependencyChange(e)} 
                           aria-label="Default select example"
-                          style={{backgroundColor: DependencyStatus==="R" ? "#c21a08": DependencyStatus==="A" ? 
-                          "#FF5733": "#2dad42", color:"white"}}
+                          style={{backgroundColor: DependencyStatus==="R" ? "#ed5247": DependencyStatus==="A" ? 
+                          "#f7c95e": "#53cf7a", color:"white"}}
                           >
 
-                            <option value="R" style={{backgroundColor:"#f56153", color:"white"}}>Red</option>
-                            <option value="A" style={{backgroundColor:"#FF5733", color:"white"}}>Amber</option>
-                            <option value="G" style={{backgroundColor:"#2dad42", color:"white"}}>Green</option>
+                            <option value="R" style={{backgroundColor:"#ed5247", color:"white"}}>Red</option>
+                            <option value="A" style={{backgroundColor:"#f7c95e", color:"white"}}>Amber</option>
+                            <option value="G" style={{backgroundColor:"#53cf7a", color:"white"}}>Green</option>
                           </Form.Select>
                         </Form.Group>
 

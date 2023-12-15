@@ -177,13 +177,13 @@ const AddWeekDataPage1 = () => {
                   value={Prepare}
                   onChange={(e)=>onInputChange(e)}
 
-                  style={{backgroundColor:Prepare==="R" ? "#c21a08": Prepare==="A" ? 
-                          "#FF5733": "#2dad42", color:"white"}}
+                  style={{backgroundColor:Prepare==="R" ? "#ed5247": Prepare==="A" ? 
+                          "#f7c95e": "#53cf7a", color:"white"}}
                   >
                     {/* <option selected disabled>Select</option> */}
-                    <option value="R" style={{backgroundColor:"#c21a08", color:"white"}}>Red</option>
-                    <option value="A" style={{backgroundColor:"#FF5733", color:"white"}}>Amber</option>
-                    <option value="G" style={{backgroundColor:"#2dad42", color:"white"}}>Green</option>
+                    <option value="R" style={{backgroundColor:"#ed5247", color:"white"}}>Red</option>
+                    <option value="A" style={{backgroundColor:"#f7c95e", color:"white"}}>Amber</option>
+                    <option value="G" style={{backgroundColor:"#53cf7a", color:"white"}}>Green</option>
                   </Form.Select>
                 </Form.Group>
 
@@ -194,13 +194,13 @@ const AddWeekDataPage1 = () => {
                   name="Explore"
                   value={Explore}
                   onChange={(e)=>onInputChange(e)}
-                  style={{backgroundColor:Explore==="R" ? "#c21a08": Explore==="A" ? 
-                          "#FF5733": "#2dad42", color:"white"}}
+                  style={{backgroundColor:Explore==="R" ? "#ed5247": Explore==="A" ? 
+                          "#f7c95e": "#53cf7a", color:"white"}}
                   >
                     {/* <option selected disabled>Select</option> */}
-                    <option value="R" style={{backgroundColor:"#c21a08", color:"white"}}>Red</option>
-                    <option value="A" style={{backgroundColor:"#FF5733", color:"white"}}>Amber</option>
-                    <option value="G" style={{backgroundColor:"#2dad42", color:"white"}}>Green</option>
+                    <option value="R" style={{backgroundColor:"#ed5247", color:"white"}}>Red</option>
+                    <option value="A" style={{backgroundColor:"#f7c95e", color:"white"}}>Amber</option>
+                    <option value="G" style={{backgroundColor:"#53cf7a", color:"white"}}>Green</option>
                   </Form.Select>
                 </Form.Group>
 
@@ -211,13 +211,13 @@ const AddWeekDataPage1 = () => {
                   name="Realize"
                   value={Realize}
                   onChange={(e)=>onInputChange(e)}
-                  style={{backgroundColor:Realize==="R" ? "#c21a08": Realize==="A" ? 
-                          "#FF5733": "#2dad42", color:"white"}}
+                  style={{backgroundColor:Realize==="R" ? "#ed5247": Realize==="A" ? 
+                          "#f7c95e": "#53cf7a", color:"white"}}
                   >
                     {/* <option selected disabled>Select</option> */}
-                    <option value="R" style={{backgroundColor:"#c21a08", color:"white"}}>Red</option>
-                    <option value="A" style={{backgroundColor:"#FF5733", color:"white"}}>Amber</option>
-                    <option value="G" style={{backgroundColor:"#2dad42", color:"white"}}>Green</option>
+                    <option value="R" style={{backgroundColor:"#ed5247", color:"white"}}>Red</option>
+                    <option value="A" style={{backgroundColor:"#f7c95e", color:"white"}}>Amber</option>
+                    <option value="G" style={{backgroundColor:"#53cf7a", color:"white"}}>Green</option>
                   </Form.Select>
                 </Form.Group>
 
@@ -228,13 +228,13 @@ const AddWeekDataPage1 = () => {
                   name="Deploy"
                   value={Deploy}
                   onChange={(e)=>onInputChange(e)}
-                  style={{backgroundColor:Deploy==="R" ? "#c21a08": Deploy==="A" ? 
-                          "#FF5733": "#2dad42", color:"white"}}
+                  style={{backgroundColor:Deploy==="R" ? "#ed5247": Deploy==="A" ? 
+                          "#f7c95e": "#53cf7a", color:"white"}}
                   >
                     {/* <option selected disabled>Select</option> */}
-                    <option value="R" style={{backgroundColor:"#c21a08", color:"white"}}>Red</option>
-                    <option value="A" style={{backgroundColor:"#FF5733", color:"white"}}>Amber</option>
-                    <option value="G" style={{backgroundColor:"#2dad42", color:"white"}}>Green</option>
+                    <option value="R" style={{backgroundColor:"#ed5247", color:"white"}}>Red</option>
+                    <option value="A" style={{backgroundColor:"#f7c95e", color:"white"}}>Amber</option>
+                    <option value="G" style={{backgroundColor:"#53cf7a", color:"white"}}>Green</option>
                   </Form.Select>
                 </Form.Group>
 
@@ -245,13 +245,13 @@ const AddWeekDataPage1 = () => {
                   name="Run"
                   value={Run}
                   onChange={(e)=>onInputChange(e)}
-                  style={{backgroundColor:Run==="R" ? "#c21a08": Run==="A" ? 
-                          "#FF5733": "#2dad42", color:"white"}}
+                  style={{backgroundColor:Run==="R" ? "#ed5247": Run==="A" ? 
+                          "#f7c95e": "#53cf7a", color:"white"}}
                   >
                     {/* <option selected disabled>Select</option> */}
-                    <option value="R" style={{backgroundColor:"#c21a08", color:"white"}}>Red</option>
-                    <option value="A" style={{backgroundColor:"#FF5733", color:"white"}}>Amber</option>
-                    <option value="G" style={{backgroundColor:"#2dad42", color:"white"}}>Green</option>
+                    <option value="R" style={{backgroundColor:"#ed5247", color:"white"}}>Red</option>
+                    <option value="A" style={{backgroundColor:"#f7c95e", color:"white"}}>Amber</option>
+                    <option value="G" style={{backgroundColor:"#53cf7a", color:"white"}}>Green</option>
                   </Form.Select>
                 </Form.Group>
 
@@ -263,13 +263,13 @@ const AddWeekDataPage1 = () => {
                   name="OverAllHealth"
                   value={OverAllHealth}
                   onChange={(e)=>onInputChange(e)}
-                  style={{backgroundColor:OverAllHealth==="R" ? "#c21a08": OverAllHealth==="A" ? 
-                          "#FF5733": "#2dad42", color:"white"}}
+                  style={{backgroundColor:OverAllHealth==="R" ? "#ed5247": OverAllHealth==="A" ? 
+                          "#f7c95e": "#53cf7a", color:"white"}}
                   >
                     {/* <option selected disabled>Select</option> */}
-                    <option value="R" style={{backgroundColor:"#c21a08", color:"white"}}>Red</option>
-                    <option value="A" style={{backgroundColor:"#FF5733", color:"white"}}>Amber</option>
-                    <option value="G" style={{backgroundColor:"#2dad42", color:"white"}}>Green</option>
+                    <option value="R" style={{backgroundColor:"#ed5247", color:"white"}}>Red</option>
+                    <option value="A" style={{backgroundColor:"#f7c95e", color:"white"}}>Amber</option>
+                    <option value="G" style={{backgroundColor:"#53cf7a", color:"white"}}>Green</option>
                   </Form.Select>
                 </Form.Group>
               </Container>
@@ -301,13 +301,13 @@ const AddWeekDataPage1 = () => {
                   name="Overall_Last_Week"
                   value={Overall_Last_Week}
                   onChange={(e)=>onInputChange(e)}
-                  style={{backgroundColor:Overall_Last_Week==="R" ? "#c21a08": Overall_Last_Week==="A" ? 
-                          "#FF5733": "#2dad42", color:"white"}}
+                  style={{backgroundColor:Overall_Last_Week==="R" ? "#ed5247": Overall_Last_Week==="A" ? 
+                          "#f7c95e": "#53cf7a", color:"white"}}
                   >
                     {/* <option selected disabled>Select</option> */}
-                    <option value="R" style={{backgroundColor:"#c21a08", color:"white"}}>Red</option>
-                    <option value="A" style={{backgroundColor:"#FF5733", color:"white"}}>Amber</option>
-                    <option value="G" style={{backgroundColor:"#2dad42", color:"white"}}>Green</option>
+                    <option value="R" style={{backgroundColor:"#ed5247", color:"white"}}>Red</option>
+                    <option value="A" style={{backgroundColor:"#f7c95e", color:"white"}}>Amber</option>
+                    <option value="G" style={{backgroundColor:"#53cf7a", color:"white"}}>Green</option>
                   </Form.Select>
                 </Form.Group>
 
@@ -318,13 +318,13 @@ const AddWeekDataPage1 = () => {
                   name="Overall_This_Week"
                   value={Overall_This_Week}
                   onChange={(e)=>onInputChange(e)}
-                  style={{backgroundColor:Overall_This_Week==="R" ? "#c21a08": Overall_This_Week==="A" ? 
-                          "#FF5733": "#2dad42", color:"white"}}
+                  style={{backgroundColor:Overall_This_Week==="R" ? "#ed5247": Overall_This_Week==="A" ? 
+                          "#f7c95e": "#53cf7a", color:"white"}}
                   >
                     {/* <option selected disabled>Select</option> */}
-                    <option value="R" style={{backgroundColor:"#c21a08", color:"white"}}>Red</option>
-                    <option value="A" style={{backgroundColor:"#FF5733", color:"white"}}>Amber</option>
-                    <option value="G" style={{backgroundColor:"#2dad42", color:"white"}}>Green</option>
+                    <option value="R" style={{backgroundColor:"#ed5247", color:"white"}}>Red</option>
+                    <option value="A" style={{backgroundColor:"#f7c95e", color:"white"}}>Amber</option>
+                    <option value="G" style={{backgroundColor:"#53cf7a", color:"white"}}>Green</option>
                   </Form.Select>
                 </Form.Group>
 
@@ -335,13 +335,13 @@ const AddWeekDataPage1 = () => {
                   name="Scope"
                   value={Scope}
                   onChange={(e)=>onInputChange(e)}
-                  style={{backgroundColor:Scope==="R" ? "#c21a08": Scope==="A" ? 
-                          "#FF5733": "#2dad42", color:"white"}}
+                  style={{backgroundColor:Scope==="R" ? "#ed5247": Scope==="A" ? 
+                          "#f7c95e": "#53cf7a", color:"white"}}
                   >
                     {/* <option selected disabled>Select</option> */}
-                    <option value="R" style={{backgroundColor:"#c21a08", color:"white"}}>Red</option>
-                    <option value="A" style={{backgroundColor:"#FF5733", color:"white"}}>Amber</option>
-                    <option value="G" style={{backgroundColor:"#2dad42", color:"white"}}>Green</option>
+                    <option value="R" style={{backgroundColor:"#ed5247", color:"white"}}>Red</option>
+                    <option value="A" style={{backgroundColor:"#f7c95e", color:"white"}}>Amber</option>
+                    <option value="G" style={{backgroundColor:"#53cf7a", color:"white"}}>Green</option>
                   </Form.Select>
                 </Form.Group>
 
@@ -352,13 +352,13 @@ const AddWeekDataPage1 = () => {
                   name="Schedule"
                   value={Schedule}
                   onChange={(e)=>onInputChange(e)}
-                  style={{backgroundColor:Schedule==="R" ? "#c21a08": Schedule==="A" ? 
-                          "#FF5733": "#2dad42", color:"white"}}
+                  style={{backgroundColor:Schedule==="R" ? "#ed5247": Schedule==="A" ? 
+                          "#f7c95e": "#53cf7a", color:"white"}}
                   >
                     {/* <option selected disabled>Select</option> */}
-                    <option value="R" style={{backgroundColor:"#c21a08", color:"white"}}>Red</option>
-                    <option value="A" style={{backgroundColor:"#FF5733", color:"white"}}>Amber</option>
-                    <option value="G" style={{backgroundColor:"#2dad42", color:"white"}}>Green</option>
+                    <option value="R" style={{backgroundColor:"#ed5247", color:"white"}}>Red</option>
+                    <option value="A" style={{backgroundColor:"#f7c95e", color:"white"}}>Amber</option>
+                    <option value="G" style={{backgroundColor:"#53cf7a", color:"white"}}>Green</option>
                   </Form.Select>
                 </Form.Group>
 
@@ -369,13 +369,13 @@ const AddWeekDataPage1 = () => {
                   name="Cost"
                   value={Cost}
                   onChange={(e)=>onInputChange(e)}
-                  style={{backgroundColor:Cost==="R" ? "#c21a08": Cost==="A" ? 
-                          "#FF5733": "#2dad42", color:"white"}}
+                  style={{backgroundColor:Cost==="R" ? "#ed5247": Cost==="A" ? 
+                          "#f7c95e": "#53cf7a", color:"white"}}
                   >
                     {/* <option selected disabled>Select</option> */}
-                    <option value="R" style={{backgroundColor:"#c21a08", color:"white"}}>Red</option>
-                    <option value="A" style={{backgroundColor:"#FF5733", color:"white"}}>Amber</option>
-                    <option value="G" style={{backgroundColor:"#2dad42", color:"white"}}>Green</option>
+                    <option value="R" style={{backgroundColor:"#ed5247", color:"white"}}>Red</option>
+                    <option value="A" style={{backgroundColor:"#f7c95e", color:"white"}}>Amber</option>
+                    <option value="G" style={{backgroundColor:"#53cf7a", color:"white"}}>Green</option>
                   </Form.Select>
                 </Form.Group>
               </Container>

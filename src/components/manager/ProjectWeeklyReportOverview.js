@@ -231,19 +231,95 @@ const ProjectWeeklyReportOverview = () => {
   const generatePDF= useReactToPrint({
     content: ()=>conponentPDF.current,
     documentTitle:"Userdata",
-    onAfterPrint:()=>alert("Data saved in PDF")
-   
+    onAfterPrint:()=>alert("Data saved in PDF Format")
 });
 
   return (
     <div className="ParentContainer" >
       
-      <Container ref={conponentPDF} fluid>
-      <h2 className="pb-3">Project Report Overview</h2>
+      <Container ref={conponentPDF}>
+      <h1 className="pb-1">Project Report Overview</h1>
+      <hr/>
+      
+      {/* Note  */}
+      <div className="d-flex">
+
+      <div className="NotesData">
+      <h3 className="mt-1"><small>Notes</small></h3>
+      <Container>
+      <Table striped bordered hover responsive>
+      <thead>
+        <tr>
+          <th><small>Colour Code</small></th>
+          <th><small>Description</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+          <Form.Control
+                type="text"
+                id="exampleColorInput"
+                disabled
+                size="sm"
+                style={{
+                backgroundColor:"#ed5247",
+                width: 100,
+                }}/>
+          </td>
+            
+          <td><small>Major problems may affect project success</small></td>
+        </tr>
+
+        <tr>
+          <td>
+          <Form.Control
+                type="text"
+                id="exampleColorInput"
+                disabled
+                size="sm"
+                style={{
+                backgroundColor:"#f7c95e",
+                width: 100,
+                }}/>
+          </td>
+            
+          <td><small>Minor issues in the project that need attention</small></td>
+        </tr>
+
+        <tr>
+          <td>
+          <Form.Control
+                type="text"
+                id="exampleColorInput"
+                disabled
+                size="sm"
+                style={{
+                backgroundColor:"#53cf7a",
+                width: 100,
+                }}/>
+          </td>
+            
+          <td><small>Everything is on track</small></td>
+        </tr>
+        
+        
+      </tbody>
+    </Table>
+      </Container>
+        
+      </div>
+
+      <div className="pdf-button">
+        <Button className="btn btn-success" onClick={generatePDF}>Download PDF</Button> 
+        </div>
+      </div>
+      
+      
         {/* Overall phases and status  */}
         <Row>
           <Col>
-            <Container className="MainContainer3">
+            <Container className="MainContainer3 mt-4">
               <Table responsive>
                 <tbody>
                   <tr>
@@ -265,10 +341,10 @@ const ProjectWeeklyReportOverview = () => {
                                 style={{
                                   backgroundColor:
                                     x.status === "R"
-                                      ? "#c21a08"
+                                      ? "#ed5247"
                                       : x.status === "A"
-                                      ? "#FF5733"
-                                      : "#2dad42",
+                                      ? "#f7c95e"
+                                      : "#53cf7a",
                                   width: 100,
                                 }}
                               />
@@ -294,10 +370,10 @@ const ProjectWeeklyReportOverview = () => {
                           style={{
                             backgroundColor:
                               projectStatusDetails.overall_health === "R"
-                                ? "#c21a08"
+                                ? "#ed5247"
                                 : projectStatusDetails.overall_health === "A"
-                                ? "#FF5733"
-                                : "#2dad42",
+                                ? "#f7c95e"
+                                : "#53cf7a",
                             width: 100,
                           }}
                         />
@@ -362,7 +438,7 @@ const ProjectWeeklyReportOverview = () => {
             </Container>
 
             <Container
-              style={{ height: phaseView.length ? "70%" : "50%" }}
+              // style={{ height: phaseView.length ? "70%" : "50%" }}
               className="MainContainer1"
             >
               <Container>
@@ -398,10 +474,10 @@ const ProjectWeeklyReportOverview = () => {
                                 style={{
                                   backgroundColor:
                                     x.status === "R"
-                                      ? "#c21a08"
+                                      ? "#ed5247"
                                       : x.status === "A"
-                                      ? "#FF5733"
-                                      : "#2dad42",
+                                      ? "#f7c95e"
+                                      : "#53cf7a",
                                   width: 80,
                                 }}
                               />
@@ -468,11 +544,11 @@ const ProjectWeeklyReportOverview = () => {
                             style={{
                               backgroundColor:
                                 projectStatusDetails.overall_last_week === "R"
-                                  ? "#c21a08"
+                                  ? "#ed5247"
                                   : projectStatusDetails.overall_last_week ===
                                     "A"
-                                  ? "#FF5733"
-                                  : "#2dad42",
+                                  ? "#f7c95e"
+                                  : "#53cf7a",
                               width: 80,
                             }}
                           />
@@ -493,11 +569,11 @@ const ProjectWeeklyReportOverview = () => {
                             style={{
                               backgroundColor:
                                 projectStatusDetails.overall_this_week === "R"
-                                  ? "#c21a08"
+                                  ? "#ed5247"
                                   : projectStatusDetails.overall_this_week ===
                                     "A"
-                                  ? "#FF5733"
-                                  : "#2dad42",
+                                  ? "#f7c95e"
+                                  : "#53cf7a",
                               width: 80,
                             }}
                           />
@@ -518,10 +594,10 @@ const ProjectWeeklyReportOverview = () => {
                             style={{
                               backgroundColor:
                                 projectStatusDetails.scope === "R"
-                                  ? "#c21a08"
+                                  ? "#ed5247"
                                   : projectStatusDetails.scope === "A"
-                                  ? "#FF5733"
-                                  : "#2dad42",
+                                  ? "#f7c95e"
+                                  : "#53cf7a",
                               width: 80,
                             }}
                           />
@@ -542,10 +618,10 @@ const ProjectWeeklyReportOverview = () => {
                             style={{
                               backgroundColor:
                                 projectStatusDetails.schedule === "R"
-                                  ? "#c21a08"
+                                  ? "#ed5247"
                                   : projectStatusDetails.schedule === "A"
-                                  ? "#FF5733"
-                                  : "#2dad42",
+                                  ? "#f7c95e"
+                                  : "#53cf7a",
                               width: 80,
                             }}
                           />
@@ -566,10 +642,10 @@ const ProjectWeeklyReportOverview = () => {
                             style={{
                               backgroundColor:
                                 projectStatusDetails.cost === "R"
-                                  ? "#c21a08"
+                                  ? "#ed5247"
                                   : projectStatusDetails.cost === "A"
-                                  ? "#FF5733"
-                                  : "#2dad42",
+                                  ? "#f7c95e"
+                                  : "#53cf7a",
                               width: 80,
                             }}
                           />
@@ -585,14 +661,14 @@ const ProjectWeeklyReportOverview = () => {
           </Col>
         </Row>
 
-        <Container className="Row1">
+        <Container className="Row1 mt-5">
           <Table responsive>
             <tbody>
               <tr style={{ backgroundColor: "rgb(159, 156, 156)" }}>
 
               <td>
                   <Container className="Project-phase2">
-                  <Form.Label className="p-2" style={{ fontWeight: "bold" }}>
+                  <Form.Label className="p-2" style={{ fontWeight: "bold", fontSize: 20 }}>
                       Activities Planned for Next Week
                     </Form.Label>
 
@@ -638,7 +714,7 @@ const ProjectWeeklyReportOverview = () => {
 
                 <td>
                   <Container className="Project-phase2">
-                  <Form.Label className="p-2" style={{ fontWeight: "bold" }}>
+                  <Form.Label className="p-2" style={{ fontWeight: "bold", fontSize: 20 }}>
                       Key Accomplishment
                     </Form.Label>
 
@@ -684,7 +760,7 @@ const ProjectWeeklyReportOverview = () => {
 
                 <td>
                   <Container className="Project-phase1">
-                    <Form.Label className="p-2" style={{ fontWeight: "bold" }}>
+                    <Form.Label className="p-2" style={{ fontWeight: "bold", fontSize: 20 }}>
                       Risk
                     </Form.Label>
 
@@ -725,10 +801,10 @@ const ProjectWeeklyReportOverview = () => {
                                     style={{
                                       backgroundColor:
                                         x.RAGStatus === "R"
-                                          ? "#c21a08"
+                                          ? "#ed5247"
                                           : x.RAGStatus === "A"
-                                          ? "#FF5733"
-                                          : "#2dad42",
+                                          ? "#f7c95e"
+                                          : "#53cf7a",
                                       width: 80,
                                     }}
                                   />
@@ -760,7 +836,7 @@ const ProjectWeeklyReportOverview = () => {
 
                 <td>
                   <Container className="Project-phase2">
-                  <Form.Label className="p-2" style={{ fontWeight: "bold" }}>
+                  <Form.Label className="p-2" style={{ fontWeight: "bold", fontSize: 20 }}>
                       Assumptions
                     </Form.Label>
 
@@ -806,7 +882,7 @@ const ProjectWeeklyReportOverview = () => {
 
                 <td>
                   <Container className="Project-phase2">
-                  <Form.Label className="p-2" style={{ fontWeight: "bold" }}>
+                  <Form.Label className="p-2" style={{ fontWeight: "bold", fontSize: 20 }}>
                       Issues
                     </Form.Label>
 
@@ -847,10 +923,10 @@ const ProjectWeeklyReportOverview = () => {
                                     style={{
                                       backgroundColor:
                                         x.RAGStatus === "R"
-                                          ? "#c21a08"
+                                          ? "#ed5247"
                                           : x.RAGStatus === "A"
-                                          ? "#FF5733"
-                                          : "#2dad42",
+                                          ? "#f7c95e"
+                                          : "#53cf7a",
                                       width: 80,
                                     }}
                                   />
@@ -873,7 +949,7 @@ const ProjectWeeklyReportOverview = () => {
 
                 <td>
                   <Container className="Project-phase2">
-                  <Form.Label className="p-2" style={{ fontWeight: "bold" }}>
+                  <Form.Label className="p-2" style={{ fontWeight: "bold", fontSize: 20 }}>
                       Dependencies
                     </Form.Label>
 
@@ -914,10 +990,10 @@ const ProjectWeeklyReportOverview = () => {
                                     style={{
                                       backgroundColor:
                                         x.RAGStatus === "R"
-                                          ? "#c21a08"
+                                          ? "#ed5247"
                                           : x.RAGStatus === "A"
-                                          ? "#FF5733"
-                                          : "#2dad42",
+                                          ? "#f7c95e"
+                                          : "#53cf7a",
                                       width: 80,
                                     }}
                                   />
@@ -942,7 +1018,7 @@ const ProjectWeeklyReportOverview = () => {
           </Table>
         </Container>
       </Container>
-      <Button className="btn btn-success " onClick={ generatePDF}>Download PDF</Button> 
+      
     </div>
   );
 };

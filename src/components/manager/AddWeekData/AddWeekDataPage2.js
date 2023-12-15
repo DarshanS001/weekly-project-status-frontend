@@ -274,15 +274,15 @@ const AddWeekDataPage2 = () => {
                           value={StatusPrep} 
                           onChange={(e)=>onInputChangePrepare(e)} 
                           aria-label="Default select example"
-                          style={{backgroundColor:StatusPrep==="R" ? "#c21a08": StatusPrep==="A" ? 
-                          "#FF5733": "#2dad42", color:"white"}}
+                          style={{backgroundColor:StatusPrep==="R" ? "#ed5247": StatusPrep==="A" ? 
+                          "#f7c95e": "#53cf7a", color:"white"}}
                           >
                             {/* <option selected disabled>
                               Select Status
                             </option> */}
-                            <option value="R" style={{backgroundColor:"#c21a08", color:"white"}}>Red</option>
-                            <option value="A" style={{backgroundColor:"#FF5733", color:"white"}}>Amber</option>
-                            <option value="G" style={{backgroundColor:"#2dad42", color:"white"}}>Green</option>
+                            <option value="R" style={{backgroundColor:"#ed5247", color:"white"}}>Red</option>
+                            <option value="A" style={{backgroundColor:"#f7c95e", color:"white"}}>Amber</option>
+                            <option value="G" style={{backgroundColor:"#53cf7a", color:"white"}}>Green</option>
                           </Form.Select>
                         </Form.Group>
                       </td>
@@ -356,15 +356,15 @@ const AddWeekDataPage2 = () => {
                           value={StatusExpl} 
                           onChange={(e)=>onInputChangeExplore(e)} 
                           aria-label="Default select example"
-                          style={{backgroundColor:StatusExpl==="R" ? "#c21a08": StatusExpl==="A" ? 
-                          "#FF5733": "#2dad42", color:"white"}}
+                          style={{backgroundColor:StatusExpl==="R" ? "#ed5247": StatusExpl==="A" ? 
+                          "#f7c95e": "#53cf7a", color:"white"}}
                           >
                             {/* <option selected disabled>
                               Select Status
                             </option> */}
-                            <option value="R" style={{backgroundColor:"#c21a08", color:"white"}}>Red</option>
-                            <option value="A" style={{backgroundColor:"#FF5733", color:"white"}}>Amber</option>
-                            <option value="G" style={{backgroundColor:"#2dad42", color:"white"}}>Green</option>
+                            <option value="R" style={{backgroundColor:"#ed5247", color:"white"}}>Red</option>
+                            <option value="A" style={{backgroundColor:"#f7c95e", color:"white"}}>Amber</option>
+                            <option value="G" style={{backgroundColor:"#53cf7a", color:"white"}}>Green</option>
                           </Form.Select>
                         </Form.Group>
                       </td>
@@ -438,15 +438,15 @@ const AddWeekDataPage2 = () => {
                           value={StatusReal} 
                           onChange={(e)=>onInputChangeRealize(e)} 
                           aria-label="Default select example"
-                          style={{backgroundColor:StatusReal==="R" ? "#c21a08": StatusReal==="A" ? 
-                          "#FF5733": "#2dad42", color:"white"}}
+                          style={{backgroundColor:StatusReal==="R" ? "#ed5247": StatusReal==="A" ? 
+                          "#f7c95e": "#53cf7a", color:"white"}}
                           >
                             {/* <option selected disabled>
                               Select Status
                             </option> */}
-                           <option value="R" style={{backgroundColor:"#c21a08", color:"white"}}>Red</option>
-                            <option value="A" style={{backgroundColor:"#FF5733", color:"white"}}>Amber</option>
-                            <option value="G" style={{backgroundColor:"#2dad42", color:"white"}}>Green</option>
+                           <option value="R" style={{backgroundColor:"#ed5247", color:"white"}}>Red</option>
+                            <option value="A" style={{backgroundColor:"#f7c95e", color:"white"}}>Amber</option>
+                            <option value="G" style={{backgroundColor:"#53cf7a", color:"white"}}>Green</option>
                           </Form.Select>
                         </Form.Group>
                       </td>
@@ -520,15 +520,15 @@ const AddWeekDataPage2 = () => {
                           value={StatusDepl} 
                           onChange={(e)=>onInputChangeDeploy(e)} 
                           aria-label="Default select example"
-                          style={{backgroundColor:StatusDepl==="R" ? "#c21a08": StatusDepl==="A" ? 
-                          "#FF5733": "#2dad42", color:"white"}}
+                          style={{backgroundColor:StatusDepl==="R" ? "#ed5247": StatusDepl==="A" ? 
+                          "#f7c95e": "#53cf7a", color:"white"}}
                           >
                             {/* <option selected disabled>
                               Select Status
                             </option> */}
-                            <option value="R" style={{backgroundColor:"#c21a08", color:"white"}}>Red</option>
-                            <option value="A" style={{backgroundColor:"#FF5733", color:"white"}}>Amber</option>
-                            <option value="G" style={{backgroundColor:"#2dad42", color:"white"}}>Green</option>
+                            <option value="R" style={{backgroundColor:"#ed5247", color:"white"}}>Red</option>
+                            <option value="A" style={{backgroundColor:"#f7c95e", color:"white"}}>Amber</option>
+                            <option value="G" style={{backgroundColor:"#53cf7a", color:"white"}}>Green</option>
                           </Form.Select>
                         </Form.Group>
                       </td>
@@ -602,15 +602,15 @@ const AddWeekDataPage2 = () => {
                           value={StatusRun} 
                           onChange={(e)=>onInputChangeRun(e)} 
                           aria-label="Default select example"
-                          style={{backgroundColor:StatusRun==="R" ? "#c21a08": StatusRun==="A" ? 
-                          "#FF5733": "#2dad42", color:"white"}}
+                          style={{backgroundColor:StatusRun==="R" ? "#ed5247": StatusRun==="A" ? 
+                          "#f7c95e": "#53cf7a", color:"white"}}
                           >
                             {/* <option selected disabled>
                               Select Status
                             </option> */}
-                            <option value="R" style={{backgroundColor:"#c21a08", color:"white"}}>Red</option>
-                            <option value="A" style={{backgroundColor:"#FF5733", color:"white"}}>Amber</option>
-                            <option value="G" style={{backgroundColor:"#2dad42", color:"white"}}>Green</option>
+                            <option value="R" style={{backgroundColor:"#ed5247", color:"white"}}>Red</option>
+                            <option value="A" style={{backgroundColor:"#f7c95e", color:"white"}}>Amber</option>
+                            <option value="G" style={{backgroundColor:"#53cf7a", color:"white"}}>Green</option>
                           </Form.Select>
                         </Form.Group>
                       </td>

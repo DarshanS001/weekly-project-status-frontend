@@ -5,40 +5,73 @@ import Navbar from 'react-bootstrap/Navbar';
 import {Link} from "react-router-dom";
 import ylogo from '../../images/ylogo.png';
 import loginb from '../../images/loginb.PNG';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import logoutIcon from '../../images/logoutIcon.png';
 import RegisterNowButton from '../../images/RegisterNowButton.webp';
 import './Header.css';
 import Sidebar from './Sidebar';
 import { useLocation, useMatch } from "react-router-dom"
+import axios from "axios";
 
 
 export default function Header() {
   const [show, setShow] = useState(false);
+  const [showSession, setShowSession] = useState(false);
+  const [userDetails, setUserDetails] = useState([]);
   const location = useLocation();
   const resetPageURL = useMatch("/resetpassword/:uid/:token/");
-  console.log("location",location.pathname)
+  console.log("location",location.pathname);
 
-  // Code to get the Reset Password uid & token from local storage
-  console.log(localStorage.getItem("ResetPassword-uid"));
-  console.log(localStorage.getItem("ResetPassword-token"));
-  const uid = localStorage.getItem("ResetPassword-uid");
-  const token = localStorage.getItem("ResetPassword-token");
+  // Code to get the authorize user token from local storage
+  console.log(localStorage.getItem("user-token"));
+  const token = localStorage.getItem("user-token");
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
 
   const handleShow = () => setShow(true);
+  const handleShowSession = () => setShowSession(true);
     
   const handleLogout = () => {
       localStorage.clear("user-token");
-      localStorage.clear("ResetPassword-uid");
-      localStorage.clear("ResetPassword-token");
       window.location.href = "/";
     };
     
     const handleClose = () => {
       setShow(false);
     }
+
+    const handleCloseSession = () => {
+      setShowSession(false);
+    }
     
+    // Code to clear localStorage token when user is closes the tab or reloads the Application
+    if(location.pathname === '/'){
+      localStorage.clear("user-token");
+      console.log("cleared localStorage when sign in page comes",localStorage.getItem("user-token"));
+    }
+
+    // Code to get User Data from API call
+  useEffect(() => {
+    async function getUserData() {
+      try {
+        const userData = await axios.get(
+          "http://127.0.0.1:8000/api/user/profile/",
+          config
+        );
+        console.log("Get User Data", userData.data);
+        setUserDetails(userData.data);
+      } catch (error) {
+        console.log("Data fetching Error Occured in User Data");
+        handleShowSession();
+      }
+    }
+
+    getUserData();
+  }, []);
+  console.log("User Details:-", userDetails);
+  console.log("User Details Array Length:-", userDetails.length);
 
 
   return (
@@ -111,6 +144,35 @@ export default function Header() {
                     Cancel
                   </Button>
                   <Link to={'/'}><Button variant="danger" onClick={handleLogout}>Logout</Button></Link>
+                </Modal.Footer>
+                </Modal>
+
+                : ""}
+
+
+          {location.pathname !== '/' && 
+          location.pathname !== '/Register' && 
+          location.pathname !== '/forgotPasswordPage' && 
+          // location.pathname !== '/resetpassword' 
+          !resetPageURL  &&
+          userDetails.length === 0
+          ? 
+                <Modal
+                show={showSession}
+                onHide={handleCloseSession}
+                backdrop="static"
+                keyboard={false}
+                >
+                <Modal.Header closeButton>
+                  <Modal.Title className='fw-bold modaldesign'>Time Out</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className='modalbody'>
+                  Your Session is Time Out !! Please Log Out.
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="danger" onClick={handleLogout}>
+                    Log Out
+                  </Button>
                 </Modal.Footer>
                 </Modal>
 

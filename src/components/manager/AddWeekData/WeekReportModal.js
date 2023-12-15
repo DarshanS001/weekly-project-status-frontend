@@ -6,6 +6,8 @@ import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import {Link} from "react-router-dom";
 import { useNavigate  } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const WeekReportModal = (props) => {
@@ -62,6 +64,12 @@ const WeekReportModal = (props) => {
                 setProjectDetails(projDetails.data);
             }catch (error){
                 console.log("Data fetching Error Occured in Project Details");
+                const showToastProjectDetailsMessage = () => {
+                  toast.error("Data fetching Error Occured in Project Details", {
+                    position: toast.POSITION.TOP_RIGHT,
+                  });
+                };
+                showToastProjectDetailsMessage();
             }
         }
     
@@ -98,8 +106,13 @@ const WeekReportModal = (props) => {
             })
             .catch((error) => {
               console.log("ERROR", error);
-              alert("This report has been already created. You can go to weekly reports and update this report.")
-              // window.location.href = "/manager/addWeekDataPage1";
+              // alert("This report has been already created. You can go to weekly reports and update this report.")
+              const showToastReportMessage = () => {
+                toast.error("This report has been already created. You can go to weekly reports and update this report. Please Write another weekend date.", {
+                  position: toast.POSITION.TOP_RIGHT,
+                });
+              };
+              showToastReportMessage();
             });
     }
     
@@ -162,6 +175,7 @@ const WeekReportModal = (props) => {
         <Button onClick={props.onHide}>Close</Button>
       </Modal.Footer>
 
+      <ToastContainer />
     </Modal>
   )
 }
