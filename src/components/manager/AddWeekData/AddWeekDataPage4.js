@@ -13,6 +13,8 @@ import Col from "react-bootstrap/Col";
 import Modal from 'react-bootstrap/Modal';
 import Table from "react-bootstrap/Table";
 import { MdDelete } from "react-icons/md";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddWeekDataPage4 = () => {
      // -------------------Accompolishment Modal---------------------------------------
@@ -188,7 +190,13 @@ const AddWeekDataPage4 = () => {
         })
         .catch((error) => {
           console.log("ERROR", error);
-          alert("There is some error in Task Todo API");
+          //alert("There is some error in Task Todo API");
+          const showToastUpdateUserErrorMessage = () => {
+            toast.error("There is some error in Task Todo API", {
+              position: toast.POSITION.TOP_RIGHT,
+            });
+          };
+          showToastUpdateUserErrorMessage();
         });
 
   };
@@ -417,7 +425,7 @@ const AddWeekDataPage4 = () => {
                 </Button>
                 </Modal.Footer>
                 </Form>
-
+                <ToastContainer />
                 </Modal>
 
       </Container>

@@ -76,7 +76,6 @@ setUpdateUserData({ ...updateUserData, [event.target.name]: event.target.value }
                 <label htmlFor="Name" className="form-label" style={{ fontWeight: 'bold' }}>Name</label>
                 <input type={"text"} className="form-control" placeholder="Enter name" name="user_name" value={updateUserData.user_name} onChange={(e) => getNewUserData(e)} />
               </div>
-
               <div className="mb-3">
                 <label htmlFor="Address" className="form-label" style={{ fontWeight: 'bold' }}>Email</label>
                 <input type={"text"} className="form-control" placeholder="Enter email" name="user_email" value={updateUserData.user_email} onChange={(e) => getNewUserData(e)} />

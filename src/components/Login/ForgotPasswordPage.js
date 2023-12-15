@@ -4,6 +4,9 @@ import Button from "react-bootstrap/Button";
 import axios from 'axios';
 import Container from "react-bootstrap/Container";
 import "./ForgotPasswordPage.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 const ForgotPasswordPage = () => {
@@ -28,9 +31,16 @@ const ForgotPasswordPage = () => {
       if (res.status === 200) {
         console.log("result.data:",res.data);
         alert("password reset email sent! kindly check your email.");
+        
       }
     }).catch((error) => {
         console.log("ERROR", error);
+        const showToastUpdateUserErrorMessage = () => {
+          toast.error("Error occurred ", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        };
+        showToastUpdateUserErrorMessage();
       });
 
   }
@@ -68,6 +78,7 @@ const ForgotPasswordPage = () => {
           </Container>
 
         </Form>
+        <ToastContainer />
       </Container>
     </div>
   );

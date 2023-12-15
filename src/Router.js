@@ -30,22 +30,22 @@ import AdminProfile from './components/Admin/AdminProfile';
 import ManagementProfile from './components/Management/ManagementProfile';
 import UserProfile from './components/Admin/UserProfile';
 import PageNotFound from './components/PageNotFound';
-
+ 
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+ 
 const Router = () => {
   const [userDetails, setUserDetails] = useState([]);
-
+ 
   // Code to get the authorize user token from local storage
   console.log(localStorage.getItem("user-token"));
   const token = localStorage.getItem("user-token");
-
+ 
   return (
     <div>
-        
+       
           {
-            !token 
+            !token
             ?
             <Routes>
             <Route path='/' element={<LoginPage/>}/>
@@ -57,16 +57,16 @@ const Router = () => {
             :
             <Routes>
                <Route path='/Register' element={<RegisterPage/>}/>
-            
+           
             {/*---------------------- Admin's Routing-----------------------------*/}
-
-            
+ 
+           
             <Route path='/WeeklyStatusReport' element={<WelcomeApplication/>}/>
             <Route path='/forgotPasswordPage' element={<ForgotPasswordPage/>}/>
-            
+           
             <Route path='/admin/updateUser/:id' element={<UpdateUser/>}/>
-
-            
+ 
+           
             <Route path='/AdminPage' element={<User/>}/>
             <Route path='/admin/allAdmins/' element={<AllAdmin/>}/>
             <Route path='/admin/managers/' element={<AllManagers/>}/>
@@ -75,8 +75,8 @@ const Router = () => {
             <Route path='/admin/management/addManagement' element={<AddManagement/>}/>
             <Route path='/admin/profile' element={<AdminProfile/>}/>
             <Route path='/admin/UserProfile/:id' element={<UserProfile/>}/>
-
-            
+ 
+           
             {/*---------------------- Managers's Routing-----------------------------*/}
             <Route path='/manager/home' element={<Home/>}/>
             <Route path='/manager/addProjectPage' element={<AddProject/>}/>
@@ -85,25 +85,25 @@ const Router = () => {
             <Route path='/manager/allProjectWeeklyReports/' element={<WeeklyReports/>}/>
             <Route path='/manager/projectWeeklyReportOverview/:id' element={<ProjectWeeklyReportOverview/>}/>
             <Route path='/manager/settings' element={<Settings/>}/>
-            
+           
             <Route path='/manager/projectDetails/:id' element={<ProjectDetails/>}/>
             <Route path='/manager/projectWeeklyStatus/:id' element={<WeeklyStatus/>}/>
             <Route path='/manager/addWeekDataPage1' element={<AddWeekDataPage1/>}/>
             <Route path='/manager/addWeekDataPage2' element={<AddWeekDataPage2/>}/>
             <Route path='/manager/addWeekDataPage3' element={<AddWeekDataPage3/>}/>
             <Route path='/manager/addWeekDataPage4' element={<AddWeekDataPage4/>}/>
-
+ 
             {/* --------------------------Management---------------------------------- */}
             <Route path='/management/managementProfile' element={<ManagementProfile/>}/>
-
+ 
             <Route path="*" element={<PageNotFound/>}/>
           </Routes>
-
+ 
           }
            
            
     </div>
   )
 }
-
+ 
 export default Router

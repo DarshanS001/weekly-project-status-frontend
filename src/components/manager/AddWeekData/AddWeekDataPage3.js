@@ -13,6 +13,8 @@ import Col from "react-bootstrap/Col";
 import Modal from 'react-bootstrap/Modal';
 import Table from "react-bootstrap/Table";
 import { MdDelete } from "react-icons/md";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddWeekDataPage3 = () => {
 
@@ -292,7 +294,13 @@ const AddWeekDataPage3 = () => {
         })
         .catch((error) => {
           console.log("ERROR", error);
-          alert("There is some error in Assumption API");
+          //alert("There is some error in Assumption API");
+          const showToastUpdateUserErrorMessage = () => {
+            toast.error("There is some error in Assumption API", {
+              position: toast.POSITION.TOP_RIGHT,
+            });
+          };
+          showToastUpdateUserErrorMessage();
         });
 
     
@@ -1013,6 +1021,7 @@ const AddWeekDataPage3 = () => {
       </Modal.Footer>
 
         </Form>
+        <ToastContainer />
 
       </Modal>
 

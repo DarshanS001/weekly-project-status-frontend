@@ -1,5 +1,5 @@
 import React from 'react'
-import './ManagerProfile.css'
+import './ManagementProfile.css'
 import mbggg from '../../images/mbggg.png';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -14,7 +14,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 //import usernameicon from '../../images/usernameicon.png';
  
-const ManagerProfile = () => {
+const ManagementProfile = () => {
  
   const [userDetails, setUserDetails] = useState([]);
  
@@ -74,7 +74,7 @@ const ManagerProfile = () => {
                       <p ><img src={irmicon} alt='contact icon' className='icons' /> Reports To: </p>
                      
                       <div className='underline'></div>
-                      <Link to={'/manager/home'} ><img src={projectsButton} alt='project button' className='project-img' /></Link>
+                     
                     </div>
               </div>
  
@@ -89,4 +89,4 @@ const ManagerProfile = () => {
  
 }
  
-export default ManagerProfile
+export default ManagementProfile
