@@ -5,6 +5,8 @@ import axios from 'axios';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function AddProjectTrial() {
   let navigate = useNavigate();
@@ -68,7 +70,13 @@ console.log("User id Details:-", userDetails.id);
     catch(error){
       console.log('error:', error);
       console.log("error occur in data post");
-      alert("Error In Data Post")
+      //alert("Error In Data Post")
+      const showToastUpdateUserErrorMessage = () => {
+        toast.error("Error In Data Post", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      };
+      showToastUpdateUserErrorMessage();
     }
     // navigate("/");
   };
@@ -159,6 +167,7 @@ console.log("User id Details:-", userDetails.id);
               Cancel
             </Link>
           </form>
+          <ToastContainer />
         </div>
       </div>
     </div>

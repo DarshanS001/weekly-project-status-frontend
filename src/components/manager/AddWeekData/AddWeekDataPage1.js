@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import { useNavigate  } from 'react-router-dom';
 import Navbar from "react-bootstrap/Navbar";
 import Heading from "../../Heading";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddWeekDataPage1 = () => {
   // To get the project report ID from Week Report Modal.js  
@@ -88,7 +90,13 @@ const AddWeekDataPage1 = () => {
             })
             .catch((error) => {
               console.log("ERROR", error);
-              alert("There is some error in Phasewise Timeline API");
+              //alert("There is some error in Phasewise Timeline API");
+              const showToastUpdateUserErrorMessage = () => {
+                toast.error("There is some error in Phasewise Timeline API", {
+                  position: toast.POSITION.TOP_RIGHT,
+                });
+              };
+              showToastUpdateUserErrorMessage();
             });
 
   // =============================================================================
@@ -381,6 +389,7 @@ const AddWeekDataPage1 = () => {
               </Container>
             </Container>
           </Form>
+          <ToastContainer />
         </Container>
       </Container>
     </>

@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Heading from "../../Heading";
 import Table from "react-bootstrap/Table";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddWeekDataPage2 = () => {
 
@@ -173,7 +175,13 @@ const AddWeekDataPage2 = () => {
         })
         .catch((error) => {
           console.log("ERROR", error);
-          alert("Error!! Data is not submitted properly")
+          //alert("Error!! Data is not submitted properly")
+          const showToastUpdateUserErrorMessage = () => {
+            toast.error("Error!! Data is not submitted properly", {
+              position: toast.POSITION.TOP_RIGHT,
+            });
+          };
+          showToastUpdateUserErrorMessage();
           // window.location.href = "/manager/addWeekDataPage1";
         });
 }
@@ -631,6 +639,7 @@ const AddWeekDataPage2 = () => {
               </Container>
             </Container>
           </Form>
+          <ToastContainer />
         </Container>
       </Container>
     </>

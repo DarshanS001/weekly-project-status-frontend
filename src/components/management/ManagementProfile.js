@@ -13,11 +13,11 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import axios from "axios";
 //import usernameicon from '../../images/usernameicon.png';
-
+ 
 const ManagementProfile = () => {
-
+ 
   const [userDetails, setUserDetails] = useState([]);
-
+ 
    // Code to get the authorize user token from local storage
    console.log(localStorage.getItem("user-token"));
    const token = localStorage.getItem("user-token");
@@ -44,12 +44,12 @@ const ManagementProfile = () => {
    }, []);
  
    console.log("User Details:-", userDetails);
-
+ 
     return(
       <Container>
       <Row className="justify-content-md-center mainContainer mx-auto"  >
           <Col lg="4" style={{marginBottom:'20px',marginLeft:'-20%'}}>
-  
+ 
           <div className='profile-background'>
                 <img src={mbggg} alt='profile-imgg' className='profile-img'></img>
                 <div>
@@ -57,14 +57,14 @@ const ManagementProfile = () => {
                   <h5 className='profile-imgInfo' style={{marginTop:'0px'}}>{userDetails.user_type}</h5>
                 </div>
               </div>
-            
+           
           </Col>
-  
-  
+ 
+ 
           <Col md={5} style={{marginBottom:'20px'}} className='justify-content-end'>
              
           <div className='info-container'>
-                    
+                   
                     <h3 className='info-heading'>Information</h3>
                     <div className='underline'></div>
                     <div className='info-content'>
@@ -72,21 +72,21 @@ const ManagementProfile = () => {
                       <p><img src={contacticon} alt='contact icon' className='icons' /> Phone : 9756094522</p>
                       <p ><img src={usernameicon} alt='contact icon' className='icons' /> Username : {userDetails.user_name}</p>
                       <p ><img src={irmicon} alt='contact icon' className='icons' /> Reports To: </p>
-                      
+                     
                       <div className='underline'></div>
-                      
+                     
                     </div>
               </div>
-  
+ 
           </Col>
-  
-  
-  
-          
+ 
+ 
+ 
+         
         </Row>
     </Container>
    )
-  
+ 
 }
-
+ 
 export default ManagementProfile

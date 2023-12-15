@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
 import InputGroup from 'react-bootstrap/InputGroup';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ResetPassword = () => {
   const [password1,setPassword1] = useState("");
@@ -52,7 +54,12 @@ const ResetPassword = () => {
     .then((res) => {
       if (res.status === 200) {
         console.log("result.data:",res.data);
-        alert("Password reset successfull");
+        const showToastUpdateUserErrorMessage = () => {
+          toast.error("Password Reset Successful", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        };
+        showToastUpdateUserErrorMessage();
         window.location.href = "/";
       }
     })
@@ -136,6 +143,7 @@ const ResetPassword = () => {
           </Container>
 
         </Form>
+        <ToastContainer />
       </Container>
     
     </div>

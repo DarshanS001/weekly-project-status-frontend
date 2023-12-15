@@ -5,6 +5,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import { faL } from '@fortawesome/free-solid-svg-icons';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Settings = () => {
 
@@ -50,11 +52,29 @@ const Settings = () => {
 
      // Form Validation
     if(currentPassword.length === 0){
-      alert("Please enter current password")
+      //alert("Please enter current password")
+      const showToastUpdateUserErrorMessage = () => {
+        toast.error("Please enter current password", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      };
+      showToastUpdateUserErrorMessage();
     }else if(newPassword.length === 0){
-      alert("Please enter new password")
+      //alert("Please enter new password")
+      const showToastUpdateUserErrorMessage = () => {
+        toast.error("Please enter new password", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      };
+      showToastUpdateUserErrorMessage();
     }else if( newPassword !== confirmNewPassword){
-      alert("Please enter same password")
+      //alert("Please enter same password")
+      const showToastUpdateUserErrorMessage = () => {
+        toast.error("Please enter same password", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      };
+      showToastUpdateUserErrorMessage();
     }else{
 
        // Api Calling
@@ -77,7 +97,13 @@ const Settings = () => {
         })
         .catch((error) => {
           console.log("ERROR", error);
-          alert("Error Orrured In Password Change");
+          //alert("Error Orrured In Password Change");
+          const showToastUpdateUserErrorMessage = () => {
+            toast.error("Error Orrured In Password Change", {
+              position: toast.POSITION.TOP_RIGHT,
+            });
+          };
+          showToastUpdateUserErrorMessage();
         });
 
     }
@@ -146,6 +172,7 @@ const Settings = () => {
               Cancel
             </Link>
           </form>
+          <ToastContainer />
         </div>
       </div>
     </div>

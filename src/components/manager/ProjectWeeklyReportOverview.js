@@ -18,9 +18,6 @@ import { useReactToPrint } from "react-to-print";
 
 import { useRef } from "react";
 
-
-import { useRef } from "react";
-
 const ProjectWeeklyReportOverview = () => {
 
   const conponentPDF= useRef();
